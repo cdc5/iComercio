@@ -1,0 +1,91 @@
+Instalacion sistema iComercio
+
+A) Migracion Bases de datos: Se recomienda realizar en pc de desarrollador y luego copiar los archivos a la pc destino
+    1) Copiar Base de datos comerfinan.mdb a pc de desarrollador
+    2) Compactar Base de datos (PASO IMPORTANTISIMO)
+    3) Crear Base de datos ComerFinanMig en sql server
+    4) Migrar desde comerfinan.mdb a ComerFinanMig las siguientes tablas
+	- Clientes          
+	- Creditos
+        - Cuotas
+        - Cobranzas
+        - Bajas
+	- Refinan
+	- RefiCuotas
+	- RefiCobra
+	- RefiBajas	        
+	- Notas
+
+Realizar la migracion con el asistente para importación y exportación de SQL Server, en la pantalla de selección de tablas
+seleccionar todas las objetivo presionar editar asignaciones  y tildar habilitar la inserción de identidad.
+
+    Puede suceder que en la migración existan errores por tipos de datos, revisar la tabla correspondiente y corregir el error:
+	Error: "Tipo de dato de fecha no valido": Revisar que en los campos fecha (ordenar de menor a mayor y viceversa) no existan fechas del estilo "30/07/9999","12/01/1654" ,"01/12/9780" o vacias, en ese caso reemplazarlas por algun valor valido como "01/12/1920".
+
+     5) Copiar a la base ComerFinanMig los scripts provistos justo con este documento
+		EliminarRepetidos.sql                        Este script ejecuta los restantes, pero todos deben estar cargados para que funcione correctamente
+		Clientes_EliminarRepetidos.sql		
+		Creditos_EliminarRepetidos.sql
+		Cuotas_EliminarRepetidos.sql
+		Cobranzas_EliminarRepetidos.sql
+		BajasEliminarRepetidos.sql
+		Refinan_EliminarRepetidos.sql
+		RefiCuotas_EliminarRepetidos.sql
+		RefiCobra_EliminarRepetidos.sql
+		RefiBajas_EliminarRepetidos.sql
+		Notas_EliminarRepetidos.sql
+		---------------------------------------------------------------------
+		EliminarTablas.sql                          Este script se utiliza para eliminar las tablas en caso de existir un algún error y tener que volver a crearlas
+		---------------------------------------------------------------------
+		Claves.sql                                  Este script se utiliza para conocer cuales campos deben ser las claves de cada tabla
+		MIG_CantTablas.sql                          Este script se utiliza en la finalización de la migración para comparar los registros en la base vieja y en la nueva, brinda la cantidad de registros de cada tabla.
+
+
+	6) Ejecutar Script Eliminar Repetidos
+	7) Utilizar el archivo Claves.sql para conocer que claves hay que asignar a cada tabla, no es un script automático, solo referencia para poder colocar las claves manualmente
+	8) La base ComerFinanMig se encuentra ahora lista para poder ejecutar el programa icomercio y que el mismo realice la migracion
+	9) Copiar los archivos del programa icomercio a la ruta definitiva. (Si se realiza en pc de desarrollo, no importa la ubicación ya que después se realizará en el comercio correspondiente)
+	10) Abrir el archivo iComercio.exe.config y configurar en los tags <connection strings> los correspondientes a cada base de datos, son cuatro a saber:
+
+		<connectionStrings>
+    			<add name="ComercioContext" connectionString="Data Source=Sistemas-CC;Initial Catalog=Comercio801;Integrated security=SSPI;" providerName="System.Data.SqlClient" />
+    			<add name="ComercioPruebaContext" connectionString="Data Source=Sistemas-CC;Initial Catalog=ComercioPru;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+    			<add name="CamaraContext" connectionString="metadata=res://*/DAL.CamaraContext.csdl|res://*/DAL.CamaraContext.ssdl|res://*/DAL.CamaraContext.msl;provider=System.Data.SqlClient; 
+			         provider connection string=&quot;data source=SVBD; initial catalog=SqlCamara;Integrated Security=true;MultipleActiveResultSets=True;
+			 	 App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    			<add name="ComerFinanEntities" connectionString="metadata=res://*/DAL.ComerFinanContext.csdl|res://*/DAL.ComerFinanContext.ssdl|res://*/DAL.ComerFinanContext.msl;
+			           provider=System.Data.SqlClient; provider connection string=&quot;data source=Sistemas-CC;initial catalog=ComerFinanMig;integrated security=True;
+				MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+ 		 </connectionStrings>
+
+	Valores generales
+	En: 
+		Data Source="nombre del equipo donde esta instalado el SQLSERVER y el programa". Ejemplo: Data Source=1200-SERVER
+		Integrated security=SSPI. Debe quedar así para la primer ejecución de la base de datos en la pc servidor, para las posteriores ejecuciones luego de la instalación y para las pcs
+		usuarias se utiliza user=comer;password=comer.
+	Valores Particulares
+		Para "ComercioContext" => Initial Catalog="Nombre que llevará la base del comercio en cuestión". Ejemplo: Initial Catalog=Comercio1200
+		Para name="ComercioPruebaContext" => Initial Catalog="Siempre se utiliza el mismo nombre". Ejemplo: Initial Catalog=ComercioPru
+		Para name="CamaraContext" => Initial Catalog="Siempre se utiliza el mismo nombre". Ejemplo: Initial Catalog=SqlCamara
+		Para name="ComerFinanEntities" => Initial Catalog="Siempre se utiliza el mismo nombre". Ejemplo: Initial Catalog=ComerFinanMig
+			Para esta última base se recomienda utilizar Integrated security=SSPI y realizarlo en la pc servidor en caso de no ser realizado en pc de desarrollo
+	11) Ejecutar el archivo iComercio.exe
+	12) Al Finalizar su primer ejecución el programa habrá creado las bases.
+	13) Cerra el programa iComercio
+	14) Ejecutar el script provisto iComercio_Actualizar_Campos_Deuda.sql, pero cambiando la primer sentencia use <NombreBase> por el nombre de la base de comercio utilizada, ejemplo Comercio1200
+	15) Abrir la tabla "comercio" en SQLServer y cambiar los campos correspondientes al número de empresa, comercio y nombre del comercio correcto, para que la migración tome los valores correctos.
+	16) Presionar el botón Configuración -> Migracíon -> Importar Créditos (Importará todo), para que comience la migración de datos, es un proceso que suele lleva tiempo, dependiendo la base y la pc donde se esté ejecutando, en general 
+            para una base de tamaño de 1 GB puede tardar mas de 10 horas.
+	17) Cargar la base SqlCamara, se puede hacer importandola desde una que tengamos actualizada para la misma versión de sqlserver o utilizando un archivo script generado para cargarla mediante 
+	    ejecución por texto en sqlserver
+	18) Ejecutar el script provisto iComercio_Creacion_permisos.sql, pero cambiando la primer sentencia use <NombreBase> por el nombre de la base de comercio utilizada, ejemplo Comercio1200  
+	19)Ejecutar el script provisto crearVistas.sql para crear unas vistas de utilidad en el caso de copiar datos entre bases. No es necesario para el funcionamiento del sistema.
+	20) Copiar los accesos directos a las pcs donde se desee ejecutar el programa
+	21) Listo!!!, su sistema ya esta apto para empezar a probar las delicias de un Icomercio bien sabrosito.
+
+Nota: Para ejecutar correctamente puede ser necesario brindar permisos a los puertos de sqlserver y habilitar los puertos en su firewall, llame a su programador grosso de confianza para más indicaciones.
+En caso de tener que eliminar los datos de la base ComercioXX, para reiniciar el proceso de migración utilizar el script icomercio_BorrarDatosTablas.sql.
+      
+
+		
+    

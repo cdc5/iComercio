@@ -1,0 +1,77 @@
+﻿ ============================================================================================================================
+  =*****************************************************To Do list**********************************************************=
+  ===========================================================================================================================
+  04/12/2019
+ Para migrar en cada receptoría ultima versión con debito directo
+ Completar en tablas ya existentes a mano
+ - permiso: HabilitaPagoNormalDebitoDirecto
+ - tipo impresion: impresionDebitoDirecto
+ - True en cuenta bancaria seleccionada para debito directo
+ - new TipoPago{TipoPagoID = "E",Nombre = "Débito Directo",Descripcion ="Débito Directo" },
+ - new TipoPago{TipoPagoID = "F",Nombre = "Tarjeta de Débito",Descripcion ="Tarjeta de Débito" },
+ - new TipoPago{TipoPagoID = "H",Nombre = "Tarjeta de Crédito",Descripcion ="Tarjeta de Crédito" }
+
+
+En Operacion 
+58	Trans Info Act	Trans Info Act	TransInfoAct
+59	Trans Baja Recibo	Trans Baja Recibo	TransBajaRecibo
+
+ USE [Comercio1001]
+GO
+
+INSERT INTO [dbo].[Permiso]
+           ([nombre]
+           ,[descripcion]
+           ,[creacion]
+           ,[activo])
+     VALUES
+           ('HabilitaPagoNormalDebitoDirecto'
+           ,'HabilitaPagoNormalDebitoDirecto'
+           ,'2020/01/10'
+           ,1)
+GO
+
+INSERT INTO [dbo].[Permiso]
+           ([nombre]
+           ,[descripcion]
+           ,[creacion]
+           ,[activo])
+     VALUES
+           ('mnuActualizaciones'
+           ,'mnuActualizaciones'
+           ,'2020/01/10'
+           ,1)
+
+GO
+
+
+INSERT INTO [dbo].[TipoImpresion]
+           ([Nombre]
+           ,[Impresora])
+     VALUES
+           ('DEBITO DIRECTO'
+           ,'')
+GO
+
+INSERT INTO [dbo].[TipoPago]([TipoPagoID],[Nombre],[Descripcion]) VALUES ('E','Débito Directo','Débito Directo')
+INSERT INTO [dbo].[TipoPago]([TipoPagoID],[Nombre],[Descripcion]) VALUES ('F','Tarjeta de Débito','Tarjeta de Débito')
+INSERT INTO [dbo].[TipoPago]([TipoPagoID],[Nombre],[Descripcion]) VALUES ('H','Tarjeta de Crédito','Tarjeta de Crédito')
+INSERT INTO [dbo].[TipoPago]([TipoPagoID],[Nombre],[Descripcion]) VALUES ('I','Pago Facil','Pago Facil')
+
+INSERT INTO [dbo].[Operacion]([Nombre],[Descripcion],[Discriminator]) VALUES ('Trans Info Act','Trans Info Act','TransInfoAct')
+INSERT INTO [dbo].[Operacion]([Nombre],[Descripcion],[Discriminator]) VALUES ('Trans Baja Recibo','Trans Baja Recibo','Trans Baja Recibo')
+GO
+
+UPDATE [dbo].[CuentaBancaria] SET [DebitoDirecto] = CASE WHEN EmpresaID = 1 and NumCuenta = '339-313497/0' THEN 1 ELSE 0 END
+   
+UPDATE [dbo].[CuentaBancaria] SET [DebitoDirecto] = CASE WHEN EmpresaID = 2 and NumCuenta = '339-313499/4' THEN 1 ELSE 0 END
+   
+UPDATE [dbo].[CuentaBancaria] SET [DebitoDirecto] = CASE WHEN EmpresaID = 3 and NumCuenta = '339-313501/0' THEN 1 ELSE 0 END
+==============================
+((System.Data.Entity.Infrasctructure.DbUpdateException)$Exception)
+
+Actualizacion 06/08/2020
+==============================
+Campos a agregar en la base Comercio si no se hace automaticamente.
+CantCuoArr	int	Checked
+Actualiza	bit	Checked

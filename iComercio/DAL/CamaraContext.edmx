@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SqlCamaraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SqlCamara.dbo.docu' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="docu">
+          <Property Name="Docu" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SqlCamara.dbo.Entidad' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Entidad">
+          <Property Name="CODENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="NOMENT" Type="nvarchar" MaxLength="50" />
+          <Property Name="DIRENT" Type="nvarchar" MaxLength="30" />
+          <Property Name="TELENT" Type="nvarchar" MaxLength="10" />
+          <Property Name="CODENT2" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SqlCamara.dbo.Morcam' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Morcam">
+          <Property Name="EMPRCA" Type="nvarchar" MaxLength="10" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="1" />
+          <Property Name="EMPRCA2" Type="nvarchar" MaxLength="3" />
+          <Property Name="Estado2" Type="nvarchar" MaxLength="1" />
+          <Property Name="EMPRCA3" Type="nvarchar" MaxLength="3" />
+          <Property Name="Estado3" Type="nvarchar" MaxLength="1" />
+          <Property Name="Mas" Type="nvarchar" MaxLength="1" />
+          <Property Name="APNOCA" Type="nvarchar" MaxLength="30" />
+          <Property Name="NUDOCA" Type="float" />
+          <Property Name="FinanV" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <Function Name="MI_RegistrosPorFila" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Entidad_sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CODENT" Type="nvarchar" Mode="In" />
+          <Parameter Name="NOMENT" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Morcam_sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUDOCA" Type="float" Mode="In" />
+          <Parameter Name="APNOCA" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMPRCA" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ObtenerMorosoEnCamara" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NUDOCA" Type="float" Mode="In" />
+          <Parameter Name="APNOCA" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SqlCamaraModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SqlCamaraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CamaraContext" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_Entidad_sel" ReturnType="Collection(SqlCamaraModel.Entidad)">
+            <Parameter Name="CODENT" Mode="In" Type="String" />
+            <Parameter Name="NOMENT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Morcam_sel" ReturnType="Collection(SqlCamaraModel.Morcam)">
+            <Parameter Name="NUDOCA" Mode="In" Type="Double" />
+            <Parameter Name="APNOCA" Mode="In" Type="String" />
+            <Parameter Name="EMPRCA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ObtenerMorosoEnCamara" ReturnType="Collection(SqlCamaraModel.MorosoEnCamara)">
+            <Parameter Name="NUDOCA" Mode="In" Type="Double" />
+            <Parameter Name="APNOCA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MI_RegistrosPorFila" ReturnType="Collection(SqlCamaraModel.MI_RegistrosPorFila_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Entidad">
+          <Property Type="String" Name="CODENT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NOMENT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DIRENT" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TELENT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CODENT2" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Morcam">
+          <Property Type="String" Name="EMPRCA" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="EMPRCA2" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Estado2" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="EMPRCA3" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Estado3" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Mas" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="APNOCA" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="NUDOCA" Nullable="true" />
+          <Property Type="String" Name="FinanV" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="MorosoEnCamara">
+          <Property Type="String" Name="EMPRCA" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="EMPRCA2" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Estado2" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="EMPRCA3" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="Estado3" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Mas" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="APNOCA" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="NUDOCA" Nullable="true" />
+          <Property Type="String" Name="FinanV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nombreEntidad" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="MI_RegistrosPorFila_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" />
+          <Property Type="Int64" Name="row_count" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SqlCamaraModelStoreContainer" CdmEntityContainer="CamaraContext" >
+          <FunctionImportMapping FunctionImportName="sp_Entidad_sel" FunctionName="SqlCamaraModel.Store.sp_Entidad_sel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SqlCamaraModel.Entidad">
+                <ScalarProperty Name="CODENT" ColumnName="CODENT" />
+                <ScalarProperty Name="NOMENT" ColumnName="NOMENT" />
+                <ScalarProperty Name="DIRENT" ColumnName="DIRENT" />
+                <ScalarProperty Name="TELENT" ColumnName="TELENT" />
+                <ScalarProperty Name="CODENT2" ColumnName="CODENT2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Morcam_sel" FunctionName="SqlCamaraModel.Store.sp_Morcam_sel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SqlCamaraModel.Morcam">
+                <ScalarProperty Name="EMPRCA" ColumnName="EMPRCA" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EMPRCA2" ColumnName="EMPRCA2" />
+                <ScalarProperty Name="Estado2" ColumnName="Estado2" />
+                <ScalarProperty Name="EMPRCA3" ColumnName="EMPRCA3" />
+                <ScalarProperty Name="Estado3" ColumnName="Estado3" />
+                <ScalarProperty Name="Mas" ColumnName="Mas" />
+                <ScalarProperty Name="APNOCA" ColumnName="APNOCA" />
+                <ScalarProperty Name="NUDOCA" ColumnName="NUDOCA" />
+                <ScalarProperty Name="FinanV" ColumnName="FinanV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ObtenerMorosoEnCamara" FunctionName="SqlCamaraModel.Store.sp_ObtenerMorosoEnCamara">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SqlCamaraModel.MorosoEnCamara">
+                <ScalarProperty Name="EMPRCA" ColumnName="EMPRCA" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EMPRCA2" ColumnName="EMPRCA2" />
+                <ScalarProperty Name="Estado2" ColumnName="Estado2" />
+                <ScalarProperty Name="EMPRCA3" ColumnName="EMPRCA3" />
+                <ScalarProperty Name="Estado3" ColumnName="Estado3" />
+                <ScalarProperty Name="Mas" ColumnName="Mas" />
+                <ScalarProperty Name="APNOCA" ColumnName="APNOCA" />
+                <ScalarProperty Name="NUDOCA" ColumnName="NUDOCA" />
+                <ScalarProperty Name="FinanV" ColumnName="FinanV" />
+                <ScalarProperty Name="nombreEntidad" ColumnName="nombreEntidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MI_RegistrosPorFila" FunctionName="SqlCamaraModel.Store.MI_RegistrosPorFila">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SqlCamaraModel.MI_RegistrosPorFila_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="row_count" ColumnName="row_count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

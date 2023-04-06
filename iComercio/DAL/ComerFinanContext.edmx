@@ -1,0 +1,1339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ComerFinanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bajas">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+          </Key>
+          <Property Name="KComercio" Type="smallint" Nullable="false" />
+          <Property Name="KCredito" Type="int" Nullable="false" />
+          <Property Name="KDocumento" Type="int" />
+          <Property Name="KCodDocu" Type="nvarchar" MaxLength="3" />
+          <Property Name="KValorNom" Type="money" />
+          <Property Name="KValorCuota" Type="money" />
+          <Property Name="KFechSoli" Type="datetime" />
+          <Property Name="KFechCorte" Type="datetime" />
+          <Property Name="KFechPrese" Type="datetime" />
+          <Property Name="KFechProce" Type="datetime" />
+          <Property Name="KLote" Type="int" />
+          <Property Name="KOrden" Type="int" />
+          <Property Name="KOrdenBaja" Type="int" />
+          <Property Name="KLoteBaja" Type="int" />
+          <Property Name="KInteresImp" Type="money" />
+          <Property Name="KGastoImp" Type="money" />
+          <Property Name="KComisionImp" Type="money" />
+          <Property Name="KAvalado" Type="bit" Nullable="false" />
+          <Property Name="KAbogado" Type="nvarchar" MaxLength="10" />
+          <Property Name="KCancelado" Type="bit" Nullable="false" />
+          <Property Name="KGarante1" Type="int" />
+          <Property Name="KCodDocuG1" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante2" Type="int" />
+          <Property Name="KCodDocuG2" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante3" Type="int" />
+          <Property Name="KCodDocuG3" Type="nvarchar" MaxLength="3" />
+          <Property Name="KVtopp" Type="nvarchar" MaxLength="2" />
+          <Property Name="KCodPlan" Type="nvarchar" MaxLength="10" />
+          <Property Name="KTipCuota" Type="nvarchar" MaxLength="1" />
+          <Property Name="KCuotas" Type="tinyint" />
+          <Property Name="KTasa" Type="real" />
+          <Property Name="KGasto" Type="real" />
+          <Property Name="KPeriodi" Type="nvarchar" MaxLength="1" />
+          <Property Name="KRetencion" Type="nvarchar" MaxLength="1" />
+          <Property Name="KPremiun" Type="nvarchar" MaxLength="25" />
+          <Property Name="KEfectivo" Type="bit" Nullable="false" />
+          <Property Name="KBonifica" Type="tinyint" />
+          <Property Name="KPlazo" Type="tinyint" />
+          <Property Name="KComision" Type="real" />
+          <Property Name="KVenci" Type="nvarchar" MaxLength="30" />
+          <Property Name="KCorte1" Type="tinyint" />
+          <Property Name="KCorte2" Type="tinyint" />
+          <Property Name="KVenDia1" Type="tinyint" />
+          <Property Name="KVenDia2" Type="tinyint" />
+          <Property Name="KVenDia3" Type="tinyint" />
+          <Property Name="KNotas" Type="nvarchar" MaxLength="50" />
+          <Property Name="KCausa" Type="nvarchar" MaxLength="15" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="KFechaLote" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="CDocumento" />
+            <PropertyRef Name="CCodDocu" />
+          </Key>
+          <Property Name="CDocumento" Type="int" Nullable="false" />
+          <Property Name="Cnombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCodDocu" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Cdomicilio" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCodPost" Type="nvarchar" MaxLength="15" />
+          <Property Name="Clocalidad" Type="nvarchar" MaxLength="50" />
+          <Property Name="CProvincia" Type="nvarchar" MaxLength="1" />
+          <Property Name="CTelefono1" Type="nvarchar" MaxLength="15" />
+          <Property Name="CTelefono2" Type="nvarchar" MaxLength="15" />
+          <Property Name="CComplemento" Type="nvarchar" MaxLength="50" />
+          <Property Name="CFechaNaci" Type="datetime" />
+          <Property Name="CNombCony" Type="nvarchar" MaxLength="30" />
+          <Property Name="CDocuCony" Type="int" />
+          <Property Name="CCodDocuCony" Type="nvarchar" MaxLength="3" />
+          <Property Name="CEmpresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="CDomicilioE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CCodPostE" Type="nvarchar" MaxLength="15" />
+          <Property Name="CLocalidadE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CProvinciaE" Type="nvarchar" MaxLength="1" />
+          <Property Name="CTelefonoE" Type="nvarchar" MaxLength="15" />
+          <Property Name="CComplementoE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CSueldo" Type="money" />
+          <Property Name="CCodEmpleo" Type="nvarchar" MaxLength="3" />
+          <Property Name="CComLab" Type="nvarchar" MaxLength="3" />
+          <Property Name="CCodLegal" Type="nvarchar" MaxLength="3" />
+          <Property Name="CSexo" Type="nvarchar" MaxLength="1" />
+          <Property Name="CPremium" Type="nvarchar" MaxLength="3" />
+          <Property Name="CPuntaje" Type="int" />
+          <Property Name="CNotas" Type="nvarchar(max)" />
+          <Property Name="CCod1" Type="nvarchar" MaxLength="40" />
+          <Property Name="CCod2" Type="nvarchar" MaxLength="40" />
+          <Property Name="CNumCod" Type="float" />
+          <Property Name="CAvisado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModP" Type="bit" Nullable="false" />
+          <Property Name="ModL" Type="bit" Nullable="false" />
+          <Property Name="Conocio" Type="nvarchar" MaxLength="50" />
+          <Property Name="Veraz" Type="bit" Nullable="false" />
+          <Property Name="QueEs" Type="nvarchar" MaxLength="1" />
+          <Property Name="cnumcli" Type="float" />
+          <Property Name="COmercio" Type="int" />
+          <Property Name="Legajo" Type="nvarchar" MaxLength="20" />
+          <Property Name="etique" Type="tinyint" />
+          <Property Name="mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechV" Type="datetime" />
+          <Property Name="Comer" Type="int" />
+          <Property Name="fetiq" Type="datetime" />
+          <Property Name="fMModi" Type="datetime" />
+          <Property Name="CodCobr" Type="int" />
+          <Property Name="fCobr" Type="datetime" />
+          <Property Name="Zona" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cobranzas">
+          <Key>
+            <PropertyRef Name="AComercio" />
+            <PropertyRef Name="ACredito" />
+            <PropertyRef Name="ANumCuota" />
+            <PropertyRef Name="ANumCob" />
+          </Key>
+          <Property Name="AComercio" Type="smallint" Nullable="false" />
+          <Property Name="ACredito" Type="int" Nullable="false" />
+          <Property Name="ANumCuota" Type="tinyint" Nullable="false" />
+          <Property Name="ADigVeri" Type="nvarchar" MaxLength="1" />
+          <Property Name="AImpPago" Type="money" />
+          <Property Name="AImpPuni" Type="money" />
+          <Property Name="AImpInte" Type="money" />
+          <Property Name="AFechaPago" Type="datetime" />
+          <Property Name="AHoraPago" Type="datetime" />
+          <Property Name="APuniCalc" Type="money" />
+          <Property Name="ALote" Type="int" />
+          <Property Name="AFechLote" Type="datetime" />
+          <Property Name="AFechPro" Type="datetime" />
+          <Property Name="APago" Type="nvarchar" MaxLength="1" />
+          <Property Name="AImpPagoAnt" Type="money" />
+          <Property Name="AFechPagoAnt" Type="datetime" />
+          <Property Name="AImpPuniAnt" Type="money" />
+          <Property Name="APagoRev" Type="bit" Nullable="false" />
+          <Property Name="AFechaRev" Type="datetime" />
+          <Property Name="ABonificado" Type="bit" Nullable="false" />
+          <Property Name="ANumCob" Type="float" Nullable="false" />
+          <Property Name="ADeta" Type="nvarchar" MaxLength="4" />
+          <Property Name="AGestion" Type="smallint" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cancela" Type="bit" Nullable="false" />
+          <Property Name="NumeDia" Type="float" />
+          <Property Name="NumRef" Type="int" />
+          <Property Name="AFechVenci" Type="datetime" />
+          <Property Name="ACobra" Type="nvarchar" MaxLength="255" />
+          <Property Name="PcPro" Type="nvarchar" MaxLength="50" />
+          <Property Name="UsuarioPro" Type="nvarchar" MaxLength="50" />
+          <Property Name="TipoBoni" Type="nvarchar" MaxLength="2" />
+          <Property Name="PorBoni" Type="money" />
+        </EntityType>
+        <EntityType Name="Creditos">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+          </Key>
+          <Property Name="KComercio" Type="smallint" Nullable="false" />
+          <Property Name="KCredito" Type="int" Nullable="false" />
+          <Property Name="KDocumento" Type="int" />
+          <Property Name="KCodDocu" Type="nvarchar" MaxLength="3" />
+          <Property Name="KValorNom" Type="money" />
+          <Property Name="KValorCuota" Type="money" />
+          <Property Name="KFechSoli" Type="datetime" />
+          <Property Name="KFechCorte" Type="datetime" />
+          <Property Name="KFechPrese" Type="datetime" />
+          <Property Name="KFechProce" Type="datetime" />
+          <Property Name="KLote" Type="int" />
+          <Property Name="KNumExtra" Type="int" />
+          <Property Name="KFechaLote" Type="datetime" />
+          <Property Name="KOrden" Type="int" />
+          <Property Name="KInteresImp" Type="money" />
+          <Property Name="KGastoImp" Type="money" />
+          <Property Name="KComisionImp" Type="money" />
+          <Property Name="KAvalado" Type="bit" Nullable="false" />
+          <Property Name="KCancelado" Type="bit" Nullable="false" />
+          <Property Name="KGarante1" Type="int" />
+          <Property Name="KCodDocuG1" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante2" Type="int" />
+          <Property Name="KCodDocuG2" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante3" Type="int" />
+          <Property Name="KCodDocuG3" Type="nvarchar" MaxLength="3" />
+          <Property Name="KVtopp" Type="nvarchar" MaxLength="2" />
+          <Property Name="KCodPlan" Type="nvarchar" MaxLength="10" />
+          <Property Name="KTipCuota" Type="nvarchar" MaxLength="1" />
+          <Property Name="KCuotas" Type="tinyint" />
+          <Property Name="KTasa" Type="real" />
+          <Property Name="KGasto" Type="real" />
+          <Property Name="KPeriodi" Type="nvarchar" MaxLength="1" />
+          <Property Name="KRetencion" Type="nvarchar" MaxLength="1" />
+          <Property Name="KPremiun" Type="nvarchar" MaxLength="20" />
+          <Property Name="KEfectivo" Type="bit" Nullable="false" />
+          <Property Name="KBonifica" Type="tinyint" />
+          <Property Name="KPlazo" Type="tinyint" />
+          <Property Name="KComision" Type="real" />
+          <Property Name="KVenci" Type="nvarchar" MaxLength="30" />
+          <Property Name="KCorte1" Type="tinyint" />
+          <Property Name="KCorte2" Type="tinyint" />
+          <Property Name="KVenDia1" Type="tinyint" />
+          <Property Name="KVenDia2" Type="tinyint" />
+          <Property Name="KVenDia3" Type="tinyint" />
+          <Property Name="KNotas" Type="nvarchar" MaxLength="255" />
+          <Property Name="KAbogado" Type="smallint" />
+          <Property Name="kFechaAbo" Type="datetime" />
+          <Property Name="Carta1" Type="bit" Nullable="false" />
+          <Property Name="FechaC1" Type="datetime" />
+          <Property Name="Carta2" Type="bit" Nullable="false" />
+          <Property Name="FechaC2" Type="datetime" />
+          <Property Name="Carta3" Type="bit" Nullable="false" />
+          <Property Name="FechaC3" Type="datetime" />
+          <Property Name="Carta4" Type="bit" Nullable="false" />
+          <Property Name="FechaC4" Type="datetime" />
+          <Property Name="Refinan" Type="bit" Nullable="false" />
+          <Property Name="Veraz" Type="bit" Nullable="false" />
+          <Property Name="QueAvalo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="CodAdi" Type="nvarchar" MaxLength="3" />
+          <Property Name="DocuAdi" Type="int" />
+          <Property Name="FechaAbo" Type="datetime" />
+          <Property Name="krmpl" Type="nvarchar" MaxLength="10" />
+          <Property Name="kempl" Type="nvarchar" MaxLength="10" />
+          <Property Name="NroInf" Type="int" />
+          <Property Name="UsuAval" Type="nvarchar" MaxLength="10" />
+          <Property Name="TipoBoni" Type="nvarchar" MaxLength="2" />
+          <Property Name="PorBoni" Type="money" />
+        </EntityType>
+        <EntityType Name="Cuotas">
+          <Key>
+            <PropertyRef Name="JComercio" />
+            <PropertyRef Name="JCredito" />
+            <PropertyRef Name="JNumCuota" />
+          </Key>
+          <Property Name="JComercio" Type="smallint" Nullable="false" />
+          <Property Name="JCredito" Type="int" Nullable="false" />
+          <Property Name="JNumCuota" Type="tinyint" Nullable="false" />
+          <Property Name="JDigVeri" Type="nvarchar" MaxLength="1" />
+          <Property Name="JImpCuota" Type="money" />
+          <Property Name="JIntCuota" Type="money" />
+          <Property Name="JImpPago" Type="money" />
+          <Property Name="JImpPuni" Type="money" />
+          <Property Name="JFechUlti" Type="datetime" />
+          <Property Name="JFechVenci" Type="datetime" />
+          <Property Name="Jtipo" Type="nvarchar" MaxLength="1" />
+          <Property Name="JCantCuota" Type="tinyint" />
+          <Property Name="JGestion" Type="smallint" />
+          <Property Name="JFechGest" Type="datetime" />
+          <Property Name="JBonificado" Type="bit" Nullable="false" />
+          <Property Name="JCarta1" Type="bit" Nullable="false" />
+          <Property Name="JFechaC1" Type="datetime" />
+          <Property Name="JCarta2" Type="bit" Nullable="false" />
+          <Property Name="JFechaC2" Type="datetime" />
+          <Property Name="JCarta3" Type="bit" Nullable="false" />
+          <Property Name="JFechaC3" Type="datetime" />
+          <Property Name="JCarta4" Type="bit" Nullable="false" />
+          <Property Name="JFechaC4" Type="datetime" />
+          <Property Name="JBonicado" Type="bit" Nullable="false" />
+          <Property Name="jnotas" Type="nvarchar" MaxLength="51" />
+          <Property Name="JDeuda" Type="money" />
+          <Property Name="TipoBoni" Type="nvarchar" MaxLength="2" />
+          <Property Name="PorBoni" Type="money" />
+        </EntityType>
+        <EntityType Name="Notas">
+          <Key>
+            <PropertyRef Name="CodNota" />
+          </Key>
+          <Property Name="CodNota" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="int" />
+          <Property Name="Valor" Type="money" />
+          <Property Name="FechaNota" Type="datetime" />
+          <Property Name="Causa" Type="nvarchar" MaxLength="50" />
+          <Property Name="NroOrden" Type="int" />
+          <Property Name="FechaOrden" Type="datetime" />
+          <Property Name="Comercio" Type="smallint" />
+          <Property Name="Credito" Type="int" />
+          <Property Name="NumCuota" Type="tinyint" />
+          <Property Name="Minuta" Type="int" />
+          <Property Name="NumExtra" Type="int" />
+          <Property Name="FechaMin" Type="datetime" />
+          <Property Name="Tasa" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Hora" Type="datetime" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Aplicado" Type="money" />
+          <Property Name="Autorizo" Type="nvarchar" MaxLength="20" />
+          <Property Name="FechaAut" Type="datetime" />
+          <Property Name="Confeccion" Type="nvarchar" MaxLength="20" />
+          <Property Name="PorImporte" Type="money" />
+          <Property Name="Conformado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefiBaja">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+            <PropertyRef Name="KCreditoAnt" />
+          </Key>
+          <Property Name="KComercio" Type="smallint" Nullable="false" />
+          <Property Name="KCredito" Type="int" Nullable="false" />
+          <Property Name="KCreditoAnt" Type="int" Nullable="false" />
+          <Property Name="KLote" Type="int" />
+          <Property Name="KFechaLote" Type="datetime" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+          <Property Name="KDocumento" Type="int" />
+          <Property Name="KCodDocu" Type="nvarchar" MaxLength="3" />
+          <Property Name="KValorNom" Type="money" />
+          <Property Name="KValorCuota" Type="money" />
+          <Property Name="KFechSoli" Type="datetime" />
+          <Property Name="KFechCorte" Type="datetime" />
+          <Property Name="KFechPrese" Type="datetime" />
+          <Property Name="KFechProce" Type="datetime" />
+          <Property Name="KOrden" Type="int" />
+          <Property Name="KInteresImp" Type="money" />
+          <Property Name="KGastoImp" Type="money" />
+          <Property Name="KComisionImp" Type="money" />
+          <Property Name="KAvalado" Type="bit" Nullable="false" />
+          <Property Name="KCancelado" Type="bit" Nullable="false" />
+          <Property Name="KGarante1" Type="int" />
+          <Property Name="KCodDocuG1" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante2" Type="int" />
+          <Property Name="KCodDocuG2" Type="nvarchar" MaxLength="3" />
+          <Property Name="KGarante3" Type="int" />
+          <Property Name="KCodDocuG3" Type="nvarchar" MaxLength="3" />
+          <Property Name="KVtopp" Type="nvarchar" MaxLength="2" />
+          <Property Name="KCodPlan" Type="nvarchar" MaxLength="5" />
+          <Property Name="KTipCuota" Type="nvarchar" MaxLength="1" />
+          <Property Name="KCuotas" Type="tinyint" />
+          <Property Name="KTasa" Type="real" />
+          <Property Name="KGasto" Type="real" />
+          <Property Name="KPeriodi" Type="nvarchar" MaxLength="1" />
+          <Property Name="KRetencion" Type="nvarchar" MaxLength="1" />
+          <Property Name="KPremiun" Type="nvarchar" MaxLength="20" />
+          <Property Name="KEfectivo" Type="bit" Nullable="false" />
+          <Property Name="KBonifica" Type="tinyint" />
+          <Property Name="KPlazo" Type="tinyint" />
+          <Property Name="KComision" Type="real" />
+          <Property Name="KVenci" Type="nvarchar" MaxLength="30" />
+          <Property Name="KCorte1" Type="tinyint" />
+          <Property Name="KCorte2" Type="tinyint" />
+          <Property Name="KVenDia1" Type="tinyint" />
+          <Property Name="KVenDia2" Type="tinyint" />
+          <Property Name="KVenDia3" Type="tinyint" />
+          <Property Name="KNotas" Type="nvarchar(max)" />
+          <Property Name="KAbogado" Type="nvarchar" MaxLength="10" />
+          <Property Name="FechaAbo" Type="datetime" />
+          <Property Name="Carta1" Type="bit" Nullable="false" />
+          <Property Name="FechaC1" Type="datetime" />
+          <Property Name="Carta2" Type="bit" Nullable="false" />
+          <Property Name="FechaC2" Type="datetime" />
+          <Property Name="Carta3" Type="bit" Nullable="false" />
+          <Property Name="FechaC3" Type="datetime" />
+          <Property Name="Carta4" Type="bit" Nullable="false" />
+          <Property Name="FechaC4" Type="datetime" />
+          <Property Name="KBaja" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefiCobra">
+          <Key>
+            <PropertyRef Name="AComercio" />
+            <PropertyRef Name="ACredito" />
+            <PropertyRef Name="ANumCuota" />
+            <PropertyRef Name="ANumCob" />
+          </Key>
+          <Property Name="AComercio" Type="smallint" Nullable="false" />
+          <Property Name="ACredito" Type="int" Nullable="false" />
+          <Property Name="ANumCuota" Type="tinyint" Nullable="false" />
+          <Property Name="AImpPago" Type="money" />
+          <Property Name="AImpPuni" Type="money" />
+          <Property Name="AFechaPago" Type="datetime" />
+          <Property Name="AHoraPago" Type="datetime" />
+          <Property Name="APuniCalc" Type="money" />
+          <Property Name="ALote" Type="int" />
+          <Property Name="AFechLote" Type="datetime" />
+          <Property Name="AFechPro" Type="datetime" />
+          <Property Name="APago" Type="nvarchar" MaxLength="1" />
+          <Property Name="APagoRev" Type="bit" Nullable="false" />
+          <Property Name="AFechaRev" Type="datetime" />
+          <Property Name="ANumCob" Type="int" Nullable="false" />
+          <Property Name="AFechVenci" Type="datetime" />
+          <Property Name="AGestion" Type="smallint" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="RefiCuotas">
+          <Key>
+            <PropertyRef Name="JComercio" />
+            <PropertyRef Name="JCredito" />
+            <PropertyRef Name="JNumCuota" />
+          </Key>
+          <Property Name="JComercio" Type="smallint" Nullable="false" />
+          <Property Name="JCredito" Type="int" Nullable="false" />
+          <Property Name="JNumCuota" Type="tinyint" Nullable="false" />
+          <Property Name="JImpCuota" Type="money" />
+          <Property Name="JIntCuota" Type="money" />
+          <Property Name="JImpPago" Type="money" />
+          <Property Name="JImpPuni" Type="money" />
+          <Property Name="JFechUlti" Type="datetime" />
+          <Property Name="JFechVenci" Type="datetime" />
+          <Property Name="Jtipo" Type="nvarchar" MaxLength="1" />
+          <Property Name="JCantCuota" Type="tinyint" />
+          <Property Name="JGestion" Type="smallint" />
+          <Property Name="JFechGest" Type="datetime" />
+          <Property Name="JDigVeri" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Refinan">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+            <PropertyRef Name="KCreditoAnt" />
+          </Key>
+          <Property Name="KComercio" Type="smallint" Nullable="false" />
+          <Property Name="KCredito" Type="int" Nullable="false" />
+          <Property Name="KCreditoAnt" Type="int" Nullable="false" />
+          <Property Name="KDocumento" Type="int" />
+          <Property Name="KCodDocu" Type="nvarchar" MaxLength="3" />
+          <Property Name="KValorNom" Type="money" />
+          <Property Name="KValorCuota" Type="money" />
+          <Property Name="KFechSoli" Type="datetime" />
+          <Property Name="KLote" Type="int" />
+          <Property Name="KFechaLote" Type="datetime" />
+          <Property Name="KGastoImp" Type="money" />
+          <Property Name="KComisionImp" Type="money" />
+          <Property Name="KCancelado" Type="bit" Nullable="false" />
+          <Property Name="KTipCuota" Type="nvarchar" MaxLength="1" />
+          <Property Name="KCuotas" Type="tinyint" />
+          <Property Name="KTasa" Type="real" />
+          <Property Name="KGasto" Type="real" />
+          <Property Name="KBaja" Type="bit" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="ComerFinanModelStoreContainer">
+          <EntitySet Name="Bajas" EntityType="Self.Bajas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cobranzas" EntityType="Self.Cobranzas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Creditos" EntityType="Self.Creditos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuotas" EntityType="Self.Cuotas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notas" EntityType="Self.Notas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefiBaja" EntityType="Self.RefiBaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefiCobra" EntityType="Self.RefiCobra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefiCuotas" EntityType="Self.RefiCuotas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refinan" EntityType="Self.Refinan" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ComerFinanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ComerFinanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bajas" EntityType="ComerFinanModel.Bajas" />
+          <EntitySet Name="Notas" EntityType="ComerFinanModel.Notas" />
+          <EntitySet Name="RefiBaja" EntityType="ComerFinanModel.RefiBaja" />
+          <EntitySet Name="RefiCobra" EntityType="ComerFinanModel.RefiCobra" />
+          <EntitySet Name="RefiCuotas" EntityType="ComerFinanModel.RefiCuotas" />
+          <EntitySet Name="Refinan" EntityType="ComerFinanModel.Refinan" />
+          <EntitySet Name="Cobranzas" EntityType="ComerFinanModel.CobranzasANT" />
+          <EntitySet Name="Creditos" EntityType="ComerFinanModel.CreditosANT" />
+          <EntitySet Name="Cuotas" EntityType="ComerFinanModel.CuotasANT" />
+          <EntitySet Name="Clientes" EntityType="ComerFinanModel.Clientes" />
+        </EntityContainer>
+        <EntityType Name="Bajas">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+          </Key>
+          <Property Name="KComercio" Type="Int16" Nullable="false" />
+          <Property Name="KCredito" Type="Int32" Nullable="false" />
+          <Property Name="KDocumento" Type="Int32" />
+          <Property Name="KCodDocu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KValorNom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KValorCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KFechSoli" Type="DateTime" Precision="3" />
+          <Property Name="KFechCorte" Type="DateTime" Precision="3" />
+          <Property Name="KFechPrese" Type="DateTime" Precision="3" />
+          <Property Name="KFechProce" Type="DateTime" Precision="3" />
+          <Property Name="KLote" Type="Int32" />
+          <Property Name="KOrden" Type="Int32" />
+          <Property Name="KOrdenBaja" Type="Int32" />
+          <Property Name="KLoteBaja" Type="Int32" />
+          <Property Name="KInteresImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KGastoImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KComisionImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KAvalado" Type="Boolean" Nullable="false" />
+          <Property Name="KAbogado" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KCancelado" Type="Boolean" Nullable="false" />
+          <Property Name="KGarante1" Type="Int32" />
+          <Property Name="KCodDocuG1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante2" Type="Int32" />
+          <Property Name="KCodDocuG2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante3" Type="Int32" />
+          <Property Name="KCodDocuG3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KVtopp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="KCodPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KTipCuota" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KCuotas" Type="Byte" />
+          <Property Name="KTasa" Type="Single" />
+          <Property Name="KGasto" Type="Single" />
+          <Property Name="KPeriodi" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KRetencion" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KPremiun" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="KEfectivo" Type="Boolean" Nullable="false" />
+          <Property Name="KBonifica" Type="Byte" />
+          <Property Name="KPlazo" Type="Byte" />
+          <Property Name="KComision" Type="Single" />
+          <Property Name="KVenci" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KCorte1" Type="Byte" />
+          <Property Name="KCorte2" Type="Byte" />
+          <Property Name="KVenDia1" Type="Byte" />
+          <Property Name="KVenDia2" Type="Byte" />
+          <Property Name="KVenDia3" Type="Byte" />
+          <Property Name="KNotas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KCausa" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KFechaLote" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Notas">
+          <Key>
+            <PropertyRef Name="CodNota" />
+          </Key>
+          <Property Name="CodNota" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaNota" Type="DateTime" Precision="3" />
+          <Property Name="Causa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NroOrden" Type="Int32" />
+          <Property Name="FechaOrden" Type="DateTime" Precision="3" />
+          <Property Name="Comercio" Type="Int16" />
+          <Property Name="Credito" Type="Int32" />
+          <Property Name="NumCuota" Type="Byte" />
+          <Property Name="Minuta" Type="Int32" />
+          <Property Name="NumExtra" Type="Int32" />
+          <Property Name="FechaMin" Type="DateTime" Precision="3" />
+          <Property Name="Tasa" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Hora" Type="DateTime" Precision="3" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Aplicado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Autorizo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAut" Type="DateTime" Precision="3" />
+          <Property Name="Confeccion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PorImporte" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Conformado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefiBaja">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+            <PropertyRef Name="KCreditoAnt" />
+          </Key>
+          <Property Name="KComercio" Type="Int16" Nullable="false" />
+          <Property Name="KCredito" Type="Int32" Nullable="false" />
+          <Property Name="KCreditoAnt" Type="Int32" Nullable="false" />
+          <Property Name="KLote" Type="Int32" />
+          <Property Name="KFechaLote" Type="DateTime" Precision="3" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KDocumento" Type="Int32" />
+          <Property Name="KCodDocu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KValorNom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KValorCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KFechSoli" Type="DateTime" Precision="3" />
+          <Property Name="KFechCorte" Type="DateTime" Precision="3" />
+          <Property Name="KFechPrese" Type="DateTime" Precision="3" />
+          <Property Name="KFechProce" Type="DateTime" Precision="3" />
+          <Property Name="KOrden" Type="Int32" />
+          <Property Name="KInteresImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KGastoImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KComisionImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KAvalado" Type="Boolean" Nullable="false" />
+          <Property Name="KCancelado" Type="Boolean" Nullable="false" />
+          <Property Name="KGarante1" Type="Int32" />
+          <Property Name="KCodDocuG1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante2" Type="Int32" />
+          <Property Name="KCodDocuG2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante3" Type="Int32" />
+          <Property Name="KCodDocuG3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KVtopp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="KCodPlan" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="KTipCuota" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KCuotas" Type="Byte" />
+          <Property Name="KTasa" Type="Single" />
+          <Property Name="KGasto" Type="Single" />
+          <Property Name="KPeriodi" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KRetencion" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KPremiun" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KEfectivo" Type="Boolean" Nullable="false" />
+          <Property Name="KBonifica" Type="Byte" />
+          <Property Name="KPlazo" Type="Byte" />
+          <Property Name="KComision" Type="Single" />
+          <Property Name="KVenci" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KCorte1" Type="Byte" />
+          <Property Name="KCorte2" Type="Byte" />
+          <Property Name="KVenDia1" Type="Byte" />
+          <Property Name="KVenDia2" Type="Byte" />
+          <Property Name="KVenDia3" Type="Byte" />
+          <Property Name="KNotas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KAbogado" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FechaAbo" Type="DateTime" Precision="3" />
+          <Property Name="Carta1" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC1" Type="DateTime" Precision="3" />
+          <Property Name="Carta2" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC2" Type="DateTime" Precision="3" />
+          <Property Name="Carta3" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC3" Type="DateTime" Precision="3" />
+          <Property Name="Carta4" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC4" Type="DateTime" Precision="3" />
+          <Property Name="KBaja" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefiCobra">
+          <Key>
+            <PropertyRef Name="AComercio" />
+            <PropertyRef Name="ACredito" />
+            <PropertyRef Name="ANumCuota" />
+            <PropertyRef Name="ANumCob" />
+          </Key>
+          <Property Name="AComercio" Type="Int16" Nullable="false" />
+          <Property Name="ACredito" Type="Int32" Nullable="false" />
+          <Property Name="ANumCuota" Type="Byte" Nullable="false" />
+          <Property Name="AImpPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AImpPuni" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AFechaPago" Type="DateTime" Precision="3" />
+          <Property Name="AHoraPago" Type="DateTime" Precision="3" />
+          <Property Name="APuniCalc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ALote" Type="Int32" />
+          <Property Name="AFechLote" Type="DateTime" Precision="3" />
+          <Property Name="AFechPro" Type="DateTime" Precision="3" />
+          <Property Name="APago" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="APagoRev" Type="Boolean" Nullable="false" />
+          <Property Name="AFechaRev" Type="DateTime" Precision="3" />
+          <Property Name="ANumCob" Type="Int32" Nullable="false" />
+          <Property Name="AFechVenci" Type="DateTime" Precision="3" />
+          <Property Name="AGestion" Type="Int16" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RefiCuotas">
+          <Key>
+            <PropertyRef Name="JComercio" />
+            <PropertyRef Name="JCredito" />
+            <PropertyRef Name="JNumCuota" />
+          </Key>
+          <Property Name="JComercio" Type="Int16" Nullable="false" />
+          <Property Name="JCredito" Type="Int32" Nullable="false" />
+          <Property Name="JNumCuota" Type="Byte" Nullable="false" />
+          <Property Name="JImpCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JIntCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JImpPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JImpPuni" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JFechUlti" Type="DateTime" Precision="3" />
+          <Property Name="JFechVenci" Type="DateTime" Precision="3" />
+          <Property Name="Jtipo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="JCantCuota" Type="Byte" />
+          <Property Name="JGestion" Type="Int16" />
+          <Property Name="JFechGest" Type="DateTime" Precision="3" />
+          <Property Name="JDigVeri" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Refinan">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+            <PropertyRef Name="KCreditoAnt" />
+          </Key>
+          <Property Name="KComercio" Type="Int16" Nullable="false" />
+          <Property Name="KCredito" Type="Int32" Nullable="false" />
+          <Property Name="KCreditoAnt" Type="Int32" Nullable="false" />
+          <Property Name="KDocumento" Type="Int32" />
+          <Property Name="KCodDocu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KValorNom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KValorCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KFechSoli" Type="DateTime" Precision="3" />
+          <Property Name="KLote" Type="Int32" />
+          <Property Name="KFechaLote" Type="DateTime" Precision="3" />
+          <Property Name="KGastoImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KComisionImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KCancelado" Type="Boolean" Nullable="false" />
+          <Property Name="KTipCuota" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KCuotas" Type="Byte" />
+          <Property Name="KTasa" Type="Single" />
+          <Property Name="KGasto" Type="Single" />
+          <Property Name="KBaja" Type="Boolean" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CobranzasANT">
+          <Key>
+            <PropertyRef Name="AComercio" />
+            <PropertyRef Name="ACredito" />
+            <PropertyRef Name="ANumCuota" />
+            <PropertyRef Name="ANumCob" />
+          </Key>
+          <Property Name="AComercio" Type="Int16" Nullable="false" />
+          <Property Name="ACredito" Type="Int32" Nullable="false" />
+          <Property Name="ANumCuota" Type="Byte" Nullable="false" />
+          <Property Name="ADigVeri" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="AImpPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AImpPuni" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AImpInte" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AFechaPago" Type="DateTime" Precision="3" />
+          <Property Name="AHoraPago" Type="DateTime" Precision="3" />
+          <Property Name="APuniCalc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ALote" Type="Int32" />
+          <Property Name="AFechLote" Type="DateTime" Precision="3" />
+          <Property Name="AFechPro" Type="DateTime" Precision="3" />
+          <Property Name="APago" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="AImpPagoAnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AFechPagoAnt" Type="DateTime" Precision="3" />
+          <Property Name="AImpPuniAnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="APagoRev" Type="Boolean" Nullable="false" />
+          <Property Name="AFechaRev" Type="DateTime" Precision="3" />
+          <Property Name="ABonificado" Type="Boolean" Nullable="false" />
+          <Property Name="ANumCob" Type="Double" Nullable="false" />
+          <Property Name="ADeta" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="AGestion" Type="Int16" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cancela" Type="Boolean" Nullable="false" />
+          <Property Name="NumeDia" Type="Double" />
+          <Property Name="NumRef" Type="Int32" />
+          <Property Name="AFechVenci" Type="DateTime" Precision="3" />
+          <Property Name="ACobra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PcPro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioPro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TipoBoni" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PorBoni" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="CreditosANT">
+          <Key>
+            <PropertyRef Name="KComercio" />
+            <PropertyRef Name="KCredito" />
+          </Key>
+          <Property Name="KComercio" Type="Int16" Nullable="false" />
+          <Property Name="KCredito" Type="Int32" Nullable="false" />
+          <Property Name="KDocumento" Type="Int32" />
+          <Property Name="KCodDocu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KValorNom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KValorCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KFechSoli" Type="DateTime" Precision="3" />
+          <Property Name="KFechCorte" Type="DateTime" Precision="3" />
+          <Property Name="KFechPrese" Type="DateTime" Precision="3" />
+          <Property Name="KFechProce" Type="DateTime" Precision="3" />
+          <Property Name="KLote" Type="Int32" />
+          <Property Name="KNumExtra" Type="Int32" />
+          <Property Name="KFechaLote" Type="DateTime" Precision="3" />
+          <Property Name="KOrden" Type="Int32" />
+          <Property Name="KInteresImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KGastoImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KComisionImp" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KAvalado" Type="Boolean" Nullable="false" />
+          <Property Name="KCancelado" Type="Boolean" Nullable="false" />
+          <Property Name="KGarante1" Type="Int32" />
+          <Property Name="KCodDocuG1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante2" Type="Int32" />
+          <Property Name="KCodDocuG2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KGarante3" Type="Int32" />
+          <Property Name="KCodDocuG3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="KVtopp" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="KCodPlan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="KTipCuota" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KCuotas" Type="Byte" />
+          <Property Name="KTasa" Type="Single" />
+          <Property Name="KGasto" Type="Single" />
+          <Property Name="KPeriodi" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KRetencion" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="KPremiun" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KEfectivo" Type="Boolean" Nullable="false" />
+          <Property Name="KBonifica" Type="Byte" />
+          <Property Name="KPlazo" Type="Byte" />
+          <Property Name="KComision" Type="Single" />
+          <Property Name="KVenci" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="KCorte1" Type="Byte" />
+          <Property Name="KCorte2" Type="Byte" />
+          <Property Name="KVenDia1" Type="Byte" />
+          <Property Name="KVenDia2" Type="Byte" />
+          <Property Name="KVenDia3" Type="Byte" />
+          <Property Name="KNotas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KAbogado" Type="Int16" />
+          <Property Name="kFechaAbo" Type="DateTime" Precision="3" />
+          <Property Name="Carta1" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC1" Type="DateTime" Precision="3" />
+          <Property Name="Carta2" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC2" Type="DateTime" Precision="3" />
+          <Property Name="Carta3" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC3" Type="DateTime" Precision="3" />
+          <Property Name="Carta4" Type="Boolean" Nullable="false" />
+          <Property Name="FechaC4" Type="DateTime" Precision="3" />
+          <Property Name="Refinan" Type="Boolean" Nullable="false" />
+          <Property Name="Veraz" Type="Boolean" Nullable="false" />
+          <Property Name="QueAvalo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CodAdi" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DocuAdi" Type="Int32" />
+          <Property Name="FechaAbo" Type="DateTime" Precision="3" />
+          <Property Name="krmpl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="kempl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NroInf" Type="Int32" />
+          <Property Name="UsuAval" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TipoBoni" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PorBoni" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="CuotasANT">
+          <Key>
+            <PropertyRef Name="JComercio" />
+            <PropertyRef Name="JCredito" />
+            <PropertyRef Name="JNumCuota" />
+          </Key>
+          <Property Name="JComercio" Type="Int16" Nullable="false" />
+          <Property Name="JCredito" Type="Int32" Nullable="false" />
+          <Property Name="JNumCuota" Type="Byte" Nullable="false" />
+          <Property Name="JDigVeri" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="JImpCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JIntCuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JImpPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JImpPuni" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="JFechUlti" Type="DateTime" Precision="3" />
+          <Property Name="JFechVenci" Type="DateTime" Precision="3" />
+          <Property Name="Jtipo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="JCantCuota" Type="Byte" />
+          <Property Name="JGestion" Type="Int16" />
+          <Property Name="JFechGest" Type="DateTime" Precision="3" />
+          <Property Name="JBonificado" Type="Boolean" Nullable="false" />
+          <Property Name="JCarta1" Type="Boolean" Nullable="false" />
+          <Property Name="JFechaC1" Type="DateTime" Precision="3" />
+          <Property Name="JCarta2" Type="Boolean" Nullable="false" />
+          <Property Name="JFechaC2" Type="DateTime" Precision="3" />
+          <Property Name="JCarta3" Type="Boolean" Nullable="false" />
+          <Property Name="JFechaC3" Type="DateTime" Precision="3" />
+          <Property Name="JCarta4" Type="Boolean" Nullable="false" />
+          <Property Name="JFechaC4" Type="DateTime" Precision="3" />
+          <Property Name="JBonicado" Type="Boolean" Nullable="false" />
+          <Property Name="jnotas" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+          <Property Name="JDeuda" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TipoBoni" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PorBoni" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="CDocumento" />
+            <PropertyRef Name="CCodDocu" />
+          </Key>
+          <Property Name="CDocumento" Type="Int32" Nullable="false" />
+          <Property Name="Cnombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCodDocu" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Cdomicilio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCodPost" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Clocalidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CProvincia" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CTelefono1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CTelefono2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CComplemento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CFechaNaci" Type="DateTime" Precision="3" />
+          <Property Name="CNombCony" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CDocuCony" Type="Int32" />
+          <Property Name="CCodDocuCony" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CDomicilioE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CCodPostE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CLocalidadE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CProvinciaE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CTelefonoE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CComplementoE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CSueldo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CCodEmpleo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CComLab" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CCodLegal" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CSexo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CPremium" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CPuntaje" Type="Int32" />
+          <Property Name="CNotas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CCod1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CCod2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CNumCod" Type="Double" />
+          <Property Name="CAvisado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModP" Type="Boolean" Nullable="false" />
+          <Property Name="ModL" Type="Boolean" Nullable="false" />
+          <Property Name="Conocio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Veraz" Type="Boolean" Nullable="false" />
+          <Property Name="QueEs" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="cnumcli" Type="Double" />
+          <Property Name="COmercio" Type="Int32" />
+          <Property Name="Legajo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="etique" Type="Byte" />
+          <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechV" Type="DateTime" Precision="3" />
+          <Property Name="Comer" Type="Int32" />
+          <Property Name="fetiq" Type="DateTime" Precision="3" />
+          <Property Name="fMModi" Type="DateTime" Precision="3" />
+          <Property Name="CodCobr" Type="Int32" />
+          <Property Name="fCobr" Type="DateTime" Precision="3" />
+          <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ComerFinanModelStoreContainer" CdmEntityContainer="ComerFinanEntities">
+          <EntitySetMapping Name="Bajas">
+            <EntityTypeMapping TypeName="ComerFinanModel.Bajas">
+              <MappingFragment StoreEntitySet="Bajas">
+                <ScalarProperty Name="KFechaLote" ColumnName="KFechaLote" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="KCausa" ColumnName="KCausa" />
+                <ScalarProperty Name="KNotas" ColumnName="KNotas" />
+                <ScalarProperty Name="KVenDia3" ColumnName="KVenDia3" />
+                <ScalarProperty Name="KVenDia2" ColumnName="KVenDia2" />
+                <ScalarProperty Name="KVenDia1" ColumnName="KVenDia1" />
+                <ScalarProperty Name="KCorte2" ColumnName="KCorte2" />
+                <ScalarProperty Name="KCorte1" ColumnName="KCorte1" />
+                <ScalarProperty Name="KVenci" ColumnName="KVenci" />
+                <ScalarProperty Name="KComision" ColumnName="KComision" />
+                <ScalarProperty Name="KPlazo" ColumnName="KPlazo" />
+                <ScalarProperty Name="KBonifica" ColumnName="KBonifica" />
+                <ScalarProperty Name="KEfectivo" ColumnName="KEfectivo" />
+                <ScalarProperty Name="KPremiun" ColumnName="KPremiun" />
+                <ScalarProperty Name="KRetencion" ColumnName="KRetencion" />
+                <ScalarProperty Name="KPeriodi" ColumnName="KPeriodi" />
+                <ScalarProperty Name="KGasto" ColumnName="KGasto" />
+                <ScalarProperty Name="KTasa" ColumnName="KTasa" />
+                <ScalarProperty Name="KCuotas" ColumnName="KCuotas" />
+                <ScalarProperty Name="KTipCuota" ColumnName="KTipCuota" />
+                <ScalarProperty Name="KCodPlan" ColumnName="KCodPlan" />
+                <ScalarProperty Name="KVtopp" ColumnName="KVtopp" />
+                <ScalarProperty Name="KCodDocuG3" ColumnName="KCodDocuG3" />
+                <ScalarProperty Name="KGarante3" ColumnName="KGarante3" />
+                <ScalarProperty Name="KCodDocuG2" ColumnName="KCodDocuG2" />
+                <ScalarProperty Name="KGarante2" ColumnName="KGarante2" />
+                <ScalarProperty Name="KCodDocuG1" ColumnName="KCodDocuG1" />
+                <ScalarProperty Name="KGarante1" ColumnName="KGarante1" />
+                <ScalarProperty Name="KCancelado" ColumnName="KCancelado" />
+                <ScalarProperty Name="KAbogado" ColumnName="KAbogado" />
+                <ScalarProperty Name="KAvalado" ColumnName="KAvalado" />
+                <ScalarProperty Name="KComisionImp" ColumnName="KComisionImp" />
+                <ScalarProperty Name="KGastoImp" ColumnName="KGastoImp" />
+                <ScalarProperty Name="KInteresImp" ColumnName="KInteresImp" />
+                <ScalarProperty Name="KLoteBaja" ColumnName="KLoteBaja" />
+                <ScalarProperty Name="KOrdenBaja" ColumnName="KOrdenBaja" />
+                <ScalarProperty Name="KOrden" ColumnName="KOrden" />
+                <ScalarProperty Name="KLote" ColumnName="KLote" />
+                <ScalarProperty Name="KFechProce" ColumnName="KFechProce" />
+                <ScalarProperty Name="KFechPrese" ColumnName="KFechPrese" />
+                <ScalarProperty Name="KFechCorte" ColumnName="KFechCorte" />
+                <ScalarProperty Name="KFechSoli" ColumnName="KFechSoli" />
+                <ScalarProperty Name="KValorCuota" ColumnName="KValorCuota" />
+                <ScalarProperty Name="KValorNom" ColumnName="KValorNom" />
+                <ScalarProperty Name="KCodDocu" ColumnName="KCodDocu" />
+                <ScalarProperty Name="KDocumento" ColumnName="KDocumento" />
+                <ScalarProperty Name="KCredito" ColumnName="KCredito" />
+                <ScalarProperty Name="KComercio" ColumnName="KComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notas">
+            <EntityTypeMapping TypeName="ComerFinanModel.Notas">
+              <MappingFragment StoreEntitySet="Notas">
+                <ScalarProperty Name="Conformado" ColumnName="Conformado" />
+                <ScalarProperty Name="PorImporte" ColumnName="PorImporte" />
+                <ScalarProperty Name="Confeccion" ColumnName="Confeccion" />
+                <ScalarProperty Name="FechaAut" ColumnName="FechaAut" />
+                <ScalarProperty Name="Autorizo" ColumnName="Autorizo" />
+                <ScalarProperty Name="Aplicado" ColumnName="Aplicado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+                <ScalarProperty Name="FechaMin" ColumnName="FechaMin" />
+                <ScalarProperty Name="NumExtra" ColumnName="NumExtra" />
+                <ScalarProperty Name="Minuta" ColumnName="Minuta" />
+                <ScalarProperty Name="NumCuota" ColumnName="NumCuota" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Comercio" ColumnName="Comercio" />
+                <ScalarProperty Name="FechaOrden" ColumnName="FechaOrden" />
+                <ScalarProperty Name="NroOrden" ColumnName="NroOrden" />
+                <ScalarProperty Name="Causa" ColumnName="Causa" />
+                <ScalarProperty Name="FechaNota" ColumnName="FechaNota" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="CodNota" ColumnName="CodNota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefiBaja">
+            <EntityTypeMapping TypeName="ComerFinanModel.RefiBaja">
+              <MappingFragment StoreEntitySet="RefiBaja">
+                <ScalarProperty Name="KBaja" ColumnName="KBaja" />
+                <ScalarProperty Name="FechaC4" ColumnName="FechaC4" />
+                <ScalarProperty Name="Carta4" ColumnName="Carta4" />
+                <ScalarProperty Name="FechaC3" ColumnName="FechaC3" />
+                <ScalarProperty Name="Carta3" ColumnName="Carta3" />
+                <ScalarProperty Name="FechaC2" ColumnName="FechaC2" />
+                <ScalarProperty Name="Carta2" ColumnName="Carta2" />
+                <ScalarProperty Name="FechaC1" ColumnName="FechaC1" />
+                <ScalarProperty Name="Carta1" ColumnName="Carta1" />
+                <ScalarProperty Name="FechaAbo" ColumnName="FechaAbo" />
+                <ScalarProperty Name="KAbogado" ColumnName="KAbogado" />
+                <ScalarProperty Name="KNotas" ColumnName="KNotas" />
+                <ScalarProperty Name="KVenDia3" ColumnName="KVenDia3" />
+                <ScalarProperty Name="KVenDia2" ColumnName="KVenDia2" />
+                <ScalarProperty Name="KVenDia1" ColumnName="KVenDia1" />
+                <ScalarProperty Name="KCorte2" ColumnName="KCorte2" />
+                <ScalarProperty Name="KCorte1" ColumnName="KCorte1" />
+                <ScalarProperty Name="KVenci" ColumnName="KVenci" />
+                <ScalarProperty Name="KComision" ColumnName="KComision" />
+                <ScalarProperty Name="KPlazo" ColumnName="KPlazo" />
+                <ScalarProperty Name="KBonifica" ColumnName="KBonifica" />
+                <ScalarProperty Name="KEfectivo" ColumnName="KEfectivo" />
+                <ScalarProperty Name="KPremiun" ColumnName="KPremiun" />
+                <ScalarProperty Name="KRetencion" ColumnName="KRetencion" />
+                <ScalarProperty Name="KPeriodi" ColumnName="KPeriodi" />
+                <ScalarProperty Name="KGasto" ColumnName="KGasto" />
+                <ScalarProperty Name="KTasa" ColumnName="KTasa" />
+                <ScalarProperty Name="KCuotas" ColumnName="KCuotas" />
+                <ScalarProperty Name="KTipCuota" ColumnName="KTipCuota" />
+                <ScalarProperty Name="KCodPlan" ColumnName="KCodPlan" />
+                <ScalarProperty Name="KVtopp" ColumnName="KVtopp" />
+                <ScalarProperty Name="KCodDocuG3" ColumnName="KCodDocuG3" />
+                <ScalarProperty Name="KGarante3" ColumnName="KGarante3" />
+                <ScalarProperty Name="KCodDocuG2" ColumnName="KCodDocuG2" />
+                <ScalarProperty Name="KGarante2" ColumnName="KGarante2" />
+                <ScalarProperty Name="KCodDocuG1" ColumnName="KCodDocuG1" />
+                <ScalarProperty Name="KGarante1" ColumnName="KGarante1" />
+                <ScalarProperty Name="KCancelado" ColumnName="KCancelado" />
+                <ScalarProperty Name="KAvalado" ColumnName="KAvalado" />
+                <ScalarProperty Name="KComisionImp" ColumnName="KComisionImp" />
+                <ScalarProperty Name="KGastoImp" ColumnName="KGastoImp" />
+                <ScalarProperty Name="KInteresImp" ColumnName="KInteresImp" />
+                <ScalarProperty Name="KOrden" ColumnName="KOrden" />
+                <ScalarProperty Name="KFechProce" ColumnName="KFechProce" />
+                <ScalarProperty Name="KFechPrese" ColumnName="KFechPrese" />
+                <ScalarProperty Name="KFechCorte" ColumnName="KFechCorte" />
+                <ScalarProperty Name="KFechSoli" ColumnName="KFechSoli" />
+                <ScalarProperty Name="KValorCuota" ColumnName="KValorCuota" />
+                <ScalarProperty Name="KValorNom" ColumnName="KValorNom" />
+                <ScalarProperty Name="KCodDocu" ColumnName="KCodDocu" />
+                <ScalarProperty Name="KDocumento" ColumnName="KDocumento" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="KFechaLote" ColumnName="KFechaLote" />
+                <ScalarProperty Name="KLote" ColumnName="KLote" />
+                <ScalarProperty Name="KCreditoAnt" ColumnName="KCreditoAnt" />
+                <ScalarProperty Name="KCredito" ColumnName="KCredito" />
+                <ScalarProperty Name="KComercio" ColumnName="KComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefiCobra">
+            <EntityTypeMapping TypeName="ComerFinanModel.RefiCobra">
+              <MappingFragment StoreEntitySet="RefiCobra">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="AGestion" ColumnName="AGestion" />
+                <ScalarProperty Name="AFechVenci" ColumnName="AFechVenci" />
+                <ScalarProperty Name="ANumCob" ColumnName="ANumCob" />
+                <ScalarProperty Name="AFechaRev" ColumnName="AFechaRev" />
+                <ScalarProperty Name="APagoRev" ColumnName="APagoRev" />
+                <ScalarProperty Name="APago" ColumnName="APago" />
+                <ScalarProperty Name="AFechPro" ColumnName="AFechPro" />
+                <ScalarProperty Name="AFechLote" ColumnName="AFechLote" />
+                <ScalarProperty Name="ALote" ColumnName="ALote" />
+                <ScalarProperty Name="APuniCalc" ColumnName="APuniCalc" />
+                <ScalarProperty Name="AHoraPago" ColumnName="AHoraPago" />
+                <ScalarProperty Name="AFechaPago" ColumnName="AFechaPago" />
+                <ScalarProperty Name="AImpPuni" ColumnName="AImpPuni" />
+                <ScalarProperty Name="AImpPago" ColumnName="AImpPago" />
+                <ScalarProperty Name="ANumCuota" ColumnName="ANumCuota" />
+                <ScalarProperty Name="ACredito" ColumnName="ACredito" />
+                <ScalarProperty Name="AComercio" ColumnName="AComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefiCuotas">
+            <EntityTypeMapping TypeName="ComerFinanModel.RefiCuotas">
+              <MappingFragment StoreEntitySet="RefiCuotas">
+                <ScalarProperty Name="JDigVeri" ColumnName="JDigVeri" />
+                <ScalarProperty Name="JFechGest" ColumnName="JFechGest" />
+                <ScalarProperty Name="JGestion" ColumnName="JGestion" />
+                <ScalarProperty Name="JCantCuota" ColumnName="JCantCuota" />
+                <ScalarProperty Name="Jtipo" ColumnName="Jtipo" />
+                <ScalarProperty Name="JFechVenci" ColumnName="JFechVenci" />
+                <ScalarProperty Name="JFechUlti" ColumnName="JFechUlti" />
+                <ScalarProperty Name="JImpPuni" ColumnName="JImpPuni" />
+                <ScalarProperty Name="JImpPago" ColumnName="JImpPago" />
+                <ScalarProperty Name="JIntCuota" ColumnName="JIntCuota" />
+                <ScalarProperty Name="JImpCuota" ColumnName="JImpCuota" />
+                <ScalarProperty Name="JNumCuota" ColumnName="JNumCuota" />
+                <ScalarProperty Name="JCredito" ColumnName="JCredito" />
+                <ScalarProperty Name="JComercio" ColumnName="JComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refinan">
+            <EntityTypeMapping TypeName="ComerFinanModel.Refinan">
+              <MappingFragment StoreEntitySet="Refinan">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="KBaja" ColumnName="KBaja" />
+                <ScalarProperty Name="KGasto" ColumnName="KGasto" />
+                <ScalarProperty Name="KTasa" ColumnName="KTasa" />
+                <ScalarProperty Name="KCuotas" ColumnName="KCuotas" />
+                <ScalarProperty Name="KTipCuota" ColumnName="KTipCuota" />
+                <ScalarProperty Name="KCancelado" ColumnName="KCancelado" />
+                <ScalarProperty Name="KComisionImp" ColumnName="KComisionImp" />
+                <ScalarProperty Name="KGastoImp" ColumnName="KGastoImp" />
+                <ScalarProperty Name="KFechaLote" ColumnName="KFechaLote" />
+                <ScalarProperty Name="KLote" ColumnName="KLote" />
+                <ScalarProperty Name="KFechSoli" ColumnName="KFechSoli" />
+                <ScalarProperty Name="KValorCuota" ColumnName="KValorCuota" />
+                <ScalarProperty Name="KValorNom" ColumnName="KValorNom" />
+                <ScalarProperty Name="KCodDocu" ColumnName="KCodDocu" />
+                <ScalarProperty Name="KDocumento" ColumnName="KDocumento" />
+                <ScalarProperty Name="KCreditoAnt" ColumnName="KCreditoAnt" />
+                <ScalarProperty Name="KCredito" ColumnName="KCredito" />
+                <ScalarProperty Name="KComercio" ColumnName="KComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cobranzas">
+            <EntityTypeMapping TypeName="ComerFinanModel.CobranzasANT">
+              <MappingFragment StoreEntitySet="Cobranzas">
+                <ScalarProperty Name="PorBoni" ColumnName="PorBoni" />
+                <ScalarProperty Name="TipoBoni" ColumnName="TipoBoni" />
+                <ScalarProperty Name="UsuarioPro" ColumnName="UsuarioPro" />
+                <ScalarProperty Name="PcPro" ColumnName="PcPro" />
+                <ScalarProperty Name="ACobra" ColumnName="ACobra" />
+                <ScalarProperty Name="AFechVenci" ColumnName="AFechVenci" />
+                <ScalarProperty Name="NumRef" ColumnName="NumRef" />
+                <ScalarProperty Name="NumeDia" ColumnName="NumeDia" />
+                <ScalarProperty Name="Cancela" ColumnName="Cancela" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="AGestion" ColumnName="AGestion" />
+                <ScalarProperty Name="ADeta" ColumnName="ADeta" />
+                <ScalarProperty Name="ANumCob" ColumnName="ANumCob" />
+                <ScalarProperty Name="ABonificado" ColumnName="ABonificado" />
+                <ScalarProperty Name="AFechaRev" ColumnName="AFechaRev" />
+                <ScalarProperty Name="APagoRev" ColumnName="APagoRev" />
+                <ScalarProperty Name="AImpPuniAnt" ColumnName="AImpPuniAnt" />
+                <ScalarProperty Name="AFechPagoAnt" ColumnName="AFechPagoAnt" />
+                <ScalarProperty Name="AImpPagoAnt" ColumnName="AImpPagoAnt" />
+                <ScalarProperty Name="APago" ColumnName="APago" />
+                <ScalarProperty Name="AFechPro" ColumnName="AFechPro" />
+                <ScalarProperty Name="AFechLote" ColumnName="AFechLote" />
+                <ScalarProperty Name="ALote" ColumnName="ALote" />
+                <ScalarProperty Name="APuniCalc" ColumnName="APuniCalc" />
+                <ScalarProperty Name="AHoraPago" ColumnName="AHoraPago" />
+                <ScalarProperty Name="AFechaPago" ColumnName="AFechaPago" />
+                <ScalarProperty Name="AImpInte" ColumnName="AImpInte" />
+                <ScalarProperty Name="AImpPuni" ColumnName="AImpPuni" />
+                <ScalarProperty Name="AImpPago" ColumnName="AImpPago" />
+                <ScalarProperty Name="ADigVeri" ColumnName="ADigVeri" />
+                <ScalarProperty Name="ANumCuota" ColumnName="ANumCuota" />
+                <ScalarProperty Name="ACredito" ColumnName="ACredito" />
+                <ScalarProperty Name="AComercio" ColumnName="AComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Creditos">
+            <EntityTypeMapping TypeName="ComerFinanModel.CreditosANT">
+              <MappingFragment StoreEntitySet="Creditos">
+                <ScalarProperty Name="PorBoni" ColumnName="PorBoni" />
+                <ScalarProperty Name="TipoBoni" ColumnName="TipoBoni" />
+                <ScalarProperty Name="UsuAval" ColumnName="UsuAval" />
+                <ScalarProperty Name="NroInf" ColumnName="NroInf" />
+                <ScalarProperty Name="kempl" ColumnName="kempl" />
+                <ScalarProperty Name="krmpl" ColumnName="krmpl" />
+                <ScalarProperty Name="FechaAbo" ColumnName="FechaAbo" />
+                <ScalarProperty Name="DocuAdi" ColumnName="DocuAdi" />
+                <ScalarProperty Name="CodAdi" ColumnName="CodAdi" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="QueAvalo" ColumnName="QueAvalo" />
+                <ScalarProperty Name="Veraz" ColumnName="Veraz" />
+                <ScalarProperty Name="Refinan" ColumnName="Refinan" />
+                <ScalarProperty Name="FechaC4" ColumnName="FechaC4" />
+                <ScalarProperty Name="Carta4" ColumnName="Carta4" />
+                <ScalarProperty Name="FechaC3" ColumnName="FechaC3" />
+                <ScalarProperty Name="Carta3" ColumnName="Carta3" />
+                <ScalarProperty Name="FechaC2" ColumnName="FechaC2" />
+                <ScalarProperty Name="Carta2" ColumnName="Carta2" />
+                <ScalarProperty Name="FechaC1" ColumnName="FechaC1" />
+                <ScalarProperty Name="Carta1" ColumnName="Carta1" />
+                <ScalarProperty Name="kFechaAbo" ColumnName="kFechaAbo" />
+                <ScalarProperty Name="KAbogado" ColumnName="KAbogado" />
+                <ScalarProperty Name="KNotas" ColumnName="KNotas" />
+                <ScalarProperty Name="KVenDia3" ColumnName="KVenDia3" />
+                <ScalarProperty Name="KVenDia2" ColumnName="KVenDia2" />
+                <ScalarProperty Name="KVenDia1" ColumnName="KVenDia1" />
+                <ScalarProperty Name="KCorte2" ColumnName="KCorte2" />
+                <ScalarProperty Name="KCorte1" ColumnName="KCorte1" />
+                <ScalarProperty Name="KVenci" ColumnName="KVenci" />
+                <ScalarProperty Name="KComision" ColumnName="KComision" />
+                <ScalarProperty Name="KPlazo" ColumnName="KPlazo" />
+                <ScalarProperty Name="KBonifica" ColumnName="KBonifica" />
+                <ScalarProperty Name="KEfectivo" ColumnName="KEfectivo" />
+                <ScalarProperty Name="KPremiun" ColumnName="KPremiun" />
+                <ScalarProperty Name="KRetencion" ColumnName="KRetencion" />
+                <ScalarProperty Name="KPeriodi" ColumnName="KPeriodi" />
+                <ScalarProperty Name="KGasto" ColumnName="KGasto" />
+                <ScalarProperty Name="KTasa" ColumnName="KTasa" />
+                <ScalarProperty Name="KCuotas" ColumnName="KCuotas" />
+                <ScalarProperty Name="KTipCuota" ColumnName="KTipCuota" />
+                <ScalarProperty Name="KCodPlan" ColumnName="KCodPlan" />
+                <ScalarProperty Name="KVtopp" ColumnName="KVtopp" />
+                <ScalarProperty Name="KCodDocuG3" ColumnName="KCodDocuG3" />
+                <ScalarProperty Name="KGarante3" ColumnName="KGarante3" />
+                <ScalarProperty Name="KCodDocuG2" ColumnName="KCodDocuG2" />
+                <ScalarProperty Name="KGarante2" ColumnName="KGarante2" />
+                <ScalarProperty Name="KCodDocuG1" ColumnName="KCodDocuG1" />
+                <ScalarProperty Name="KGarante1" ColumnName="KGarante1" />
+                <ScalarProperty Name="KCancelado" ColumnName="KCancelado" />
+                <ScalarProperty Name="KAvalado" ColumnName="KAvalado" />
+                <ScalarProperty Name="KComisionImp" ColumnName="KComisionImp" />
+                <ScalarProperty Name="KGastoImp" ColumnName="KGastoImp" />
+                <ScalarProperty Name="KInteresImp" ColumnName="KInteresImp" />
+                <ScalarProperty Name="KOrden" ColumnName="KOrden" />
+                <ScalarProperty Name="KFechaLote" ColumnName="KFechaLote" />
+                <ScalarProperty Name="KNumExtra" ColumnName="KNumExtra" />
+                <ScalarProperty Name="KLote" ColumnName="KLote" />
+                <ScalarProperty Name="KFechProce" ColumnName="KFechProce" />
+                <ScalarProperty Name="KFechPrese" ColumnName="KFechPrese" />
+                <ScalarProperty Name="KFechCorte" ColumnName="KFechCorte" />
+                <ScalarProperty Name="KFechSoli" ColumnName="KFechSoli" />
+                <ScalarProperty Name="KValorCuota" ColumnName="KValorCuota" />
+                <ScalarProperty Name="KValorNom" ColumnName="KValorNom" />
+                <ScalarProperty Name="KCodDocu" ColumnName="KCodDocu" />
+                <ScalarProperty Name="KDocumento" ColumnName="KDocumento" />
+                <ScalarProperty Name="KCredito" ColumnName="KCredito" />
+                <ScalarProperty Name="KComercio" ColumnName="KComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuotas">
+            <EntityTypeMapping TypeName="ComerFinanModel.CuotasANT">
+              <MappingFragment StoreEntitySet="Cuotas">
+                <ScalarProperty Name="PorBoni" ColumnName="PorBoni" />
+                <ScalarProperty Name="TipoBoni" ColumnName="TipoBoni" />
+                <ScalarProperty Name="JDeuda" ColumnName="JDeuda" />
+                <ScalarProperty Name="jnotas" ColumnName="jnotas" />
+                <ScalarProperty Name="JBonicado" ColumnName="JBonicado" />
+                <ScalarProperty Name="JFechaC4" ColumnName="JFechaC4" />
+                <ScalarProperty Name="JCarta4" ColumnName="JCarta4" />
+                <ScalarProperty Name="JFechaC3" ColumnName="JFechaC3" />
+                <ScalarProperty Name="JCarta3" ColumnName="JCarta3" />
+                <ScalarProperty Name="JFechaC2" ColumnName="JFechaC2" />
+                <ScalarProperty Name="JCarta2" ColumnName="JCarta2" />
+                <ScalarProperty Name="JFechaC1" ColumnName="JFechaC1" />
+                <ScalarProperty Name="JCarta1" ColumnName="JCarta1" />
+                <ScalarProperty Name="JBonificado" ColumnName="JBonificado" />
+                <ScalarProperty Name="JFechGest" ColumnName="JFechGest" />
+                <ScalarProperty Name="JGestion" ColumnName="JGestion" />
+                <ScalarProperty Name="JCantCuota" ColumnName="JCantCuota" />
+                <ScalarProperty Name="Jtipo" ColumnName="Jtipo" />
+                <ScalarProperty Name="JFechVenci" ColumnName="JFechVenci" />
+                <ScalarProperty Name="JFechUlti" ColumnName="JFechUlti" />
+                <ScalarProperty Name="JImpPuni" ColumnName="JImpPuni" />
+                <ScalarProperty Name="JImpPago" ColumnName="JImpPago" />
+                <ScalarProperty Name="JIntCuota" ColumnName="JIntCuota" />
+                <ScalarProperty Name="JImpCuota" ColumnName="JImpCuota" />
+                <ScalarProperty Name="JDigVeri" ColumnName="JDigVeri" />
+                <ScalarProperty Name="JNumCuota" ColumnName="JNumCuota" />
+                <ScalarProperty Name="JCredito" ColumnName="JCredito" />
+                <ScalarProperty Name="JComercio" ColumnName="JComercio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="ComerFinanModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Zona" ColumnName="Zona" />
+                <ScalarProperty Name="fCobr" ColumnName="fCobr" />
+                <ScalarProperty Name="CodCobr" ColumnName="CodCobr" />
+                <ScalarProperty Name="fMModi" ColumnName="fMModi" />
+                <ScalarProperty Name="fetiq" ColumnName="fetiq" />
+                <ScalarProperty Name="Comer" ColumnName="Comer" />
+                <ScalarProperty Name="FechV" ColumnName="FechV" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="etique" ColumnName="etique" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+                <ScalarProperty Name="COmercio" ColumnName="COmercio" />
+                <ScalarProperty Name="cnumcli" ColumnName="cnumcli" />
+                <ScalarProperty Name="QueEs" ColumnName="QueEs" />
+                <ScalarProperty Name="Veraz" ColumnName="Veraz" />
+                <ScalarProperty Name="Conocio" ColumnName="Conocio" />
+                <ScalarProperty Name="ModL" ColumnName="ModL" />
+                <ScalarProperty Name="ModP" ColumnName="ModP" />
+                <ScalarProperty Name="CAvisado" ColumnName="CAvisado" />
+                <ScalarProperty Name="CNumCod" ColumnName="CNumCod" />
+                <ScalarProperty Name="CCod2" ColumnName="CCod2" />
+                <ScalarProperty Name="CCod1" ColumnName="CCod1" />
+                <ScalarProperty Name="CNotas" ColumnName="CNotas" />
+                <ScalarProperty Name="CPuntaje" ColumnName="CPuntaje" />
+                <ScalarProperty Name="CPremium" ColumnName="CPremium" />
+                <ScalarProperty Name="CSexo" ColumnName="CSexo" />
+                <ScalarProperty Name="CCodLegal" ColumnName="CCodLegal" />
+                <ScalarProperty Name="CComLab" ColumnName="CComLab" />
+                <ScalarProperty Name="CCodEmpleo" ColumnName="CCodEmpleo" />
+                <ScalarProperty Name="CSueldo" ColumnName="CSueldo" />
+                <ScalarProperty Name="CComplementoE" ColumnName="CComplementoE" />
+                <ScalarProperty Name="CTelefonoE" ColumnName="CTelefonoE" />
+                <ScalarProperty Name="CProvinciaE" ColumnName="CProvinciaE" />
+                <ScalarProperty Name="CLocalidadE" ColumnName="CLocalidadE" />
+                <ScalarProperty Name="CCodPostE" ColumnName="CCodPostE" />
+                <ScalarProperty Name="CDomicilioE" ColumnName="CDomicilioE" />
+                <ScalarProperty Name="CEmpresa" ColumnName="CEmpresa" />
+                <ScalarProperty Name="CCodDocuCony" ColumnName="CCodDocuCony" />
+                <ScalarProperty Name="CDocuCony" ColumnName="CDocuCony" />
+                <ScalarProperty Name="CNombCony" ColumnName="CNombCony" />
+                <ScalarProperty Name="CFechaNaci" ColumnName="CFechaNaci" />
+                <ScalarProperty Name="CComplemento" ColumnName="CComplemento" />
+                <ScalarProperty Name="CTelefono2" ColumnName="CTelefono2" />
+                <ScalarProperty Name="CTelefono1" ColumnName="CTelefono1" />
+                <ScalarProperty Name="CProvincia" ColumnName="CProvincia" />
+                <ScalarProperty Name="Clocalidad" ColumnName="Clocalidad" />
+                <ScalarProperty Name="CCodPost" ColumnName="CCodPost" />
+                <ScalarProperty Name="Cdomicilio" ColumnName="Cdomicilio" />
+                <ScalarProperty Name="CCodDocu" ColumnName="CCodDocu" />
+                <ScalarProperty Name="Cnombre" ColumnName="Cnombre" />
+                <ScalarProperty Name="CDocumento" ColumnName="CDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

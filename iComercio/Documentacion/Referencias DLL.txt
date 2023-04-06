@@ -1,0 +1,5 @@
+EF
+LOGNET 2.0.3	
+Microsoft.bcl Microsoft.Bcl 1.1.10'
+newtonsont.json 9.0.0.0 Newtonsoft.Json 9.0.1
+restsharp 104.4.0

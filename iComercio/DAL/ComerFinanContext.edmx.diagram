@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b38f30ce2ee4d1d95a9c77e444bc1e0" Name="Diagram1" ZoomLevel="38">
+        <EntityTypeShape EntityType="ComerFinanModel.Bajas" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.Notas" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.RefiBaja" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.RefiCobra" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.RefiCuotas" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.Refinan" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.CobranzasANT" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.CreditosANT" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.CuotasANT" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="ComerFinanModel.Clientes" Width="1.5" PointX="7.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
