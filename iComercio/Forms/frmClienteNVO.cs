@@ -805,7 +805,8 @@ namespace iComercio.Forms
             {
                 bl.ActualizarCliente(regClienteNVO);
             }
-            if(bGrabo == false) bl.Transmision<Cliente>(regClienteNVO, bl.pGlob.Comercio, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
+            if(bGrabo == false) 
+                bl.Transmision<Cliente>(regClienteNVO, bl.pGlob.Comercio, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
             bGrabo = true;
             bl.Grabar();
             Graba_Modificacion_Pru(doc, cdoc);
@@ -1452,7 +1453,6 @@ namespace iComercio.Forms
 
         private void GrabaTransPru(int doc, string cdoc)
         {
-            if (bGraboPru) return;
             Cliente regClienteNVO = bl.dalPrueba.Get<Cliente>(c => c.Documento == doc && c.TipoDocumentoID == cdoc).FirstOrDefault();
             Comercio ComerP = bl.dalPrueba.Get<Comercio>(c => c.Principal == true).FirstOrDefault();
             bl.Transmision<Cliente>(regClienteNVO, ComerP, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
@@ -1460,7 +1460,6 @@ namespace iComercio.Forms
         }
         private void GrabaTrans(int doc, string cdoc)
         {
-            if (bGrabo) return;
             Cliente regClienteNVO = bl.Get<Cliente>(c => c.Documento == doc && c.TipoDocumentoID == cdoc).FirstOrDefault();
             Comercio ComerP = bl.Get<Comercio>(c => c.Principal == true).FirstOrDefault();
             bl.Transmision<Cliente>(regClienteNVO, ComerP, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
@@ -1470,6 +1469,12 @@ namespace iComercio.Forms
         private void gridTelf_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void TxtCliNaci_ValueChanged(object sender, EventArgs e)
+        {
+            if (TxtCliNaci.Value != null)
+                lblEdad.Text = ((DateTime.Now-TxtCliNaci.Value).Days / 365).ToString();
         }
     }
 }

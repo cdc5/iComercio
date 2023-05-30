@@ -163,8 +163,9 @@ namespace iComercio.Forms
                 }
                 if (bl.pGlob.Configuracion.TransmisionHabilitadaM)
                 {
-                    var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
-                    ra.esEnvioTest = true;
+                    var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexionM, bl.pGlob.Configuracion.RestUrlConexionM);
+                    ra.esEnvioTest = false;
+                    log.Debug("Enviando M" + pGlob.EmpresaM.EmpresaID.Value);
                     using (BusinessLayer bla = new BusinessLayer(ra))
                     {
                         //bla.RealizarTransmisionesSolicitudes(transmitiendo);
@@ -772,7 +773,7 @@ namespace iComercio.Forms
                     frmAltaCredito frmAltaCredito = new frmAltaCredito(this, bl.ra);
                     frmAltaCredito.MdiParent = this;
                     frmAltaCredito.actualizarBarraDeEstado += ActualizarBarraDeEstado;
-                    frmAltaCredito.WindowState = FormWindowState.Normal;
+                    frmAltaCredito.WindowState = FormWindowState.Maximized;
                     frmAltaCredito.Show();
                 }
             }

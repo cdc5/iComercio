@@ -6525,6 +6525,7 @@ namespace iComercio.Models
                                                     && (t.OperacionID != pGlob.TransArchivo.OperacionID), p => p.OrderBy(s => s.TransmisionID)).ToList();
                         for (int i = 0; res && i < trans.Count; i++)
                         {
+                            log.Debug(trans);
                             var transmitido = Transmitir(trans[i],true);
                             res = transmitido.Result;
                         }

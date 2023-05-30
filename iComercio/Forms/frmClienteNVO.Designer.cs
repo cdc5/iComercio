@@ -348,6 +348,7 @@
             this.TxtCliNaci.Name = "TxtCliNaci";
             this.TxtCliNaci.Size = new System.Drawing.Size(111, 20);
             this.TxtCliNaci.TabIndex = 5;
+            this.TxtCliNaci.ValueChanged += new System.EventHandler(this.TxtCliNaci_ValueChanged);
             // 
             // txtLegajo
             // 
