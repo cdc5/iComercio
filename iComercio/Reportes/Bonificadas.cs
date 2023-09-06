@@ -29,7 +29,7 @@ namespace iComercio.Reportes
             if(cred.TipoBonificacionID == "X")
             {
                 xrNoti.Text = String.Format(@"Me notifico que el crédito nro {0} de {1} cuotas, con promoción de {2:0} cuota/s bonificada/s del cual soy Titular," +
-                                            @" se le aplicará efectivamente dicha bonificación siempre que no haya incurrido en mora en el pago de ninguna de las cuotas" +
+                                            @" se le aplicará efectivamente dicha bonificación siempre que los pagos se realicen en efectivo por caja y que no haya incurrido en mora en el pago de ninguna de las cuotas" +
                                             @" a lo largo de la vigencia del mismo. En caso de cancelación anticipada, la promoción quedará sin efecto."
                                             , cred.CreditoID, cred.CantidadCuotas, cred.PorcentajeBonificacion);
 
@@ -37,7 +37,7 @@ namespace iComercio.Reportes
             else if(cred.TipoBonificacionID == "C")
             {
                 xrNoti.Text = String.Format(@"Me notifico que el crédito nro {0} de {1} cuotas, con promoción de pesos {2:00} bonificados en la última cuota del cual soy Titular," +
-                                            @" se le aplicará efectivamente dicha bonificación siempre que no haya incurrido en mora en el pago de ninguna de las cuotas" +
+                                            @" se le aplicará efectivamente dicha bonificación siempre siempre que los pagos se realicen en efectivo por caja que no haya incurrido en mora en el pago de ninguna de las cuotas" +
                                             @" a lo largo de la vigencia del mismo. En caso de cancelación anticipada, la promoción quedará sin efecto."
                                             , cred.CreditoID, cred.CantidadCuotas, cred.ValorBonificacion);
 
