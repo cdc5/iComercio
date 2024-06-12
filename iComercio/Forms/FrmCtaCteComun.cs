@@ -33,9 +33,9 @@ namespace iComercio.Forms
             InitializeComponent();
         }
 
-        public FrmCtaCteComun(Principal p,RestApi ra): base(p)
+        public FrmCtaCteComun(Principal p,RestApi ra,RestApi raM): base(p)
         {
-            bl = new BusinessLayer(ra);
+            bl = new BusinessLayer(ra, raM);
             InitializeComponent();
         }
 

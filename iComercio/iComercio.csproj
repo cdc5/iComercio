@@ -373,10 +373,14 @@
   <ItemGroup>
     <Compile Include="Auxiliar\Alertas.cs" />
     <Compile Include="Auxiliar\AuxiliaresWinForms.cs" />
+    <Compile Include="Auxiliar\ConnectionStrings.cs" />
+    <Compile Include="Auxiliar\CryptMd5Utils.cs" />
     <Compile Include="Auxiliar\DataGridViewImageButton.cs" />
     <Compile Include="Auxiliar\DateTimeExtensions.cs" />
+    <Compile Include="Auxiliar\DB.cs" />
     <Compile Include="Auxiliar\FastDirectoryEnumerator.cs" />
     <Compile Include="Auxiliar\FitFormScreen.cs" />
+    <Compile Include="Auxiliar\FlexibleMessageBoxForm.cs" />
     <Compile Include="Auxiliar\FormScaling.cs" />
     <Compile Include="Auxiliar\GeneradorBD.cs" />
     <Compile Include="Auxiliar\Imaging.cs" />
@@ -488,6 +492,12 @@
     </Compile>
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormularioModal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormularioModal.Designer.cs">
+      <DependentUpon>FormularioModal.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmAltaCredito02.cs">
       <SubType>Form</SubType>
@@ -1325,6 +1335,9 @@
     <Compile Include="Rest\RestModels\SolicitarFondosRestModel.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormularioModal.resx">
+      <DependentUpon>FormularioModal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAltaCredito02.resx">
       <DependentUpon>frmAltaCredito02.cs</DependentUpon>

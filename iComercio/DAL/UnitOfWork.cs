@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using iComercio.Models;
+using iComercio.Auxiliar;
 
 namespace iComercio.DAL
 {
     public class UnitOfWork : IUnitOfWork,IDisposable
     {
-        private ComercioContext context = new ComercioContext();
+        private ComercioContext context = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext"));
         
         private IGenericRepository<Configuracion> configuracionRepository;
         private IGenericRepository<Usuario> usuarioRepository;

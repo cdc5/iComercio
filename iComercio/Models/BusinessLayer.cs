@@ -29,6 +29,7 @@ namespace iComercio.Models
        
        public ParametrosGlobales pGlob { get; set; }
        public RestApi ra;
+       public RestApi raM;
        public Dal dal;
        public Dal dalPrueba;
        
@@ -69,7 +70,7 @@ namespace iComercio.Models
 
         public Dal GetDal(int BaseIDb)
         {
-            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3)
+            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100)
             {
                 return dal;
             }
@@ -107,15 +108,30 @@ namespace iComercio.Models
             ////this.ra = new RestApi(pGlob.Configuracion.RestUsu, pGlob.Configuracion.RestKey, pGlob.Configuracion.RestUrlConexion);
         }
 
-        public BusinessLayer(RestApi ra)
+        public BusinessLayer(RestApi ra, RestApi raM)
         {
             InicializarDals();
             //InicializarBase();
             this.pGlob = new ParametrosGlobales(this);
             this.ra = ra;
+            this.raM = raM;
             //this.ra = new RestApi(pGlob.Configuracion.RestUsu, pGlob.Configuracion.RestKey, pGlob.Configuracion.RestUrlConexion);
         }
 
+        public RestApi GetRa(int BaseIDb)
+        {
+            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100)
+            {
+                return ra;
+            }
+            else if (BaseIDb == 99)
+            {
+                
+                ra.esEnvioTest = true;
+                return ra;
+            }
+            return null;
+        }
 
         //public businesslayer()
         //{
@@ -2489,7 +2505,7 @@ namespace iComercio.Models
 
         public void CorregirFechasDeCuotas(BackgroundWorker bg, int Comercio)
         {
-            using (ComercioContext cf = new ComercioContext())
+            using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
             {
                 string sql = @"SELECT   c1.comercioid as Com, c1.creditoid as Cred
                     FROM        Cuota c1
@@ -2562,7 +2578,7 @@ namespace iComercio.Models
 
         public void CorregirImporteDeCuotas(BackgroundWorker bg, int Comercio)
         {
-            using (ComercioContext cf = new ComercioContext())
+            using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
             {
                 string sql = @"SELECT c1.ComercioID as Com, c1.CreditoID as Cred
                                 FROM        Cuota c1
@@ -2613,7 +2629,7 @@ namespace iComercio.Models
         {
            
 
-            using (ComercioContext cf = new ComercioContext())
+            using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
             {
                 string sql = @"select	cre.ComercioID as Com,
 		                        cre.CreditoID as Cred			                       
@@ -5994,7 +6010,7 @@ namespace iComercio.Models
             List<String> ErrRec;
 
             Fecha = FechaDesde;
-            using (ComercioContext cf = new ComercioContext())
+            using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
             {
 
                 //string sql = string.Format("Update transmision set EstadoTransmisionID = {0} where Fecha < '{1}' and EstadoTransmisionID <> {2} and EstadoTransmisionID <> {3} ",
@@ -6328,6 +6344,7 @@ namespace iComercio.Models
                     FechaHasta = FechaHasta.Date;
                     while (FechaDesde <= FechaHasta)
                     {
+                        log.Debug($"Transmitiendo Control Diario {pGlob.Comercio} {FechaDesde}");
                         Transmision t = TransmisionControlDiario(pGlob.Comercio, FechaDesde, FechaDesde);
                         var transmitido = Transmitir(t, false);
                         resAux =  transmitido.Result;
@@ -6514,7 +6531,7 @@ namespace iComercio.Models
             bool res = true;
             if (Monitor.TryEnter(transmitiendo))
                 {
-                    string mens = "Inicio Transmision M";
+                    string mens = "Inicio Transmision";
                     log.Debug(mens);
                     try
                     {
@@ -9379,7 +9396,7 @@ namespace iComercio.Models
         /* Datos Maestros */ 
         public void GenerarDatosMaestros()
         {
-            using (var context = new ComercioContext())
+            using (var context = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
             {
                 var perfiles = new List<Perfil>
             {

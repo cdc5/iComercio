@@ -127,9 +127,9 @@
             this.mnuVentanaC = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuVentanaO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuVentanaCambiaUsu = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.bgwCorregirCuotas = new System.ComponentModel.BackgroundWorker();
-            this.mnuVentanaCambiaUsu = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -254,12 +254,12 @@
             this.mnuPrueba,
             this.mnuNossis,
             this.mnuCuentaCorriente,
+            this.mnuTransmisiones,
             this.mnuProveedores,
             this.mnuABM,
             this.mnuMensajes,
             this.mnuReimpresiones,
             this.mnuReportes,
-            this.mnuTransmisiones,
             this.mnuConfiguracion,
             this.mnuVentana});
             resources.ApplyResources(this.menuStrip, "menuStrip");
@@ -829,6 +829,12 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
+            // mnuVentanaCambiaUsu
+            // 
+            this.mnuVentanaCambiaUsu.Name = "mnuVentanaCambiaUsu";
+            resources.ApplyResources(this.mnuVentanaCambiaUsu, "mnuVentanaCambiaUsu");
+            this.mnuVentanaCambiaUsu.Click += new System.EventHandler(this.mnuVentanaCambiaUsu_Click);
+            // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
@@ -841,12 +847,6 @@
             this.bgwCorregirCuotas.WorkerReportsProgress = true;
             this.bgwCorregirCuotas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwCorregirCuotas_DoWork);
             this.bgwCorregirCuotas.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwCorregirCuotas_ProgressChanged);
-            // 
-            // mnuVentanaCambiaUsu
-            // 
-            this.mnuVentanaCambiaUsu.Name = "mnuVentanaCambiaUsu";
-            resources.ApplyResources(this.mnuVentanaCambiaUsu, "mnuVentanaCambiaUsu");
-            this.mnuVentanaCambiaUsu.Click += new System.EventHandler(this.mnuVentanaCambiaUsu_Click);
             // 
             // Principal
             // 
@@ -865,6 +865,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
             this.Load += new System.EventHandler(this.Principal_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Principal_KeyDown);
             this.Toolstrip.ResumeLayout(false);
             this.Toolstrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

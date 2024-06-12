@@ -11,13 +11,13 @@ using System.Security.Principal;
 using System.Security;
 using iComercio.DAL;
 using System.Data.Entity;
-
+using iComercio.Auxiliar;
 
 namespace iComercio
 {
     public partial class Form1 : Form
     {
-        ComercioContext db = new ComercioContext();
+        ComercioContext db = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext"));
         public Form1()
         {
             InitializeComponent();

@@ -41,10 +41,10 @@ namespace iComercio.Forms
             RecargarEmpYComercio(false);
             InicializarControles();
         }
-        public FrmCtaCteComercio(Principal p, RestApi ra)
+        public FrmCtaCteComercio(Principal p, RestApi ra,RestApi raM)
             : base(p)
         {
-            bl = new BusinessLayer(ra);
+            bl = new BusinessLayer(ra,raM);
             InitializeComponent();
         }
         private void BuscarAgrupa()

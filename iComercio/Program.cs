@@ -14,6 +14,9 @@ using iComercio.DAL;
 using iComercio.Forms;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Configuration;
+using iComercio.Auxiliar;
+using Imprentus.Auxiliares;
 
 namespace iComercio
 {
@@ -64,7 +67,7 @@ namespace iComercio
             //Pequeño truquillo para acelerar La carga inicial de EF
             var tarea = new Task(() =>
                     {
-                        using (var dbContext = new ComercioContext())
+                        using (var dbContext = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
                         {
                             var empresa = dbContext.Empresas.First();  //force the model creation
                         }
@@ -88,7 +91,7 @@ namespace iComercio
                 var ex = e.Exception.InnerException;
                 while (ex != null)
                 {
-                    //log.Info(e.Exception.InnerException.Message);
+                    log.Info(e.Exception.InnerException.Message);
                     mens = mens + ex.Message + Environment.NewLine;
                     mens += ex.TargetSite.ToString() + Environment.NewLine;
                     mens += ex.StackTrace + Environment.NewLine;
@@ -106,7 +109,7 @@ namespace iComercio
             }
            
             log.Info(mens);
-            MessageBox.Show(mens, " Excepcion de Hilo ");
+            FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
             // here you can log the exception ...
 
 
@@ -145,7 +148,7 @@ namespace iComercio
                 var ex = e.Exception.InnerException;
                 while (ex != null)
                 { 
-                    //log.Info(e.Exception.InnerException.Message);
+                    log.Info(e.Exception.InnerException.Message);
                     mens = mens + ex.Message + Environment.NewLine;
                     mens += ex.TargetSite.ToString() + Environment.NewLine;
                     mens += ex.StackTrace + Environment.NewLine;
@@ -162,8 +165,8 @@ namespace iComercio
                 }
             }
                        
-            log.Info(mens);            
-            MessageBox.Show(mens, " Excepcion de Hilo ");
+            log.Info(mens);
+            FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
             // here you can log the exception ...
 
 
@@ -202,7 +205,7 @@ namespace iComercio
             var ex = exe.InnerException;
             while (ex != null)
             {
-                //log.Info(e.Exception.InnerException.Message);
+                log.Info(ex.InnerException.Message);
                 mens = mens + ex.Message + Environment.NewLine;
                 mens += ex.TargetSite.ToString() + Environment.NewLine;
                 mens += ex.StackTrace + Environment.NewLine;
@@ -218,7 +221,7 @@ namespace iComercio
                 }
             }
             log.Info(mens);
-            MessageBox.Show(mens, " Excepcion de Interfaz de Usuario");
+            FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
             //log.Info(ex.Message);
             //MessageBox.Show((e.ExceptionObject as Exception).Message, "Excepción de Interfaz de Usuario");
             //// here you can log the exception ...

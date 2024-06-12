@@ -136,6 +136,11 @@
             this.lblTribunales = new System.Windows.Forms.Label();
             this.lblLugar = new System.Windows.Forms.Label();
             this.tabM = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.chkVentaFinanciera = new System.Windows.Forms.CheckBox();
+            this.lblFechaCalcFinanV = new System.Windows.Forms.Label();
+            this.chkCalcFinan = new System.Windows.Forms.CheckBox();
+            this.lblFechaCalcFinan = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtFTPSolicitudesM = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -333,6 +338,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtFTPUsu = new System.Windows.Forms.TextBox();
             this.tabPorcentajes = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txtRedondeo = new System.Windows.Forms.TextBox();
             this.grpArreglo = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -343,9 +351,8 @@
             this.label23 = new System.Windows.Forms.Label();
             this.txtArreglo1 = new System.Windows.Forms.TextBox();
             this.trv = new System.Windows.Forms.TreeView();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txtRedondeo = new System.Windows.Forms.TextBox();
+            this.lblDiasCalcFinan = new System.Windows.Forms.Label();
+            this.txtDiasCalcFinan = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bsImpresoras)).BeginInit();
             this.tltc.SuspendLayout();
             this.tabConexion.SuspendLayout();
@@ -380,6 +387,7 @@
             this.grbAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpBoni)).BeginInit();
             this.tabM.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grbOpciones.SuspendLayout();
@@ -416,8 +424,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             this.tabPorcentajes.SuspendLayout();
-            this.grpArreglo.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.grpArreglo.SuspendLayout();
             this.SuspendLayout();
             // 
             // ofd
@@ -1456,6 +1464,7 @@
             // tabM
             // 
             this.tabM.BackColor = System.Drawing.SystemColors.Control;
+            this.tabM.Controls.Add(this.groupBox7);
             this.tabM.Controls.Add(this.groupBox5);
             this.tabM.Controls.Add(this.groupBox2);
             this.tabM.Controls.Add(this.grbOpciones);
@@ -1465,6 +1474,59 @@
             this.tabM.TabIndex = 5;
             this.tabM.Text = "Opciones 2";
             this.tabM.Click += new System.EventHandler(this.tabM_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.lblDiasCalcFinan);
+            this.groupBox7.Controls.Add(this.txtDiasCalcFinan);
+            this.groupBox7.Controls.Add(this.chkVentaFinanciera);
+            this.groupBox7.Controls.Add(this.lblFechaCalcFinanV);
+            this.groupBox7.Controls.Add(this.chkCalcFinan);
+            this.groupBox7.Controls.Add(this.lblFechaCalcFinan);
+            this.groupBox7.Location = new System.Drawing.Point(366, 99);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(251, 114);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            // 
+            // chkVentaFinanciera
+            // 
+            this.chkVentaFinanciera.AutoSize = true;
+            this.chkVentaFinanciera.Location = new System.Drawing.Point(21, 79);
+            this.chkVentaFinanciera.Name = "chkVentaFinanciera";
+            this.chkVentaFinanciera.Size = new System.Drawing.Size(144, 17);
+            this.chkVentaFinanciera.TabIndex = 10;
+            this.chkVentaFinanciera.Text = "Calculo Venta Financiera";
+            this.chkVentaFinanciera.UseVisualStyleBackColor = true;
+            // 
+            // lblFechaCalcFinanV
+            // 
+            this.lblFechaCalcFinanV.AutoSize = true;
+            this.lblFechaCalcFinanV.Location = new System.Drawing.Point(65, 51);
+            this.lblFechaCalcFinanV.Name = "lblFechaCalcFinanV";
+            this.lblFechaCalcFinanV.Size = new System.Drawing.Size(65, 13);
+            this.lblFechaCalcFinanV.TabIndex = 9;
+            this.lblFechaCalcFinanV.Text = "01/01/2020";
+            // 
+            // chkCalcFinan
+            // 
+            this.chkCalcFinan.AutoSize = true;
+            this.chkCalcFinan.Location = new System.Drawing.Point(22, 19);
+            this.chkCalcFinan.Name = "chkCalcFinan";
+            this.chkCalcFinan.Size = new System.Drawing.Size(113, 17);
+            this.chkCalcFinan.TabIndex = 8;
+            this.chkCalcFinan.Text = "Calculo Financiero";
+            this.chkCalcFinan.UseVisualStyleBackColor = true;
+            this.chkCalcFinan.CheckedChanged += new System.EventHandler(this.chkRegLogs_CheckedChanged);
+            // 
+            // lblFechaCalcFinan
+            // 
+            this.lblFechaCalcFinan.AutoSize = true;
+            this.lblFechaCalcFinan.Location = new System.Drawing.Point(19, 51);
+            this.lblFechaCalcFinan.Name = "lblFechaCalcFinan";
+            this.lblFechaCalcFinan.Size = new System.Drawing.Size(40, 13);
+            this.lblFechaCalcFinan.TabIndex = 3;
+            this.lblFechaCalcFinan.Text = "Fecha:";
             // 
             // groupBox5
             // 
@@ -3167,6 +3229,36 @@
             this.tabPorcentajes.TabIndex = 13;
             this.tabPorcentajes.Text = "Porcentajes";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.txtRedondeo);
+            this.groupBox6.Location = new System.Drawing.Point(358, 26);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(277, 176);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Redondeo";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(65, 39);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(60, 13);
+            this.label33.TabIndex = 11;
+            this.label33.Text = "Redondear";
+            // 
+            // txtRedondeo
+            // 
+            this.txtRedondeo.Location = new System.Drawing.Point(131, 36);
+            this.txtRedondeo.Name = "txtRedondeo";
+            this.txtRedondeo.Size = new System.Drawing.Size(66, 20);
+            this.txtRedondeo.TabIndex = 10;
+            this.txtRedondeo.Tag = "N";
+            this.txtRedondeo.Text = "0";
+            this.txtRedondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // grpArreglo
             // 
             this.grpArreglo.Controls.Add(this.label26);
@@ -3271,35 +3363,21 @@
             this.trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.trv.Click += new System.EventHandler(this.treeView1_Click);
             // 
-            // groupBox6
+            // lblDiasCalcFinan
             // 
-            this.groupBox6.Controls.Add(this.label33);
-            this.groupBox6.Controls.Add(this.txtRedondeo);
-            this.groupBox6.Location = new System.Drawing.Point(358, 26);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(277, 176);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Redondeo";
+            this.lblDiasCalcFinan.AutoSize = true;
+            this.lblDiasCalcFinan.Location = new System.Drawing.Point(141, 20);
+            this.lblDiasCalcFinan.Name = "lblDiasCalcFinan";
+            this.lblDiasCalcFinan.Size = new System.Drawing.Size(31, 13);
+            this.lblDiasCalcFinan.TabIndex = 12;
+            this.lblDiasCalcFinan.Text = "Dias:";
             // 
-            // label33
+            // txtDiasCalcFinan
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(65, 39);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(60, 13);
-            this.label33.TabIndex = 11;
-            this.label33.Text = "Redondear";
-            // 
-            // txtRedondeo
-            // 
-            this.txtRedondeo.Location = new System.Drawing.Point(131, 36);
-            this.txtRedondeo.Name = "txtRedondeo";
-            this.txtRedondeo.Size = new System.Drawing.Size(66, 20);
-            this.txtRedondeo.TabIndex = 10;
-            this.txtRedondeo.Tag = "N";
-            this.txtRedondeo.Text = "0";
-            this.txtRedondeo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiasCalcFinan.Location = new System.Drawing.Point(178, 17);
+            this.txtDiasCalcFinan.Name = "txtDiasCalcFinan";
+            this.txtDiasCalcFinan.Size = new System.Drawing.Size(56, 20);
+            this.txtDiasCalcFinan.TabIndex = 11;
             // 
             // FrmOpciones
             // 
@@ -3363,6 +3441,8 @@
             this.grbAlta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpBoni)).EndInit();
             this.tabM.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -3412,10 +3492,10 @@
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             this.tabPorcentajes.ResumeLayout(false);
-            this.grpArreglo.ResumeLayout(false);
-            this.grpArreglo.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.grpArreglo.ResumeLayout(false);
+            this.grpArreglo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3731,5 +3811,12 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox txtRedondeo;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label lblFechaCalcFinanV;
+        private System.Windows.Forms.CheckBox chkCalcFinan;
+        private System.Windows.Forms.Label lblFechaCalcFinan;
+        private System.Windows.Forms.CheckBox chkVentaFinanciera;
+        private System.Windows.Forms.Label lblDiasCalcFinan;
+        private System.Windows.Forms.TextBox txtDiasCalcFinan;
     }
 }

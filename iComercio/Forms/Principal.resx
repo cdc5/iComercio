@@ -255,32 +255,32 @@
     <value>
         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
-        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
+        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
         AAAASUVORK5CYII=
 </value>
   </data>
@@ -673,6 +673,12 @@
   <data name="mnuCuentaCorriente.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="mnuTransmisiones.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 20</value>
+  </data>
+  <data name="mnuTransmisiones.Text" xml:space="preserve">
+    <value>Transmisiones</value>
+  </data>
   <data name="mnuListadoDeProveedores.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 22</value>
   </data>
@@ -738,12 +744,6 @@
   </data>
   <data name="mnuReportes.Text" xml:space="preserve">
     <value>Reportes</value>
-  </data>
-  <data name="mnuTransmisiones.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 20</value>
-  </data>
-  <data name="mnuTransmisiones.Text" xml:space="preserve">
-    <value>Transmisiones</value>
   </data>
   <data name="mnuNuevoUsuario.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -896,34 +896,34 @@
     <value>Configuración</value>
   </data>
   <data name="mnuVentanaH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="mnuVentanaH.Text" xml:space="preserve">
     <value>Mosaico horizontal</value>
   </data>
   <data name="mnuVentanaV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="mnuVentanaV.Text" xml:space="preserve">
     <value>Mosaico Vertical</value>
   </data>
   <data name="mnuVentanaC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="mnuVentanaC.Text" xml:space="preserve">
     <value>Cascada</value>
   </data>
   <data name="mnuVentanaO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="mnuVentanaO.Text" xml:space="preserve">
     <value>Organizar iconos</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>172, 6</value>
   </data>
   <data name="mnuVentanaCambiaUsu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="mnuVentanaCambiaUsu.Text" xml:space="preserve">
     <value>Cambiar usuaio</value>
@@ -1955,22 +1955,22 @@
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bgwCorregirCuotas.Name" xml:space="preserve">
-    <value>bgwCorregirCuotas</value>
-  </data>
-  <data name="&gt;&gt;bgwCorregirCuotas.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;mnuVentanaCambiaUsu.Name" xml:space="preserve">
     <value>mnuVentanaCambiaUsu</value>
   </data>
   <data name="&gt;&gt;mnuVentanaCambiaUsu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;bgwCorregirCuotas.Name" xml:space="preserve">
+    <value>bgwCorregirCuotas</value>
+  </data>
+  <data name="&gt;&gt;bgwCorregirCuotas.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Principal</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>iComercio.Forms.FRM, iComercio, Version=1.0.8091.21001, Culture=neutral, PublicKeyToken=null</value>
+    <value>iComercio.Forms.FRM, iComercio, Version=1.0.8909.37369, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

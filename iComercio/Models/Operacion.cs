@@ -19,9 +19,10 @@ namespace iComercio.Models
         //    where TEntityRM : class, new();
 
 
-     //   public static Operacion EnviarSolicitudDeFondo = new EnviarSolicitudDeFondo(1, "Enviar Solicitud de fondo", "Enviar Solicitud de fondo");
-     //   public static Operacion ConfirmarSolicitudDeFondo = new ConfirmarSolicitudDeFondo(1, "Enviar Solicitud de fondo", "Enviar Solicitud de fondo");
+        //   public static Operacion EnviarSolicitudDeFondo = new EnviarSolicitudDeFondo(1, "Enviar Solicitud de fondo", "Enviar Solicitud de fondo");
+        //   public static Operacion ConfirmarSolicitudDeFondo = new ConfirmarSolicitudDeFondo(1, "Enviar Solicitud de fondo", "Enviar Solicitud de fondo");
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Operacion()
         {
@@ -40,9 +41,11 @@ namespace iComercio.Models
         {
             if (ent != null)
             {
+                log.Debug($"Transmitiendo {ent} {tran.RutaApi} {ent.ApiParam(tran.Comercio)}");
                 var entRM = await bl.Post<TEntity, TEntityRM>((TEntity)ent, tran.RutaApi, ent.ApiParam(tran.Comercio));
                 if (entRM != null)
                 {
+                    log.Debug($"Transmitiendo {entRM}");
                     ent.ApiActualizarDesdeRemoto(bl,entRM);
                     return true;
                 }
@@ -75,9 +78,11 @@ namespace iComercio.Models
         {
             if (ent != null)
             {
+                log.Debug($"Transmitiendo {ent} {tran.RutaApi} {ent.ApiParam(tran.Comercio)}");
                 var entRM = await bl.Post<TEntityRM>((TEntityRM)ent, tran.RutaApi, ent.ApiParam(tran.Comercio));
                 if (entRM != null)
                 {
+                    log.Debug($"Transmitiendo {entRM}");
                     ent.ApiActualizarDesdeRemoto(bl,entRM);
                     return true;
                 }

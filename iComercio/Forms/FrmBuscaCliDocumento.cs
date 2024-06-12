@@ -650,6 +650,11 @@ namespace iComercio.Forms
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
+            if (bl.pGlob.Configuracion.BlockedVentas ?? false)
+            {
+                MessageBox.Show("No es posible realizar alta de créditos, consulte con casa central");
+                return;
+            }
 
             frmAltaCredito02 frmDarAlta = new frmAltaCredito02(p, this.bl, nCliDocu, cCliDocu, 0, regCliente.Apellido, 
                                 regCliente.Nombre, (decimal)regCliente.Sueldo,0,

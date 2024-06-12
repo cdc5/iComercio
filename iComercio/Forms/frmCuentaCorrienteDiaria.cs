@@ -24,6 +24,7 @@ namespace iComercio.Forms
     public partial class frmCuentaCorrienteDiaria : FRM
     {
         private RestApi ra;
+        private RestApi raM;
         Comercio comer;
 
         public frmCuentaCorrienteDiaria():base()
@@ -34,7 +35,7 @@ namespace iComercio.Forms
         public frmCuentaCorrienteDiaria(Principal p)
             : base(p)
         {
-            bl = new BusinessLayer(ra);
+            bl = new BusinessLayer(ra,raM);
             InitializeComponent();
         }
         

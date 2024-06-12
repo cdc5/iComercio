@@ -30,7 +30,7 @@ namespace iComercio.Forms
         /* Formularios */
         private int childFormNumber = 0;
                 
-        private ParametrosGlobales pGlob { get; set; }
+        public ParametrosGlobales pGlob { get; set; }
         private BusinessLayer bl { get; set; }
                 
         /* Timer */
@@ -38,6 +38,7 @@ namespace iComercio.Forms
         private System.Threading.Timer timerNovedades;
         private System.Threading.Timer timerRevisiones;
         private System.Threading.Timer timerActualizaciones;
+        private System.Threading.Timer timerBlock;
 
         /* Conexion */
         public object transmitiendo { get; set; }
@@ -71,11 +72,26 @@ namespace iComercio.Forms
             Emp = Com.Empresa;
         }
 
+        string desbloq = "";
+        private void Principal_KeyDown(object sender, KeyEventArgs e)
+        {
+            desbloq += e.KeyValue;
+        }
+
         private void Principal_Load(object sender, EventArgs e)
         {
             bl = new BusinessLayer();
             bl.InicializarBases();
             pGlob = bl.GetParametrosGlobales();
+
+            if (pGlob.Configuracion.Blocked??false)
+            {
+                FormularioModal frmModal = new FormularioModal(this);
+                frmModal.ShowDialog();
+                if (pGlob.Configuracion.Blocked ?? false)
+                    this.Close();                
+            }
+
             ConfigurarSkin();
             log.Info("Icomercio: Iniciando App - " + DateTime.Now.ToString());
             //Hacer bloqueo con Monitor.tryEnter o  deshabilitando el timer dentro del callback, al principio, y volverlo 
@@ -84,7 +100,9 @@ namespace iComercio.Forms
             timerNovedades = new System.Threading.Timer(timerNovedadesTick, null, pGlob.Configuracion.TiempoEnvioNovedades, Timeout.Infinite);
             timerRevisiones = new System.Threading.Timer(timerRevisionesTick, null, pGlob.Configuracion.TiempoEnvioRevisiones, Timeout.Infinite);
             timerActualizaciones = new System.Threading.Timer(timerActualizacionesTick, null, pGlob.Configuracion.TiempoActs, Timeout.Infinite);
+            timerBlock = new System.Threading.Timer(timerBlockTick, null,30, Timeout.Infinite);
             transmitiendo = new object(); // lockeo para transmision   
+
 
             this.actualizarBarraDeEstadoEvent += ActualizarBarraDeEstado;
             this.actualizarBarraDeEstadoListoEvent += ActualizarBarraDeEstadoListo;
@@ -108,18 +126,11 @@ namespace iComercio.Forms
             ActualizarBarraDeEstadoVersion();
             ActualizarBarraDeEstadoComercio();
             if (Login())
-            {                
+            {        
                 /*Crear RestApi */
                 // ra = new RestApi(pGlob.Configuracion.RestUsu, pGlob.Configuracion.RestKey, bl.pGlob.Configuracion.RestUrlConexion);
-                if (!bl.pGlob.Configuracion.TestMode)
-                {
-                    bl.ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion);
-                }
-                else
-                {
-                    bl.ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
-                }
-
+                bl.ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion);
+                bl.raM = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
             }
             else
                 this.Close();
@@ -152,7 +163,7 @@ namespace iComercio.Forms
               //  actualizarBarraDeEstadoEvent(this, me);
                 if (bl.pGlob.Configuracion.TransmisionHabilitada)
                 {
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra))
+                    using (BusinessLayer bla = new BusinessLayer(bl.ra,bl.raM))
                     {
                         bla.RealizarTransmisionesSolicitudes(transmitiendo);
                         //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
@@ -165,7 +176,7 @@ namespace iComercio.Forms
                 {
                     var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
                     ra.esEnvioTest = true;
-                    using (BusinessLayer bla = new BusinessLayer(ra))
+                    using (BusinessLayer bla = new BusinessLayer(ra, bl.raM))
                     {
                         //bla.RealizarTransmisionesSolicitudes(transmitiendo);
                         //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
@@ -190,7 +201,7 @@ namespace iComercio.Forms
                 this.Invoke(actualizarBarraDeEstadoEvent,this, me);
                 if (bl.pGlob.Configuracion.TransmisionHabilitada)
                 {
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra))
+                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
                     {
                         bla.RevisarTransmisiones(Com, DateTime.Now.AddDays(-pGlob.Configuracion.diasRevisionesParaAtras), DateTime.Now);
                         bla.RetransmitirErroneas(transmitiendo);
@@ -199,6 +210,21 @@ namespace iComercio.Forms
                 this.Invoke(actualizarBarraDeEstadoListoEvent,this, me);
             }
             timerRevisiones.Change(pGlob.Configuracion.TiempoEnvioRevisiones, Timeout.Infinite); // Esta sentencia reinicia el timer, que fue instanciado como one-shot
+        }
+        private async void timerBlockTick(Object stateInfo)
+        {
+            int ts;
+            if (pGlob.Configuracion.LastUnBlockedDate != null && pGlob.Configuracion.BlockingEnabled)
+            {
+                ts = (DateTime.Now - pGlob.Configuracion.LastUnBlockedDate.Value).Days;
+                if (Math.Abs(ts) > pGlob.Configuracion.DaysToBlock)
+                {
+                    pGlob.Configuracion.Blocked = true;                    
+                    pGlob.Configuracion.Write();
+                    this.Close();
+                }
+            }
+            timerBlock.Change(10000, Timeout.Infinite); 
         }
 
         private async void timerActualizacionesTick(Object stateInfo)
@@ -212,7 +238,7 @@ namespace iComercio.Forms
                 {
                     me = new MensajeEventArgs("Realizando Actualizaciones..." + DateTime.Now);
                     this.Invoke(actualizarBarraDeEstadoEvent,this, me);
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra))
+                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
                     {
                        await bla.ActualizarDesdeCentral(Com,usu);
                     }
@@ -233,7 +259,7 @@ namespace iComercio.Forms
                 {
                     MensajeEventArgs me = new MensajeEventArgs("Enviando Novedades...");
                     this.Invoke(actualizarBarraDeEstadoEvent, this, me);
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra))
+                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
                     {
                         bla.RealizarTransmisionesNovedades(transmitiendo);
                     }
@@ -279,7 +305,7 @@ namespace iComercio.Forms
 
             for (int i = 0; i < Toolstrip.Items.Count; i++)
             {
-                ToolStripItem tsi = Toolstrip.Items[i] as ToolStripMenuItem;
+                ToolStripItem tsi = Toolstrip.Items[i] as ToolStripItem;
                 if (tsi != null)
                     DesHabilitarMenu(tsi);
             }
@@ -358,20 +384,34 @@ namespace iComercio.Forms
         private void HabilitarMenues(Usuario usu)
         {
             List<string> permisos = usu.GetPermisos().Select(p => p.nombre).ToList();
+            if (bl.pGlob.Configuracion.BlockedVentas??false)            
+                permisos = QuitarMenuVentas(permisos);
+
             foreach (ToolStripMenuItem tsi in menuStrip.Items)
             {
                 HabilitarMenu(tsi,permisos);
             }            
         }
 
+        private List<string> QuitarMenuVentas(List<string> permisos)
+        {
+            List<string> permisosVentas = new List<string> { "mnuCreditosAlta", "mnuAnulCred", "tsCreditosAlta" };
+            var perm = permisos.Where(x => !permisosVentas.Contains(x)).ToList();
+            return perm;
+        }
+
         private void HabilitarMenuesIconos(Usuario usu)
         {
             List<string> permisos = usu.GetPermisos().Select(p => p.nombre).ToList();
+            if (bl.pGlob.Configuracion.BlockedVentas ?? false)
+                permisos = QuitarMenuVentas(permisos);
+
             foreach (var tsi in Toolstrip.Items)
             {
                 if (tsi is ToolStripButton)
                     HabilitarMenu((ToolStripButton)tsi, permisos);
             }
+            
             if (tsCreditosAlta.Visible)
                 tsSep.Visible = true;
         }
@@ -618,7 +658,7 @@ namespace iComercio.Forms
             //frmCtaCte.Show();
             //frmCtaCte.MdiParent = this;
 
-            FrmCtaCteComun frmCtaCte = new FrmCtaCteComun(this,bl.ra);
+            FrmCtaCteComun frmCtaCte = new FrmCtaCteComun(this,bl.ra, bl.raM);
             frmCtaCte.MdiParent = this;
             frmCtaCte.WindowState = FormWindowState.Maximized;
             frmCtaCte.Show();
@@ -1224,7 +1264,7 @@ namespace iComercio.Forms
 
         private void mnuCuentaCorrienteComercio_Click(object sender, EventArgs e)
         {
-            FrmCtaCteComercio frmCtaCte = new FrmCtaCteComercio(this, bl.ra);
+            FrmCtaCteComercio frmCtaCte = new FrmCtaCteComercio(this, bl.ra, bl.raM);
             frmCtaCte.MdiParent = this;
             frmCtaCte.WindowState = FormWindowState.Maximized;
             frmCtaCte.Show();
@@ -1389,5 +1429,7 @@ namespace iComercio.Forms
             Login();
             Muestra_MenuVta();
         }
+
+       
     }
 }

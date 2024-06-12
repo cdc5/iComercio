@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iComercio.Auxiliar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -177,44 +178,50 @@ namespace iComercio.Models
         public int nRedondeo { get; set; }//edu20211207
 
         // Must implement public default constructor
+        public bool BlockingEnabled { get; set; }
+        public bool? Blocked { get; set; }
+        public bool? BlockedVentas { get; set; }
+        public int DaysToBlock { get; set; }
+        public DateTime? LastUnBlockedDate { get; set; }
+
         public Configuracion()
-    {
-        nombreAplicacion = "CREDIN - iComercio";
-        MaxDisplayListItems = 15;
-        SendAdminEmailConfirmations = false;
-        Password = "seekrit";
-        AppConnectionString = "server=.;database=hosers;uid=bozo;pwd=seekrit;";
+        {
+            nombreAplicacion = "CREDIN - iComercio";
+            MaxDisplayListItems = 15;
+            SendAdminEmailConfirmations = false;
+            Password = "seekrit";
+            AppConnectionString = "server=.;database=hosers;uid=bozo;pwd=seekrit;";
 
-         /*REST AUTH */
-        RestUrlConexion = "http://190.191.95.146:82";
-        RestUsu = "admin";
-        RestKey = "";
+             /*REST AUTH */
+            RestUrlConexion = "http://190.191.95.146:82";
+            RestUsu = "admin";
+            RestKey = "";
 
-        /* Nombres de formularios */
-        frmUsuariosNombre = "Administrar Usuarios";
+            /* Nombres de formularios */
+            frmUsuariosNombre = "Administrar Usuarios";
 
-        /* Mensajes de informacion*/
-        BarraDeEstadoListo  = "Listo";
-        menSaldo = "Saldo";
+            /* Mensajes de informacion*/
+            BarraDeEstadoListo  = "Listo";
+            menSaldo = "Saldo";
 
-        /* Timers */ /*en milisegundos */
-        TiempoEnvioTransmisiones = 30000;
-        TiempoActualizacionSolicitarFondos = 60000;
-        TiempoEnvioNovedades = 30000; /*900000 15 Minutos*/
-        TiempoEnvioRevisiones = 1800000; /*1800000 30 Minutos*/
+            /* Timers */ /*en milisegundos */
+            TiempoEnvioTransmisiones = 30000;
+            TiempoActualizacionSolicitarFondos = 60000;
+            TiempoEnvioNovedades = 30000; /*900000 15 Minutos*/
+            TiempoEnvioRevisiones = 1800000; /*1800000 30 Minutos*/
 
-         /* SolicitarFondos */
-        solfonDiasParaAtras =7;
-        diasRevisionesParaAtras = 7;
+             /* SolicitarFondos */
+            solfonDiasParaAtras =7;
+            diasRevisionesParaAtras = 7;
 
-        /* Transmisiones */
-        ReintentosTransmisiones = 5;
-        ReintentosTransmisionesSol = 10;
-        ReintentosTransmisionesErr = 5;
+            /* Transmisiones */
+            ReintentosTransmisiones = 5;
+            ReintentosTransmisionesSol = 10;
+            ReintentosTransmisionesErr = 5;
 
-        /* Imagenes */
-        //rutaImagenes = System.IO.Directory.GetCurrentDirectory() + "\\imacli";
-        //rutaFotos = System.IO.Directory.GetCurrentDirectory() + "\\Fotos";
+            /* Imagenes */
+            //rutaImagenes = System.IO.Directory.GetCurrentDirectory() + "\\imacli";
+            //rutaFotos = System.IO.Directory.GetCurrentDirectory() + "\\Fotos";
 
             rutaImagenes = "\\imacli";
             rutaFotos = "\\Fotos";
@@ -238,98 +245,98 @@ namespace iComercio.Models
 
             /* sufijos y prefijos archivos */
             suf_sol1 = "_SOL_01";
-        suf_sol2 = "_SOL_02";
-        suf_sol3 = "_SOL_03";
+            suf_sol2 = "_SOL_02";
+            suf_sol3 = "_SOL_03";
         
-        suf_ser1 = "_SER_01";
-        suf_ser2 = "_SER_02";
-        suf_ser3 = "_SER_03";
+            suf_ser1 = "_SER_01";
+            suf_ser2 = "_SER_02";
+            suf_ser3 = "_SER_03";
         
-        suf_otr1 = "_OTR_01";
-        suf_otr2 = "_OTR_02";
-        suf_otr3 = "_OTR_03";
+            suf_otr1 = "_OTR_01";
+            suf_otr2 = "_OTR_02";
+            suf_otr3 = "_OTR_03";
         
-        suf_doc1 = "_DOC_01";
-        suf_doc2 = "_DOC_02";
-        suf_doc3 = "_DOC_03";
+            suf_doc1 = "_DOC_01";
+            suf_doc2 = "_DOC_02";
+            suf_doc3 = "_DOC_03";
         
-        suf_rec1 = "_REC_01";
-        suf_rec2 = "_REC_02";
-        suf_rec3 = "_REC_03";
+            suf_rec1 = "_REC_01";
+            suf_rec2 = "_REC_02";
+            suf_rec3 = "_REC_03";
 
-        suf_fir1 = "_FIR_01";
-        suf_fir2 = "_FIR_02";
-        suf_fir3 = "_FIR_03";
+            suf_fir1 = "_FIR_01";
+            suf_fir2 = "_FIR_02";
+            suf_fir3 = "_FIR_03";
 
-        pre_foto = "C";
+            pre_foto = "C";
         
-        /*ScriptBD*/
-        rutaScriptBD = System.IO.Directory.GetCurrentDirectory() + "\\Documentos\\BD\\Scritp paises, provincias, localidades Argentina solo datos.sql";
-        //@"d:\Credin\Sistemas\Proyectos\iComercio\iComercio\BD\Scritp paises, provincias, localidades Argentina solo datos.sql"
+            /*ScriptBD*/
+            rutaScriptBD = System.IO.Directory.GetCurrentDirectory() + "\\Documentos\\BD\\Scritp paises, provincias, localidades Argentina solo datos.sql";
+            //@"d:\Credin\Sistemas\Proyectos\iComercio\iComercio\BD\Scritp paises, provincias, localidades Argentina solo datos.sql"
 
-        AltaLugar = "Ciudad de Buenos Aires";
-        AltaTribunales = "Tribunales de la ciudad de de Buenos Aires";
+            AltaLugar = "Ciudad de Buenos Aires";
+            AltaTribunales = "Tribunales de la ciudad de de Buenos Aires";
 
-        NumCredInicial = 1;
-        ImprimirComprobantes = true;
-        ImprimirCredTalonComercio = true;
-        ImprimirComprobantesCob = true;
-        ImprimirCobTalonComercio = false;
-        MaxMontoMensual = 0;
+            NumCredInicial = 1;
+            ImprimirComprobantes = true;
+            ImprimirCredTalonComercio = true;
+            ImprimirComprobantesCob = true;
+            ImprimirCobTalonComercio = false;
+            MaxMontoMensual = 0;
 
-        /*FF*/
-        MontoFF = 1500;
+            /*FF*/
+            MontoFF = 1500;
 
-        //Permisos
-        AutenticaAltaCredito = true;
-        AutenticaCobranza = true;
-        permPagoAnticipado = "permPagoAnticipado";
-        permCambiaPunitorios = "permCambiaPunitorios";
-        permCancelaRefi = "Cancelarefinanciacion";
-        permArregloPagos = "permArregloPagos";
-        permQuitaPunitorios = "permQuitaPunitorios";
-        permPermiteBonificar = "permPermiteBonificar";
-        permCambiaMinimo = "CambiaMinimo";
-        permHabilitaPagoDebitoDirecto = "HabilitaPagoNormalDebitoDirecto";
-        permPagoAbogado = "pagoAbogado";
+            //Permisos
+            AutenticaAltaCredito = true;
+            AutenticaCobranza = true;
+            permPagoAnticipado = "permPagoAnticipado";
+            permCambiaPunitorios = "permCambiaPunitorios";
+            permCancelaRefi = "Cancelarefinanciacion";
+            permArregloPagos = "permArregloPagos";
+            permQuitaPunitorios = "permQuitaPunitorios";
+            permPermiteBonificar = "permPermiteBonificar";
+            permCambiaMinimo = "CambiaMinimo";
+            permHabilitaPagoDebitoDirecto = "HabilitaPagoNormalDebitoDirecto";
+            permPagoAbogado = "pagoAbogado";
             
 
-        /*Test*/
-        TestMode = false;
-        TestRestUrlConexion = "http://190.191.95.146:9090";
+            /*Test*/
+            TestMode = false;
+            TestRestUrlConexion = "http://190.191.95.146:9090";
 
-        //**M**//
-        RestUrlConexionM = "http://190.191.95.146:8282";
-        cLlevaMor = "N";                           // "A" = AUTOMÁTICO    "M" = Manual  "" = COMUN
-        bFormaPago = true;
-        bAceptaFOrmaPago = false;
-        nLlevaMorPorcentFinan = 50;                // procentaje que coreesponde a la financiera dentro del mes en curso
-        nLlevaMorMax = 100000;                    // Total valor nominal del el mes en curso para M
-        //**M**//
+            //**M**//
+            RestUrlConexionM = "http://190.191.95.146:8282";
+            cLlevaMor = "N";                           // "A" = AUTOMÁTICO    "M" = Manual  "" = COMUN
+            bFormaPago = true;
+            bAceptaFOrmaPago = false;
+            nLlevaMorPorcentFinan = 50;                // procentaje que coreesponde a la financiera dentro del mes en curso
+            nLlevaMorMax = 100000;                    // Total valor nominal del el mes en curso para M
+            //**M**//
 
-        /* Transmisiones */
-        TransmisionHabilitada = true;
-        TransmisionHabilitadaM = true;
+            /* Transmisiones */
+            TransmisionHabilitada = true;
+            TransmisionHabilitadaM = true;
 
-        /*Pantalla*/
-        MinIndiceHRedux = 0.85f;
-        MinIndiceWRedux = 0.85f;
-        MinIndiceFontRedux = 0.85f;
+            /*Pantalla*/
+            MinIndiceHRedux = 0.85f;
+            MinIndiceWRedux = 0.85f;
+            MinIndiceFontRedux = 0.85f;
 
-        //Acts
-        bPropio = true;
-        bActComercios = true;
-        bActHabilitada = true;
-        bActEF = false;
-        bActDesde = true;
-        TiempoActs = 3600000; //1 hora
-        ActDesde = DateTime.Now.Date.AddDays(-1);
-        ActHasta = DateTime.Now;
-        RegsLog = 500;
-        CantImpBoni = 2;
+            //Acts
+            bPropio = true;
+            bActComercios = true;
+            bActHabilitada = true;
+            bActEF = false;
+            bActDesde = true;
+            TiempoActs = 3600000; //1 hora
+            ActDesde = DateTime.Now.Date.AddDays(-1);
+            ActHasta = DateTime.Now;
+            RegsLog = 500;
+            CantImpBoni = 2;
 
-        NombreBD = "Comercio";
-        NombreBDMig = "ComerFinanMig";
+            NombreBD = "Comercio";
+            NombreBDMig = "ComerFinanMig";
 
             dArreglo01 = 50; //edu20211207
             dArreglo02 = 60; //edu20211207
@@ -338,6 +345,9 @@ namespace iComercio.Models
 
             nRedondeo = 50;
 
+            BlockingEnabled = false;
+            Blocked = false;
+            DaysToBlock = 7;
         }
 
         ///// 
@@ -348,7 +358,7 @@ namespace iComercio.Models
 
         protected override IConfigurationProvider OnCreateDefaultProvider(string sectionName, object configData)
     {
-        string connectionString = "ComercioContext";
+        string connectionString = ConnectionStrings.GetDecryptedConnectionString("ComercioContext");
         string tableName = "ConfigurationData";
 
         var provider = new SqlServerConfigurationProvider<Configuracion>()

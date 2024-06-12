@@ -1757,6 +1757,11 @@ namespace iComercio.Forms
 
         private void btnGrabaCredito_Click(object sender, EventArgs e)
         {
+            if (bl.pGlob.Configuracion.BlockedVentas??false)
+            {
+                MessageBox.Show("No es posible realizar alta de créditos, consulte con casa central");
+                return;
+            }
             if (lblNroCredito.Text != "") return;
             if (Valida_Todo() == false) return;
             Graba_Credito();

@@ -11,21 +11,28 @@ using System.Data.Entity;
 using System.Reflection;
 using iComercio.Auxiliar;
 using iComercio.Models;
+using System.Configuration;
 
 namespace iComercio.DAL
 {
     public class Dal:IDisposable
     {
-        public ComercioContext context = new ComercioContext();
+        public ComercioContext context = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext"));
 
-        public Dal(String NombreBase)
+        //public Dal(String NombreBase)
+        //{
+        //    context = new ComercioContext(NombreBase);
+        //   // context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+        //    // context.Database.Connection.Open();
+        //    //// context.Database.Connection.ChangeDatabase("SqlValle");
+        //    // context.Database.Connection.ChangeDatabase(NombreBase);
+        //    //// context.Database.Connection.ChangeDatabase("SqlAcuatro");           
+        //}
+
+        public Dal(string nombrebase)
         {
-            context = new ComercioContext(NombreBase);
-           // context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-            // context.Database.Connection.Open();
-            //// context.Database.Connection.ChangeDatabase("SqlValle");
-            // context.Database.Connection.ChangeDatabase(NombreBase);
-            //// context.Database.Connection.ChangeDatabase("SqlAcuatro");           
+            var a = ConnectionStrings.Encrypt("a");
+            context = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString(nombrebase));
         }
 
         private IGenericRepository<Configuracion> configuracionRepository;

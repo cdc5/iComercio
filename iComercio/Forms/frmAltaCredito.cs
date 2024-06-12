@@ -549,5 +549,14 @@ namespace iComercio.Forms
 
         }
 
+        private void lblValida_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbTipoDni_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

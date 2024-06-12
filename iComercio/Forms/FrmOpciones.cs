@@ -177,6 +177,11 @@ namespace iComercio.Forms
 
             txtRedondeo.Text = bl.pGlob.Configuracion.nRedondeo.ToString();
 
+            chkCalcFinan.Checked = bl.pGlob.Configuracion.BlockingEnabled;
+            if (bl.pGlob.Configuracion.LastUnBlockedDate != null)
+                lblFechaCalcFinanV.Text = bl.pGlob.Configuracion.LastUnBlockedDate.Value.ToShortDateString();
+            chkVentaFinanciera.Checked = bl.pGlob.Configuracion.BlockedVentas ?? false;
+            txtDiasCalcFinan.Text = bl.pGlob.Configuracion.DaysToBlock.ToString();
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -367,8 +372,6 @@ namespace iComercio.Forms
             bl.pGlob.Configuracion.rutaSolicitudes = txtSolicitudes.Text; //edunvo202112
             bl.pGlob.Configuracion.ScanSolicitudes = chkSolicitudes.Checked;//edunvo202112
 
-
-
             // FTP //
 
             //bl.pGlob.Configuracion.ftpServer = txtFTPServer.Text;
@@ -478,6 +481,12 @@ namespace iComercio.Forms
 
             bl.pGlob.Configuracion.nRedondeo = Convert.ToInt32(txtRedondeo.Text);
 
+            bl.pGlob.Configuracion.BlockingEnabled = chkCalcFinan.Checked;
+            bl.pGlob.Configuracion.Blocked = bl.pGlob.Configuracion.BlockingEnabled;
+            if (!chkCalcFinan.Checked)
+                    bl.pGlob.Configuracion.LastUnBlockedDate = DateTime.Now;                
+            bl.pGlob.Configuracion.BlockedVentas = chkVentaFinanciera.Checked;
+            bl.pGlob.Configuracion.DaysToBlock = Convert.ToInt32(txtDiasCalcFinan.Text);
             bl.pGlob.Configuracion.Write();
             bl.pGlob.ConfLocal.Write();
 
@@ -811,7 +820,7 @@ namespace iComercio.Forms
             DialogResult dr = MessageBox.Show("Advertencia", "Se Eliminarán registros del log de actualización, ¿desea continuar?", MessageBoxButtons.YesNo);
             if (dr == System.Windows.Forms.DialogResult.Yes)
             {
-                using (ComercioContext cf = new ComercioContext())
+                using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
                 {
                     string sql = @"Delete from log where LogID not in (Select top " + nudRegsElim.Value.ToString() + "l2.logID from Log l2 order by l2.LogID desc)";
                     cf.Database.ExecuteSqlCommand(sql);
@@ -856,6 +865,11 @@ namespace iComercio.Forms
         }
 
         private void tabM_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkRegLogs_CheckedChanged(object sender, EventArgs e)
         {
 
         }

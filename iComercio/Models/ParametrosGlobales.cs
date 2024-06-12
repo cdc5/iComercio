@@ -388,7 +388,7 @@ namespace iComercio.Models
         public int ComercioMID { get; set; }
 
         /*M*/
-
+        
         
         public ParametrosGlobales(BusinessLayer bl)
         {

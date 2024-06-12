@@ -1017,6 +1017,7 @@
             this.lblValida.Tag = "XXXXB";
             this.lblValida.Text = "Modificar teléfono";
             this.lblValida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblValida.Click += new System.EventHandler(this.lblValida_Click);
             // 
             // groupControl1
             // 
@@ -1246,6 +1247,7 @@
             this.cmbTipoDni.Name = "cmbTipoDni";
             this.cmbTipoDni.Size = new System.Drawing.Size(100, 20);
             this.cmbTipoDni.TabIndex = 1;
+            this.cmbTipoDni.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDni_SelectedIndexChanged_1);
             // 
             // lblDni
             // 

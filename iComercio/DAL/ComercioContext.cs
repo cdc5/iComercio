@@ -9,26 +9,37 @@ using iComercio.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
+using iComercio.Auxiliar;
 
 namespace iComercio.DAL
 {
    public class ComercioContext:DbContext
     {
-         public ComercioContext() : base()
+         public ComercioContext() : base(ConnectionStrings.GetDecryptedConnectionString("ComercioContext"))
          {
              
          }
 
-         public ComercioContext(string Base)
-            : base("name=" + Base)
+        // public ComercioContext(string Base)
+        //    : base("name=" + Base)
+        //{
+        //    var adapter = (IObjectContextAdapter)this;
+        //    var objectContext = adapter.ObjectContext;
+        //    objectContext.CommandTimeout = 240; //2 minutes
+        //   // Database.SetInitializer<ComercioContext>(null);
+        //}
+
+
+        public ComercioContext(string connectionString)
+           : base(connectionString)
         {
             var adapter = (IObjectContextAdapter)this;
             var objectContext = adapter.ObjectContext;
-            objectContext.CommandTimeout = 240; //2 minutes
-           // Database.SetInitializer<ComercioContext>(null);
+            objectContext.CommandTimeout = 240;
         }
 
-         public DbSet<Banco> Bancos { get; set; }
+
+        public DbSet<Banco> Bancos { get; set; }
          public DbSet<Cargo> Cargos { get; set; }
          public DbSet<Cheque> Cheques { get; set; }
          public DbSet<Chequera> Chequera { get; set; }

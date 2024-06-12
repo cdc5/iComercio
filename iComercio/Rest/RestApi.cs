@@ -237,27 +237,36 @@ namespace iComercio.Rest
                 client.Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey);
                 //client.Authenticator = new SimpleAuthenticator("username", "cdc5", "password", "popot3");
                 request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
+                log.Debug($"Enviando solicitud: {request.Resource} PARAMS: {request.Parameters.ToString()}");
                 try
                 {
-                    var response = client.ExecuteAsync<T>(request, res => {
-                                                                            if (res != null) 
-                                                                                 tcs.SetResult(res.Data);
-                                                                            else
-                                                                            {
-                                                                                Exception ex  = new Exception("Error en la conexión");
-                                                                                tcs.TrySetException(ex);
-                                                                            }
-                                                                           });
+                    var response = client.ExecuteAsync<T>(request, res =>
+                        {
+                         if (res != null)
+                            {
+                                tcs.SetResult(res.Data);
+                                log.Debug($"Data: {res.Data}");
+                                log.Debug($"Content: {res.Content}");
+                            }
+                            else
+                            {
+                                Exception ex  = new Exception("Error en la conexión");
+                                log.Debug($"Excepción:{res.ErrorException}");
+                                tcs.TrySetException(ex);
+                            }
+                        });
                 }
                  catch (Exception ex)
                 {
-                  tcs.TrySetException(ex);
+                    log.Debug($"Excepción 1:{ex}");
+                    tcs.TrySetException(ex);
                 }
 
                 return tcs.Task;
             }
             catch(Exception ex)
             {
+                log.Debug($"Excepción 2:{ex.Message}");
                 Debug.Print(ex.Message);
             }
             return null;
