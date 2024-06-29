@@ -254,34 +254,34 @@
   <data name="tsClientePorNombre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
-        AAAASUVORK5CYII=
+        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
+        AABJRU5ErkJggg==
 </value>
   </data>
   <data name="tsClientePorNombre.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1703,6 +1703,12 @@
   <data name="&gt;&gt;mnuCuentaCorrienteComercio.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;mnuTransmisiones.Name" xml:space="preserve">
+    <value>mnuTransmisiones</value>
+  </data>
+  <data name="&gt;&gt;mnuTransmisiones.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mnuProveedores.Name" xml:space="preserve">
     <value>mnuProveedores</value>
   </data>
@@ -1761,12 +1767,6 @@
     <value>mnuPagare</value>
   </data>
   <data name="&gt;&gt;mnuPagare.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mnuTransmisiones.Name" xml:space="preserve">
-    <value>mnuTransmisiones</value>
-  </data>
-  <data name="&gt;&gt;mnuTransmisiones.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuConfiguracion.Name" xml:space="preserve">
@@ -1971,6 +1971,6 @@
     <value>Principal</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>iComercio.Forms.FRM, iComercio, Version=1.0.8909.37369, Culture=neutral, PublicKeyToken=null</value>
+    <value>iComercio.Forms.FRM, iComercio, Version=1.0.8946.35451, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

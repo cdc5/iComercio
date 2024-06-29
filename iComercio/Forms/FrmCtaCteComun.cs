@@ -42,13 +42,15 @@ namespace iComercio.Forms
 
         private void FrmCtaCteComun_Load(object sender, EventArgs e)
         {
-            RecargarEmpYComercio(false);
+            lblMor.Visible = false;
+            RecargarEmpYComercio(lblMor.Visible);
             InicializarControles();
             Buscar();
         }
 
         private void InicializarControles()
         {
+            
             Utilidades.CargarComboGeneric<Comercio>(cmbComercio, Com, "Nombre", "ComercioID");
             dtpDesde.Value = DateTime.Now.Date.AddDays(-7);           
                       
@@ -166,6 +168,27 @@ namespace iComercio.Forms
 
         }
 
+        private void FrmCtaCteComun_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                if (e.Shift)
+                {
+                    if (bl.LlevaM())
+                    {
+                        if (lblMor.Visible) return;
+                        lblMor.Visible = true;
+                        RecargarEmpYComercio(lblMor.Visible);
+                        InicializarControles();
+                        Buscar();
+                    }
+                }
+            }
+        }
 
+        private void FrmCtaCteComun_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show(e.KeyChar.ToString());
+        }
     }
 }

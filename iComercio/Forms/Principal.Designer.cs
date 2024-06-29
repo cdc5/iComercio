@@ -85,6 +85,7 @@
             this.mnuCuentaCorrienteDiaria = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCuentaCorrienteAnulacion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCuentaCorrienteComercio = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTransmisiones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListadoDeProveedores = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuABMProveedores = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +96,6 @@
             this.mnuReimpresiones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuReportes = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPagare = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTransmisiones = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguracion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdminUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
@@ -537,6 +537,12 @@
             resources.ApplyResources(this.mnuCuentaCorrienteComercio, "mnuCuentaCorrienteComercio");
             this.mnuCuentaCorrienteComercio.Click += new System.EventHandler(this.mnuCuentaCorrienteComercio_Click);
             // 
+            // mnuTransmisiones
+            // 
+            this.mnuTransmisiones.Name = "mnuTransmisiones";
+            resources.ApplyResources(this.mnuTransmisiones, "mnuTransmisiones");
+            this.mnuTransmisiones.Click += new System.EventHandler(this.mnuTransmisiones_Click);
+            // 
             // mnuProveedores
             // 
             this.mnuProveedores.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -603,12 +609,6 @@
             this.mnuPagare.Name = "mnuPagare";
             resources.ApplyResources(this.mnuPagare, "mnuPagare");
             this.mnuPagare.Click += new System.EventHandler(this.mnuPagare_Click);
-            // 
-            // mnuTransmisiones
-            // 
-            this.mnuTransmisiones.Name = "mnuTransmisiones";
-            resources.ApplyResources(this.mnuTransmisiones, "mnuTransmisiones");
-            this.mnuTransmisiones.Click += new System.EventHandler(this.mnuTransmisiones_Click);
             // 
             // mnuConfiguracion
             // 
@@ -859,6 +859,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

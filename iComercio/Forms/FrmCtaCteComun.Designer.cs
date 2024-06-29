@@ -64,6 +64,7 @@
             this.btnAct = new System.Windows.Forms.Button();
             this.btnAgregarMovimiento = new System.Windows.Forms.Button();
             this.grbFechas = new DevExpress.XtraEditors.GroupControl();
+            this.lblMor = new System.Windows.Forms.Label();
             this.lblComercio = new System.Windows.Forms.Label();
             this.cmbComercio = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -385,6 +386,7 @@
             // 
             this.grbFechas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbFechas.Controls.Add(this.lblMor);
             this.grbFechas.Controls.Add(this.lblComercio);
             this.grbFechas.Controls.Add(this.cmbComercio);
             this.grbFechas.Controls.Add(this.btnBuscar);
@@ -397,6 +399,14 @@
             this.grbFechas.Size = new System.Drawing.Size(952, 108);
             this.grbFechas.TabIndex = 0;
             this.grbFechas.Text = "Seleccione las opciones";
+            // 
+            // lblMor
+            // 
+            this.lblMor.BackColor = System.Drawing.Color.Black;
+            this.lblMor.Location = new System.Drawing.Point(68, 26);
+            this.lblMor.Name = "lblMor";
+            this.lblMor.Size = new System.Drawing.Size(5, 21);
+            this.lblMor.TabIndex = 43;
             // 
             // lblComercio
             // 
@@ -470,9 +480,12 @@
             this.Controls.Add(this.grbCtaCte);
             this.Controls.Add(this.grbFechas);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FrmCtaCteComun";
             this.Text = "Cuenta Corriente";
             this.Load += new System.EventHandler(this.FrmCtaCteComun_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCtaCteComun_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCtaCteComun_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuentaCorrienteComunBindingSource)).EndInit();
@@ -532,5 +545,6 @@
         private DevExpress.XtraEditors.LabelControl lblAutVentaHoy;
         private DevExpress.XtraEditors.LabelControl lblAutVentaAyerV;
         private DevExpress.XtraEditors.LabelControl lblAutVentaAyer;
+        private System.Windows.Forms.Label lblMor;
     }
 }
