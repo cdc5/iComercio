@@ -6539,7 +6539,7 @@ namespace iComercio.Models
                                                     t =>(t.CantTransmisiones <= pGlob.Configuracion.ReintentosTransmisiones
                                                     && t.EstadoTransmision.EstadoTransmisionID.Equals(pGlob.PendienteDeEnvio.EstadoTransmisionID) )
                                                     && (t.OperacionID != pGlob.TransArchivo.OperacionID), p => p.OrderBy(s => s.TransmisionID)).ToList();
-                        for (int i = 0; res && i < trans.Count; i++)
+                        for (int i = 0; i < trans.Count; i++)
                         {
                             var transmitido = Transmitir(trans[i],true);
                             res = transmitido.Result;
@@ -6637,18 +6637,20 @@ namespace iComercio.Models
            
         public async Task<bool> Transmitir(Transmision tran,bool grabaTransmision)
         {
-            if (tran.OperacionID != pGlob.TransControlDiario.OperacionID)
+            try
             {
-                tran.CantTransmisiones = ++tran.CantTransmisiones ?? 1;
-                tran.UltimaTransmision = DateTime.Now;
-                ActualizarTransmision(tran);
-                Grabar(tran.EmpresaID);
-            }
-          
-            if (await tran.Operacion.Enviar(this, tran))
+                if (tran.OperacionID != pGlob.TransControlDiario.OperacionID)
                 {
-                log.Info(String.Format("Transmitiendo transmision N°:{0}-Entidad ID:{1}-Entidad ID2:{2}-Entidad ID3:{3}",
-                                                                        tran.TransmisionID, tran.EntidadID, tran.EntidadID2, tran.EntidadID3));
+                    tran.CantTransmisiones = ++tran.CantTransmisiones ?? 1;
+                    tran.UltimaTransmision = DateTime.Now;
+                    ActualizarTransmision(tran);
+                    Grabar(tran.EmpresaID);
+                }
+
+                if (await tran.Operacion.Enviar(this, tran))
+                {
+                    log.Info(String.Format("Transmitiendo transmision N°:{0}-Entidad ID:{1}-Entidad ID2:{2}-Entidad ID3:{3}",
+                                                                            tran.TransmisionID, tran.EntidadID, tran.EntidadID2, tran.EntidadID3));
                     if (grabaTransmision)
                     {
                         tran.EstadoTransmisionID = pGlob.Enviado.EstadoTransmisionID;
@@ -6668,7 +6670,14 @@ namespace iComercio.Models
                         Grabar(tran.EmpresaID);
                     }
                     return false;
-                }           
+                }
+            }
+            catch(Exception ex)
+            {
+                tran.EstadoTransmisionID = pGlob.Erronea.EstadoTransmisionID;
+                ActualizarTransmision(tran);
+                return false;
+            }
         }
 
         /* Autorizaciones */

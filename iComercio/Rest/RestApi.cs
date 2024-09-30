@@ -251,7 +251,7 @@ namespace iComercio.Rest
                             else
                             {
                                 Exception ex  = new Exception("Error en la conexión");
-                                log.Debug($"Excepción:{res.ErrorException}");
+                                log.Debug($"Excepción:{ex}");
                                 tcs.TrySetException(ex);
                             }
                         });

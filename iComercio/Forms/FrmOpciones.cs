@@ -436,6 +436,8 @@ namespace iComercio.Forms
                         
             /**M**/
             bl.pGlob.Configuracion.RestUrlConexionM = txtURLConexionM.Text;
+            //Lo piso
+            bl.pGlob.Configuracion.TestRestUrlConexion = txtURLConexionM.Text;
             bl.pGlob.Configuracion.nLlevaMorPorcentFinan = System.Convert.ToInt32(txtPorcentFinan.Text);
             bl.pGlob.Configuracion.nLlevaMorMax = System.Convert.ToInt32(txtMontoMax.Text);
             bl.pGlob.Configuracion.cLlevaMor = LlevaM;
