@@ -1082,6 +1082,8 @@ namespace iComercio.Forms
             DateTime NvaFechDesde = DateTime.Now;
             bool bHaySaldo = false;
             nTot = 0;
+            nFavorComer = 0;
+            nFavorFinan = 0;
             if (regCtaCte != null)
             {
                 NvaFechDesde = regCtaCte.Fecha;
@@ -1171,6 +1173,27 @@ namespace iComercio.Forms
                                 nFavorComer = cta.SaldoMovCom;
 
 
+                            }
+                        } 
+                        else
+                        {
+                            if (cFecha == cta.Fecha.ToShortDateString())
+                            {
+                                CargaLista(nTipcc, cTipcc, cFecha);
+                                cTipcc = cta.Nombre;
+                                nTipcc = Convert.ToInt16(cta.tpm_id);
+                                nFavorFinan = cta.SaldoMovFin;
+                                nFavorComer = cta.SaldoMovCom;
+                            }
+                            else
+                            {
+                                CargaLista(nTipcc, cTipcc, cFecha);
+                                if (backColorList == Color.White) backColorList = Color.LightSteelBlue; else backColorList = Color.White;//8
+                                cFecha = cta.Fecha.ToShortDateString();
+                                nTipcc = Convert.ToInt16(cta.tpm_id);
+                                cTipcc = cta.Nombre;
+                                nFavorFinan = cta.SaldoMovFin;
+                                nFavorComer = cta.SaldoMovCom;
                             }
                         }
                     }
