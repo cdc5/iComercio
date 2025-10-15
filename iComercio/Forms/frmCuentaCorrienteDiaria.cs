@@ -44,7 +44,7 @@ namespace iComercio.Forms
             Utilidades.CargarComboGeneric<Comercio>(cmbComercio, Com, "Nombre", "ComercioID");
             dtpDesde.Value = DateTime.Now.Date.AddDays(-7);
 
-        }
+        }       
 
         private void frmCuentaCorrienteDiaria_Load(object sender, EventArgs e)
         {
@@ -86,6 +86,19 @@ namespace iComercio.Forms
             }
         }
 
-        
+        private void frmCuentaCorrienteDiaria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                if (e.Shift)
+                {
+                    if (bl.LlevaM())
+                    {
+                        lblMor.Visible = true;
+                        RecargarEmpYComercio(lblMor.Visible);
+                    }
+                }
+            }
+        }
     }
 }

@@ -52,6 +52,7 @@
             this.lblDesde = new System.Windows.Forms.Label();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lblMor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCCDiaria)).BeginInit();
@@ -178,6 +179,7 @@
             // 
             this.grbFechas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbFechas.Controls.Add(this.lblMor);
             this.grbFechas.Controls.Add(this.lblComercio);
             this.grbFechas.Controls.Add(this.cmbComercio);
             this.grbFechas.Controls.Add(this.btnBuscar);
@@ -247,6 +249,16 @@
             this.groupControl1.TabIndex = 7;
             this.groupControl1.Text = "Seleccione las opciones";
             // 
+            // lblMor
+            // 
+            this.lblMor.AutoSize = true;
+            this.lblMor.BackColor = System.Drawing.Color.Black;
+            this.lblMor.Location = new System.Drawing.Point(330, 31);
+            this.lblMor.Name = "lblMor";
+            this.lblMor.Size = new System.Drawing.Size(0, 13);
+            this.lblMor.TabIndex = 8;
+            this.lblMor.Visible = false;
+            // 
             // frmCuentaCorrienteDiaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +270,7 @@
             this.Name = "frmCuentaCorrienteDiaria";
             this.Text = "Cuenta Corriente Diaria";
             this.Load += new System.EventHandler(this.frmCuentaCorrienteDiaria_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCuentaCorrienteDiaria_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCCDiaria)).EndInit();
@@ -295,5 +308,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Columns.GridColumn colMovimiento1;
         private System.Windows.Forms.BindingSource bsCCDiaria;
+        private System.Windows.Forms.Label lblMor;
     }
 }

@@ -127,7 +127,7 @@ namespace iComercio.Forms
 
         private void btnAgregarMovimiento_Click(object sender, EventArgs e)
         {
-            frmRecibos frmRec = new frmRecibos(p, bl);
+            frmRecibos frmRec = new frmRecibos(p, bl, lblMor.Visible);
             frmRec.ShowDialog();
             Buscar();
         }

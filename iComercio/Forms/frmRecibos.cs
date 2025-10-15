@@ -23,7 +23,7 @@ namespace iComercio.Forms
         Comercio ComAdh;
         int? ComAdhEmpID = null;
         int? ComAdhComID = null;
-
+        bool esM;
         
         public frmRecibos(Principal p,BusinessLayer bl): base(p,bl)
         {
@@ -32,9 +32,17 @@ namespace iComercio.Forms
             this.bl = bl;
         }
 
+        public frmRecibos(Principal p, BusinessLayer bl,bool esM) : base(p, bl)
+        {
+            InitializeComponent();
+            this.p = p;
+            this.bl = bl;
+            this.esM = esM;
+        }
+
         private void frmRecibos_Load(object sender, EventArgs e)
         {
-            RecargarEmpYComercio(false);
+            RecargarEmpYComercio(esM);
             ConfiguraControles();
             CargarMovimientos();
             CargarComerciosAdheridos();       
