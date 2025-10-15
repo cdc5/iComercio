@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip();
             this.bgwImportarDatos = new System.ComponentModel.BackgroundWorker();
             this.Toolstrip = new System.Windows.Forms.ToolStrip();
             this.tsCreditosAlta = new System.Windows.Forms.ToolStripButton();

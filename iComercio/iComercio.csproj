@@ -2263,6 +2263,7 @@
     <Content Include="Documentos\BD\Scritp paises, provincias, localidades Argentina solo datos.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\logoCreditoExtra_icon.ico" />
     <Content Include="Scripts\BD MIG\CargarCreditos.sql" />
     <Content Include="Scripts\BD MIG\dbo.TransformarLaboral.sql" />
     <Content Include="Scripts\BD MIG\dbo.ObtenerProvinciaDesdeClave.sql" />
