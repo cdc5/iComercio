@@ -261,11 +261,11 @@
             // panelPagar
             // 
             this.panelPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPagar.Controls.Add(this.lblPagTit);
             this.panelPagar.Controls.Add(this.lblPagQueHace);
             this.panelPagar.Controls.Add(this.btnPagCerrar);
             this.panelPagar.Controls.Add(this.tablaPagar);
-            this.panelPagar.Controls.Add(this.lblPagTit);
-            this.panelPagar.Location = new System.Drawing.Point(431, 76);
+            this.panelPagar.Location = new System.Drawing.Point(127, 64);
             this.panelPagar.Name = "panelPagar";
             this.panelPagar.Size = new System.Drawing.Size(717, 411);
             this.panelPagar.TabIndex = 1033;
@@ -3013,8 +3013,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 491);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panelPagar);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblComNombre);
             this.Controls.Add(this.lblSombra2);
             this.Controls.Add(this.lblCredDeudaTotal);
