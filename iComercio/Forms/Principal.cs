@@ -180,7 +180,8 @@ namespace iComercio.Forms
                     {
                         //bla.RealizarTransmisionesSolicitudes(transmitiendo);
                         //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
-                        bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
+                        if (pGlob.EmpresaM  != null)
+                            bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
                         // bla.RetransmitirErroneas(transmitiendo);
                         //bla.RealizarTransmisionesArchivo(transmitiendo);
                     }

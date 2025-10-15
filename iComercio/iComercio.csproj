@@ -70,7 +70,7 @@
     <StartupObject>iComercio.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Credin.ico</ApplicationIcon>
+    <ApplicationIcon>logoCreditoExtra_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>8D158A6CCF69AAAB06BECFA1396E08DC615F467E</ManifestCertificateThumbprint>
@@ -2264,6 +2264,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\logoCreditoExtra_icon.ico" />
+    <Content Include="logoCreditoExtra_icon.ico" />
     <Content Include="Scripts\BD MIG\CargarCreditos.sql" />
     <Content Include="Scripts\BD MIG\dbo.TransformarLaboral.sql" />
     <Content Include="Scripts\BD MIG\dbo.ObtenerProvinciaDesdeClave.sql" />
