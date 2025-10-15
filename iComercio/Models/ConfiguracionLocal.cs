@@ -19,12 +19,11 @@ namespace iComercio.Models
     // Must implement public default constructor
         public ConfiguracionLocal()
         {
-        
-        /* Autorizaciones */
-        rutaPdfAutorizacionRetCob = System.IO.Directory.GetCurrentDirectory() + "\\resources\\FormatoAutorizacion.pdf";
-        rutaPdfAutorizacionExtBan = System.IO.Directory.GetCurrentDirectory() + "\\resources\\FormatoAutorizacionExtBan.pdf";
-        rutaPdfAutorizacionGuardado = System.IO.Directory.GetCurrentDirectory() + "\\Documentos\\Autorizaciones\\";
-        //encriptado = "1585";
+            /* Autorizaciones */
+            rutaPdfAutorizacionRetCob = System.IO.Directory.GetCurrentDirectory() + "\\resources\\FormatoAutorizacion.pdf";
+            rutaPdfAutorizacionExtBan = System.IO.Directory.GetCurrentDirectory() + "\\resources\\FormatoAutorizacionExtBan.pdf";
+            rutaPdfAutorizacionGuardado = System.IO.Directory.GetCurrentDirectory() + "\\Documentos\\Autorizaciones\\";
+            //encriptado = "1585";
         }
 
         protected override IConfigurationProvider OnCreateDefaultProvider(string sectionName, object configData)

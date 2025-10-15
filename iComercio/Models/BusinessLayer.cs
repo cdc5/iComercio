@@ -70,11 +70,11 @@ namespace iComercio.Models
 
         public Dal GetDal(int BaseIDb)
         {
-            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100)
+            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100 || BaseIDb == 99 )
             {
                 return dal;
             }
-            else if (BaseIDb == 99)
+            else if (BaseIDb == 101)
             {
                 return dalPrueba;
             }
@@ -120,11 +120,11 @@ namespace iComercio.Models
 
         public RestApi GetRa(int BaseIDb)
         {
-            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100)
+            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100 || BaseIDb == 99)
             {
                 return ra;
             }
-            else if (BaseIDb == 99)
+            else if (BaseIDb == 101)
             {                
                 ra.esEnvioTest = true;
                 return ra;
@@ -4903,11 +4903,11 @@ namespace iComercio.Models
 
         public Comercio GetComercio(int BaseIDb)
         {
-            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3)
+            if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100 ||BaseIDb == 99 )
             {
                 return pGlob.Comercio;
             }
-            else if (BaseIDb == 99)
+            else if (BaseIDb == 101)
             {
                 return pGlob.ComercioM;
             }

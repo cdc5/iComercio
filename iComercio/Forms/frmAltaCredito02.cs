@@ -2109,7 +2109,7 @@ namespace iComercio.Forms
             if (lblMor.Visible == false) return false;
             regCliente = bl.Get<Cliente>(1, c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento).FirstOrDefault();  //EDU2023
             RecargarEmpYComercio(true);
-            Cliente regCliPru = bl.GetDal(99).Get<Cliente>( c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento).FirstOrDefault();
+            Cliente regCliPru = bl.GetDal(101).Get<Cliente>( c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento).FirstOrDefault();
             if(regCliPru == null)
             {
                 regCliPru = new Cliente();
@@ -2135,10 +2135,10 @@ namespace iComercio.Forms
             regCliPru.Legajo = regCliente.Legajo;
             if (esNuevo)
             {
-                bl.Agregar(99, regCliPru);
+                bl.Agregar(101, regCliPru);
             }else
             {
-                bl.Actualizar(99, regCliPru);
+                bl.Actualizar(101, regCliPru);
                 
             }
            
@@ -2148,7 +2148,7 @@ namespace iComercio.Forms
             if (RegDomLst != null)
             {
                 Domicilio RegDomLstN = new Domicilio();
-                RegDomLstN = bl.GetDal(99).Get<Domicilio>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
+                RegDomLstN = bl.GetDal(101).Get<Domicilio>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
                 if (RegDomLstN != null) esNuevo = false;
 
                 if (esNuevo)
@@ -2175,11 +2175,11 @@ namespace iComercio.Forms
                 RegDomLstN.EstadoID = RegDomLst.EstadoID;
                 if (esNuevo)
                 {
-                    bl.Agregar<Domicilio>(99, RegDomLstN);
+                    bl.Agregar<Domicilio>(101, RegDomLstN);
                 }
                 else
                 {
-                    bl.Actualizar<Domicilio>(99, RegDomLstN);
+                    bl.Actualizar<Domicilio>(101, RegDomLstN);
                 }
             }
 
@@ -2189,7 +2189,7 @@ namespace iComercio.Forms
             if (RegtelLst != null)
             {
                 Telefono regTelefono = new Telefono();
-                regTelefono = bl.GetDal(99).Get<Telefono>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
+                regTelefono = bl.GetDal(101).Get<Telefono>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
                 if (regTelefono != null) esNuevo = false;
                 if (esNuevo)
                 {
@@ -2211,11 +2211,11 @@ namespace iComercio.Forms
                 regTelefono.EstadoID = RegtelLst.EstadoID;
                 if (esNuevo)
                 {
-                    bl.Agregar<Telefono>(99, regTelefono);
+                    bl.Agregar<Telefono>(101, regTelefono);
                 }
                 else
                 {
-                    bl.Actualizar<Telefono>(99, regTelefono);
+                    bl.Actualizar<Telefono>(101, regTelefono);
                 }
             }
             ////////////////////////////////////////////////////////////////////////////TELEFONO
@@ -2224,7 +2224,7 @@ namespace iComercio.Forms
             if (RegMailLst != null)
             {
                 Mail regMail;
-                regMail = bl.GetDal(99).Get<Mail>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
+                regMail = bl.GetDal(101).Get<Mail>(c => c.Documento == nDocumento && c.TipoDocumentoID == cDocumento && c.ClaseDatoID == 1 && c.EstadoID == ParametrosGlobales.EstadoVigenteID, o => o.OrderByDescending(oo => oo.Fecha)).FirstOrDefault();
                 if (regMail != null) esNuevo = false;
                 if (esNuevo)
                 {
@@ -2243,15 +2243,15 @@ namespace iComercio.Forms
                 regMail.EstadoID = RegMailLst.EstadoID;
                 if (esNuevo)
                 {
-                    bl.Agregar<Mail>(99, regMail);
+                    bl.Agregar<Mail>(101, regMail);
                 }
                 else
                 {
-                    bl.Actualizar<Mail>(99, regMail);
+                    bl.Actualizar<Mail>(101, regMail);
                 }
             }
             bl.Transmision<Cliente>(regCliPru, Com, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
-            bl.Grabar(99);
+            bl.Grabar(101);
             return true;
         }
 

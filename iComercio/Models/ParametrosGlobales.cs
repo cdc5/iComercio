@@ -407,7 +407,7 @@ namespace iComercio.Models
 
                 try
                 {
-                    this.ComercioM = bl.Get<Comercio>(99, c => c.EmpresaID == 99 && c.Principal == true, null, "Empresa").FirstOrDefault();
+                    this.ComercioM = bl.Get<Comercio>(101, c => c.EmpresaID == 101 && c.Principal == true, null, "Empresa").FirstOrDefault();
                     if (ComercioM != null)
                     {
                         this.EmpresaM = ComercioM.Empresa;

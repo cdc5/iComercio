@@ -332,8 +332,8 @@ namespace iComercio.Models
                     Empresas.Add(new Empresa { EmpresaID = 2, Nombre = "ACuatro S.A.", Descripcion = "ACuatro S.A.", EmpresaDiminutivo = "A4", CP = "(C1431FCT)", Cuit = "30-70914487-8", Domicilio = "Avda. Triunvirato 5350", IA = "Responsable Inscripto - 04/2005", IIBB = "C.M.901-210802-0", Localidad = "CABA", Telefono1 = "4544-2224", Telefono2 = "4544-1871", Telefono3 = "4544-1994", Telefonos = "4544-2224/1871/1994", Mail = "info@credin.com.ar" });
                     Empresas.Add(new Empresa { EmpresaID = 3, Nombre = "Crédito del Valle S.A.", Descripcion = "Crédito del Valle S.A.", EmpresaDiminutivo = "CDV", CP = "(C1431FCT)",Cuit = "30-69099739-4", Domicilio = "Avda. Triunvirato 5350", IA = "Responsable Inscripto - 03/2005", IIBB = "C.M.901-191598-5", Localidad = "CABA", Telefono1 = "4544-2224", Telefono2 = "4544-1871", Telefono3 = "4544-1994",Telefonos = "4544-2224/1871/1994",Mail = "info@credin.com.ar"});
                 } 
-                else if (BaseIDbd == 99){
-                    Empresas.Add(new Empresa { EmpresaID = 99, Nombre = "NC S.A.", Descripcion = "NC S.A.", EmpresaDiminutivo = "NC" });
+                else if (BaseIDbd == 101){
+                    Empresas.Add(new Empresa { EmpresaID = 101, Nombre = "NC 101 S.A.", Descripcion = "NC S.A.", EmpresaDiminutivo = "NC" });
                 };                
                                                 
                 Empresas.ForEach(e => context.Empresas.Add(e));
@@ -359,9 +359,9 @@ namespace iComercio.Models
                     Comercios.Add(new Comercio{ComercioID = 801,Nombre = "Receptoría Rivadavia",Descripcion = "Receptoría Rivadavia",EmpresaID = 1,Principal = true,Por30=0.0081m,Por30M=0.0081m,PorSueldo = 30,TipoComercioID = 2,PuedeCobrar = true,IntRef = 30,Tolerancia = 6,ToleranciaBoni = 0});
                     Comercios.Add(new Comercio { ComercioID = 999, Nombre = "Casa Central", Descripcion = "Casa Central", EmpresaID = 1, Principal = false, TipoComercioID = 7, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
                  }
-                 else if (BaseIDbd == 99){
-                     Comercios.Add(new Comercio { ComercioID = 3799, Nombre = "Receptoría NC", Descripcion = "Receptoría NC", EmpresaID = 99, Principal = true, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, TipoComercioID = 2, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
-                     Comercios.Add(new Comercio { ComercioID = 999, Nombre = "NC", Descripcion = "NC", EmpresaID = 99, Principal = false, TipoComercioID = 7, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
+                 else if (BaseIDbd == 101){
+                     Comercios.Add(new Comercio { ComercioID = 37101, Nombre = "Receptoría 101 NC", Descripcion = "Receptoría NC", EmpresaID = 101, Principal = true, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, TipoComercioID = 2, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
+                     Comercios.Add(new Comercio { ComercioID = 999, Nombre = "NC 101", Descripcion = "NC", EmpresaID = 101, Principal = false, TipoComercioID = 7, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
                  }
 
                 Comercios.ForEach(c => context.Comercios.Add(c));

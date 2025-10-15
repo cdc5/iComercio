@@ -25,6 +25,7 @@ namespace iComercio.Auxiliar
             string connectionstring = ConfigurationManager.ConnectionStrings[nombreBase].ConnectionString;
             string encryptedpassword = ConnectionStrings.GetPasswordFromConnectionString(connectionstring);
             string decryptedpassword = CryptMd5Utils.Decrypt(encryptedpassword);
+            decryptedpassword = "comer";
             string decryptedconnectionstring = ConnectionStrings.ReplacePasswordInConnectionString(connectionstring, decryptedpassword);
             return decryptedconnectionstring;
         }
