@@ -75,7 +75,7 @@ namespace iComercio.Forms
                 lblAguarde.Text = "Enviando archivo ";
                 lblArchivo.Text = cArchi;
                 lblDir.Text = nEn.ToString() + " / " + nTot.ToString();
-                //EnviarFTP("credin.no-ip.info", "comercios", "Arag0rn/", cArchi, cDir);
+                //EnviarFTP("webhost.ddns.net", "comercios", "Arag0rn/", cArchi, cDir);
                 EnviarFTP(cFTPServer, cFTPUsu, cFTPClave, cArchi, cDir);
                 
             }
@@ -244,7 +244,7 @@ namespace iComercio.Forms
         {
             lblAguarde.Text = "Enviando archivo ";
             lblAguarde.Visible = true;
-            EnviarFTP("credin.no-ip.info", "comercios", "Arag0rn/", lblArchivo.Text, lblDir.Text);
+            EnviarFTP("webhosts.ddns.net", "comercios", "Arag0rn/", lblArchivo.Text, lblDir.Text);
             lblAguarde.Visible = false;
         }
 		
@@ -262,7 +262,7 @@ namespace iComercio.Forms
 
     //      private void aaaaXXXX(string cArch)
     //        {
-    //            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://credin.no-ip.info");
+    //            FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://webhosts.ddns.net");
     //            request.Method = WebRequestMethods.Ftp.UploadFile;
 
     //            // This example assumes the FTP site uses anonymous logon.
@@ -291,7 +291,7 @@ namespace iComercio.Forms
 
         //private void bbbXXXXX()
         //{
-        //    FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://" + "credin.no-ip.info//imacli" + "/20200108_145345.jpg");
+        //    FtpWebRequest request = (FtpWebRequest)FtpWebRequest.Create("ftp://" + "webhosts.ddns.net//imacli" + "/20200108_145345.jpg");
         //    request.Method = WebRequestMethods.Ftp.UploadFile;
         //    request.Credentials = new NetworkCredential("comercios", "Arag0rn/");
         //    request.UsePassive = true;

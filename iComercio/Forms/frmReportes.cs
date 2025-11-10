@@ -37,13 +37,13 @@ namespace iComercio.Forms
             Credito cred = bl.Get<Credito>().First();
             Cobranza cob = bl.Get<Cobranza>().First();
 
-            Pagare1 pg = new Pagare1(cred,"San Nicolas de las quintanas","25/04/1987","La Ciudad de Bariloche",null,false,"CREDIN S.A.","Financia Mandragora");
-            Pagare2 pg2 = new Pagare2(cred,null,false,"CREDIN S.A.","Financia Mandragora");
-            Pagare3 pg3 = new Pagare3(cred, null, false, "CREDIN S.A.", "Financia Mandragora");
-            Pagare4 pg4 = new Pagare4(cred, null, false, "CREDIN S.A.", "Financia Mandragora");
+            Pagare1 pg = new Pagare1(cred,"San Nicolas de las quintanas","25/04/1987","La Ciudad de Bariloche",null,false, "EMPRESA", "Financia Mandragora");
+            Pagare2 pg2 = new Pagare2(cred,null,false,"EMPRESA","Financia Mandragora");
+            Pagare3 pg3 = new Pagare3(cred, null, false, "EMPRESA", "Financia Mandragora");
+            Pagare4 pg4 = new Pagare4(cred, null, false, "EMPRESA.", "Financia Mandragora");
 
-            Reportes.Chequera ch = new Reportes.Chequera(bl,cob, null, false, "CREDIN S.A.", "Financia Mandragora");
-            Reportes.Chequera2 ch2 = new Reportes.Chequera2(bl,cob, null, false, "CREDIN S.A.", "Financia Mandragora");
+            Reportes.Chequera ch = new Reportes.Chequera(bl,cob, null, false, "EMPRESA", "Financia Mandragora");
+            Reportes.Chequera2 ch2 = new Reportes.Chequera2(bl,cob, null, false, "EMPRESA", "Financia Mandragora");
             
             //List<Credito> creds = new List<Credito>();
             //creds.Add(cred);

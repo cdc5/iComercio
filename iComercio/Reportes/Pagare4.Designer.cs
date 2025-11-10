@@ -117,7 +117,7 @@
             this.xrTitulo.SizeF = new System.Drawing.SizeF(299.7499F, 21.88844F);
             this.xrTitulo.StylePriority.UseFont = false;
             this.xrTitulo.StylePriority.UseTextAlignment = false;
-            this.xrTitulo.Text = "Credin S.A.";
+            this.xrTitulo.Text = "EMPRESA";
             this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrFinancia
@@ -130,7 +130,7 @@
             this.xrFinancia.SizeF = new System.Drawing.SizeF(299.9999F, 19.06161F);
             this.xrFinancia.StylePriority.UseFont = false;
             this.xrFinancia.StylePriority.UseTextAlignment = false;
-            this.xrFinancia.Text = "Financia Credin S.A.";
+            this.xrFinancia.Text = "Financia EMPRESA";
             this.xrFinancia.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel91
@@ -364,9 +364,8 @@
             this.xrLabel3.SizeF = new System.Drawing.SizeF(299.7499F, 55.69442F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "Avda. Triunvirato 5350 - (CF1431FCT) Capital Federal\r\nTel/Fax 45442224/1871/1994 " +
-    "- credin@credin.com.ar\r\nCUIT: 30-65920657-5  - IIBB: C.M. 901 191598-5\r\nResponsa" +
-    "ble Inscripto - I.A:03/1993\r\n\r\n";
+            this.xrLabel3.Text = "DOM- (CP) PROV \r\nTel/Fax: TEL - MAIL \r\nCUIT: CUIT - IIBB: IIBB \r\nResponsable Insc" +
+    "ripto - I.A: ";
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLine4

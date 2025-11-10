@@ -129,7 +129,7 @@
             this.xrTitulo.SizeF = new System.Drawing.SizeF(273.5744F, 22.81553F);
             this.xrTitulo.StylePriority.UseFont = false;
             this.xrTitulo.StylePriority.UseTextAlignment = false;
-            this.xrTitulo.Text = "Credin S.A.";
+            this.xrTitulo.Text = "EMPRESA";
             this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrFinancia
@@ -142,7 +142,7 @@
             this.xrFinancia.SizeF = new System.Drawing.SizeF(273.5745F, 19.05951F);
             this.xrFinancia.StylePriority.UseFont = false;
             this.xrFinancia.StylePriority.UseTextAlignment = false;
-            this.xrFinancia.Text = "Financia Credin S.A.";
+            this.xrFinancia.Text = "Financia EMPRESA";
             this.xrFinancia.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLine8

@@ -44,7 +44,7 @@ namespace iComercio.Auxiliar
             XGraphicsPath path = new XGraphicsPath();
             /*gfx.DrawString("Hello, World!", new XFont("Verdana",14), XBrushes.Black,
             new XRect(0, size.Height / 3.5, size.Width,0), XStringFormats.Center);*/
-            path.AddString("Credin", new XFontFamily("Verdana"), XFontStyle.BoldItalic, 60,
+            path.AddString("EMPRESA", new XFontFamily("Verdana"), XFontStyle.BoldItalic, 60,
                             new XRect(0, size.Height / 3.5, size.Width, 0), XStringFormats.Center);
             XPen pen = new XPen(strokeColor, 5);
             XBrush brush = new XSolidBrush(fillColor);
@@ -99,19 +99,19 @@ namespace iComercio.Auxiliar
                 gfx.DrawString(observaciones, font, brush, new XRect(90, 235, observaciones.Length, 0));
 
                 /*agregar a mano donde van lo pasado */
-                /*  PdfString empresa = new PdfString("CREDIN");
+                /*  PdfString empresa = new PdfString("EMPRESA");
                   formatoAut.AcroForm.Fields["Empresa"].Value = empresa;*/
                 /*formatoAut.AcroForm.Elements["/NeedAppearances"] = new PdfBoolean(true);*/
-                /*formatoAut.AcroForm.Fields["TituloTipoAut"] = "CREDIN";
+                /*formatoAut.AcroForm.Fields["TituloTipoAut"] = "EMPRESA";
                 formatoAut.AcroForm.Fields["Receptoria"] = "Receptoria";
-                formatoAut.AcroForm.Fields["TipoAut"] = "CREDIN";
-                formatoAut.AcroForm.Fields["NumAut"] = "CREDIN";
-                formatoAut.AcroForm.Fields["NumOP"] = "CREDIN";
-                formatoAut.AcroForm.Fields["FechaOP"] = "CREDIN";
-                formatoAut.AcroForm.Fields["FechaCaja"] = "CREDIN";
-                formatoAut.AcroForm.Fields["CodCaja"] = "CREDIN";
-                formatoAut.AcroForm.Fields["CodCaja"] = "CREDIN";
-                formatoAut.AcroForm.Fields["CodCaja"] = "CREDIN";*/
+                formatoAut.AcroForm.Fields["TipoAut"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["NumAut"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["NumOP"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["FechaOP"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["FechaCaja"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["CodCaja"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["CodCaja"] = "EMPRESA";
+                formatoAut.AcroForm.Fields["CodCaja"] = "EMPRESA";*/
 
 
                 /*      formatoAut.SecuritySettings.DocumentSecurityLevel = PdfDocumentSecurityLevel.None;

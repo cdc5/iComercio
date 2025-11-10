@@ -12,7 +12,7 @@ namespace iComercio.DAL
     {
         protected override void Seed(ComercioContext context)
         {
-                       
+
             //var perfiles = new List<Perfil>
             //{
             //new Perfil{nombre="Admin",descripcion="Admin",creacion=DateTime.Parse("2005-09-01"),activo=true},
@@ -41,31 +41,31 @@ namespace iComercio.DAL
             //new UsuarioPerfil{UsuarioID=0,PerfilID=2},
             //new UsuarioPerfil{UsuarioID=1,PerfilID=0},
             //new UsuarioPerfil{UsuarioID=1,PerfilID=1},
-            
+
             //};
             //usuariosPerfiles.ForEach(s => context.UsuariosPerfiles.Add(s));
             //context.SaveChanges();*/
-            
+
 
             //var permisos = new List<Permiso>
             //{
             //new Permiso{nombre="Admin",descripcion="Admin",creacion=DateTime.Parse("2005-09-01"),activo=true},
             //new Permiso{nombre="Estadistcas",descripcion="Estadistcas",creacion=DateTime.Parse("2005-09-01"),activo=true},
             //new Permiso{nombre="Altas",descripcion="Altas",creacion=DateTime.Parse("2005-09-01"),activo=true},
-            
+
             //};
             //permisos.ForEach(s => context.Permisos.Add(s));
             //context.SaveChanges();
 
             //var Empresas = new List<Empresa>
             //{
-            //new Empresa{EmpresaID = 1,Nombre = "Credin S.A.",Descripcion = "Credin S.A."},
-            //new Empresa{EmpresaID = 2,Nombre = "ACuatro S.A.",Descripcion = "ACuatro S.A."},
-            //new Empresa{EmpresaID = 3,Nombre = "Crédito del Valle S.A.",Descripcion = "Crédito del Valle S.A."},
+            //new Empresa{EmpresaID = 1,Nombre = "EMPRESA S.A.",Descripcion = "EMPRESA S.A."},
+            //new Empresa{EmpresaID = 2,Nombre = "EMPRESA S.A.",Descripcion = "EMPRESA S.A."},
+            //new Empresa{EmpresaID = 3,Nombre = "EMPRESA del Valle S.A.",Descripcion = "EMPRESA S.A."},
             //};
             //Empresas.ForEach(e => context.Empresas.Add(e));
             //context.SaveChanges();
-            
+
             //var Comercios = new List<Comercio>
             //{
             //    new Comercio{ComercioID = 801,Nombre = "Receptoría Rivadavia",Descripcion = "Receptoría Rivadavia",EmpresaID = 1}
@@ -165,12 +165,12 @@ namespace iComercio.DAL
             //    new ConceptoFondos{ConceptoFondosID=1,Nombre = "Retención de Cobranzas",Descripcion = "Retención de Cobranzas",MedioDePagoID =1 },
             //    new ConceptoFondos{ConceptoFondosID=2,Nombre = "Extración bancaria",Descripcion = "Extración bancaria",MedioDePagoID =2 },
             //    new ConceptoFondos{ConceptoFondosID=4,Nombre = "Retención de Valores a Rendir",Descripcion = "Retención de Valores a Rendir",MedioDePagoID =1 }
-                
+
             //};
             //ConceptoFondos.ForEach(c => context.ConceptoFondos.Add(c));
             //context.SaveChanges();
 
-           
+
 
             //var TiposSolicitud = new List<TipoSolicitud>
             //{
@@ -187,7 +187,7 @@ namespace iComercio.DAL
             //    new EstadoTransmision{EstadoTransmisionID=1,Nombre = "Enviado",Descripcion = "Enviado" },
             //    new EstadoTransmision{EstadoTransmisionID=2,Nombre = "Pendiente de envío",Descripcion = "Pendiente de envío" },
             //    new EstadoTransmision{EstadoTransmisionID=3,Nombre = "Recibido",Descripcion = "Recibido" }
-                
+
             //};
             //EstadosTransmision.ForEach(t => context.EstadoTransmisiones.Add(t));
             //context.SaveChanges();

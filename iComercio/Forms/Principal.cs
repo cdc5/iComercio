@@ -119,8 +119,8 @@ namespace iComercio.Forms
             
             //this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             //D:\Christian\Credin\sistemas\Proyectos\iComercio\iComercio\iComercio
-            this.Icon = Properties.Resources.CredinIco;
-                        
+            this.Icon = Properties.Resources.logoCreditoExtra_icon;
+                       
 
             RecargarEmpYComercio(false);
             ActualizarBarraDeEstadoVersion();

@@ -86,11 +86,13 @@ namespace iComercio.Models
            if (emp.EmpresaID != null)
                 {
                     if (emp.EmpresaID == 1)
-                        return Properties.Resources.credin_logo_negro_small;
+                        return Properties.Resources.CreditoExtra;
                     else if (emp.EmpresaID == 2)
-                        return Properties.Resources.Acuatro_Logo_Small;
+                        return Properties.Resources.CreditoExtra;
                     else if (emp.EmpresaID == 3)
-                        return Properties.Resources.Credito_del_Valle_Logo_Small;
+                        return Properties.Resources.CreditoExtra;
+                    else if (emp.EmpresaID == 99)
+                        return Properties.Resources.CreditoExtra ;
                     else
                         return null;
                 }
@@ -9476,9 +9478,9 @@ namespace iComercio.Models
 
                 var Empresas = new List<Empresa>
             {
-            new Empresa{EmpresaID = 1,Nombre = "Credin S.A.",Descripcion = "Credin S.A."},
-            new Empresa{EmpresaID = 2,Nombre = "ACuatro S.A.",Descripcion = "ACuatro S.A."},
-            new Empresa{EmpresaID = 3,Nombre = "Crédito del Valle S.A.",Descripcion = "Crédito del Valle S.A."},
+            new Empresa{EmpresaID = 1,Nombre = "EMPRESA S.A.",Descripcion = "EMPRESA S.A."},
+            new Empresa{EmpresaID = 2,Nombre = "EMPRESA S.A.",Descripcion = "EMPRESA S.A."},
+            new Empresa{EmpresaID = 3,Nombre = "EMPRESA S.A.",Descripcion = "EMPRESA S.A."},
             };
                 Empresas.ForEach(e => context.Empresas.Add(e));
                 context.SaveChanges();

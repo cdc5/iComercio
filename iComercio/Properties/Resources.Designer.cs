@@ -3350,6 +3350,16 @@ namespace iComercio.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bank1 {
+            get {
+                object obj = ResourceManager.GetObject("bank1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap basket {
             get {
                 object obj = ResourceManager.GetObject("basket", resourceCulture);
@@ -3781,6 +3791,16 @@ namespace iComercio.Properties {
         internal static System.Drawing.Bitmap Credito_del_Valle_Logo_Small {
             get {
                 object obj = ResourceManager.GetObject("Credito_del_Valle_Logo_Small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CreditoExtra {
+            get {
+                object obj = ResourceManager.GetObject("CreditoExtra", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

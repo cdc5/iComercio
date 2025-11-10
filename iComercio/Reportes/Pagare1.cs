@@ -35,9 +35,7 @@ namespace iComercio.Reportes
             string FechaAPagar = "";
             string encabezado = String.Format("{1},{2},{3},{0} {4} - {5} {0} CUIT:{6} IIBB:{7} {0} {8}",
                                                 Environment.NewLine,cred.Empresa.Domicilio,cred.Empresa.CP,cred.Empresa.Localidad,cred.Empresa.Telefonos,cred.Empresa.Mail,
-                                                cred.Empresa.Cuit,cred.Empresa.IIBB,cred.Empresa.IA);
-            //String.Format("Avda. Triunvirato 5350,(CF1431FCT),Capital Federal,{0} Tel/Fax 45442224/1871/1994 - credin@credin.com.ar {0} CUIT. Nº:30-65920657-5 IIBB:C.M. 901 191598-5 {0} Responsable Inscripto - I.A:03/1993",
-            //                              Environment.NewLine);
+                                                cred.Empresa.Cuit,cred.Empresa.IIBB,cred.Empresa.IA);            
             xrLabel3.Text = encabezado;
             
             if (cred.Cuotas != null && cred.Cuotas.Count > 0)

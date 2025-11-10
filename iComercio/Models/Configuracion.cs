@@ -186,7 +186,7 @@ namespace iComercio.Models
 
         public Configuracion()
         {
-            nombreAplicacion = "CREDIN - iComercio";
+            nombreAplicacion = "iComercio";
             MaxDisplayListItems = 15;
             SendAdminEmailConfirmations = false;
             Password = "seekrit";

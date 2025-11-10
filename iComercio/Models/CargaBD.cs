@@ -328,9 +328,9 @@ namespace iComercio.Models
 
                 List<Empresa> Empresas = new List<Empresa>();
                 if (BaseIDbd == 1 || BaseIDbd == 2 || BaseIDbd == 3){
-                    Empresas.Add(new Empresa{EmpresaID = 1,Nombre = "Credin S.A.",Descripcion = "Credin S.A.",EmpresaDiminutivo = "CD",CP = "(C1431FCT)",Cuit = "30-65920657-5", Domicilio = "Avda. Triunvirato 5350", IA = "Responsable Inscripto - 03/1993", IIBB = "C.M.901-990030-5", Localidad = "CABA", Telefono1 = "4544-2224", Telefono2 = "4544-1871", Telefono3 = "4544-1994",Telefonos = "4544-2224/1871/1994", Mail = "info@credin.com.ar"});
-                    Empresas.Add(new Empresa { EmpresaID = 2, Nombre = "ACuatro S.A.", Descripcion = "ACuatro S.A.", EmpresaDiminutivo = "A4", CP = "(C1431FCT)", Cuit = "30-70914487-8", Domicilio = "Avda. Triunvirato 5350", IA = "Responsable Inscripto - 04/2005", IIBB = "C.M.901-210802-0", Localidad = "CABA", Telefono1 = "4544-2224", Telefono2 = "4544-1871", Telefono3 = "4544-1994", Telefonos = "4544-2224/1871/1994", Mail = "info@credin.com.ar" });
-                    Empresas.Add(new Empresa { EmpresaID = 3, Nombre = "Crédito del Valle S.A.", Descripcion = "Crédito del Valle S.A.", EmpresaDiminutivo = "CDV", CP = "(C1431FCT)",Cuit = "30-69099739-4", Domicilio = "Avda. Triunvirato 5350", IA = "Responsable Inscripto - 03/2005", IIBB = "C.M.901-191598-5", Localidad = "CABA", Telefono1 = "4544-2224", Telefono2 = "4544-1871", Telefono3 = "4544-1994",Telefonos = "4544-2224/1871/1994",Mail = "info@credin.com.ar"});
+                    Empresas.Add(new Empresa{EmpresaID = 1,Nombre = "EMPRESA S.A.", Descripcion = "EMPRESA S.A.", EmpresaDiminutivo = "EMP",CP = "CP",Cuit = "", Domicilio = "", IA = "Responsable Inscripto - ", IIBB = "C.M.", Localidad = "CABA", Telefono1 = "", Telefono2 = "", Telefono3 = "",Telefonos = "", Mail = "info@empresa"});
+                    Empresas.Add(new Empresa { EmpresaID = 2, Nombre = "EMPRESA S.A.", Descripcion = "EMPRESA S.A.", EmpresaDiminutivo = "EMP", CP = "CP", Cuit = "", Domicilio = "", IA = "Responsable Inscripto - ", IIBB = "C.M.", Localidad = "CABA", Telefono1 = "", Telefono2 = "", Telefono3 = "", Telefonos = "", Mail = "info@empresa" });
+                    Empresas.Add(new Empresa { EmpresaID = 3, Nombre = "EMPRESA S.A.", Descripcion = "EMPRESA S.A.", EmpresaDiminutivo = "EMP", CP = "CP",Cuit = "", Domicilio = "", IA = "Responsable Inscripto - 03/2005", IIBB = "C.M.", Localidad = "CABA", Telefono1 = "", Telefono2 = "", Telefono3 = "",Telefonos = "",Mail = "info@Empresa"});
                 } 
                 else if (BaseIDbd == 101){
                     Empresas.Add(new Empresa { EmpresaID = 101, Nombre = "NC 101 S.A.", Descripcion = "NC S.A.", EmpresaDiminutivo = "NC" });
@@ -356,7 +356,7 @@ namespace iComercio.Models
                 List<Comercio> Comercios = new List<Comercio>();
 
                  if (BaseIDbd == 1 || BaseIDbd == 2 || BaseIDbd == 3){
-                    Comercios.Add(new Comercio{ComercioID = 801,Nombre = "Receptoría Rivadavia",Descripcion = "Receptoría Rivadavia",EmpresaID = 1,Principal = true,Por30=0.0081m,Por30M=0.0081m,PorSueldo = 30,TipoComercioID = 2,PuedeCobrar = true,IntRef = 30,Tolerancia = 6,ToleranciaBoni = 0});
+                    Comercios.Add(new Comercio{ComercioID = 801,Nombre = "Receptoría ",Descripcion = "Receptoría ",EmpresaID = 1,Principal = true,Por30=0.0081m,Por30M=0.0081m,PorSueldo = 30,TipoComercioID = 2,PuedeCobrar = true,IntRef = 30,Tolerancia = 6,ToleranciaBoni = 0});
                     Comercios.Add(new Comercio { ComercioID = 999, Nombre = "Casa Central", Descripcion = "Casa Central", EmpresaID = 1, Principal = false, TipoComercioID = 7, Por30 = 0.0081m, Por30M = 0.0081m, PorSueldo = 30, PuedeCobrar = true, IntRef = 30, Tolerancia = 6, ToleranciaBoni = 0 });
                  }
                  else if (BaseIDbd == 101){

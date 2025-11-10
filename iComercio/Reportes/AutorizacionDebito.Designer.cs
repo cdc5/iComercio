@@ -429,7 +429,7 @@
             this.xrRepEmpresa.StylePriority.UseBorders = false;
             this.xrRepEmpresa.StylePriority.UseFont = false;
             this.xrRepEmpresa.StylePriority.UseTextAlignment = false;
-            this.xrRepEmpresa.Text = "REPRESENTANTE POR CREDIN S.A.";
+            this.xrRepEmpresa.Text = "REPRESENTANTE POR EMPRESA.";
             this.xrRepEmpresa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTexto2
@@ -723,13 +723,14 @@
             // 
             this.xrSubTitulo.Font = new System.Drawing.Font("Arial Narrow", 9.75F);
             this.xrSubTitulo.LocationFloat = new DevExpress.Utils.PointFloat(15.29172F, 73.5F);
+            this.xrSubTitulo.Multiline = true;
             this.xrSubTitulo.Name = "xrSubTitulo";
             this.xrSubTitulo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrSubTitulo.SizeF = new System.Drawing.SizeF(780.7083F, 23F);
             this.xrSubTitulo.StylePriority.UseFont = false;
             this.xrSubTitulo.StylePriority.UseTextAlignment = false;
-            this.xrSubTitulo.Text = "CRE-DIN S.A. – Av. Triunvirato 5350 (1431) – Cap. Fed. – Tel./Fax: (011) 4544-222" +
-    "4 / 1994 / 1871 – e-mail: credin@credin.com.ar";
+            this.xrSubTitulo.Text = "DOM- (CP) PROV \r\nTel/Fax: TEL - MAIL \r\nCUIT: CUIT - IIBB: IIBB \r\nResponsable Insc" +
+    "ripto - I.A: ";
             this.xrSubTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLogo

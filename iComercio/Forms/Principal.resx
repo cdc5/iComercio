@@ -127,6 +127,31 @@
     <value>499, 15</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Toolstrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="Toolstrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1270, 25</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Toolstrip.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="Toolstrip.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;Toolstrip.Name" xml:space="preserve">
+    <value>Toolstrip</value>
+  </data>
+  <data name="&gt;&gt;Toolstrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Toolstrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Toolstrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tsCreditosAlta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -254,34 +279,34 @@
   <data name="tsClientePorNombre.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
-        AAAAAElFTkSuQmCC
+        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
+        AElFTkSuQmCC
 </value>
   </data>
   <data name="tsClientePorNombre.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -292,31 +317,6 @@
   </data>
   <data name="tsClientePorNombre.Text" xml:space="preserve">
     <value>Busqueda Por Nombre</value>
-  </data>
-  <data name="Toolstrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="Toolstrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1270, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Toolstrip.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="Toolstrip.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;Toolstrip.Name" xml:space="preserve">
-    <value>Toolstrip</value>
-  </data>
-  <data name="&gt;&gt;Toolstrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Toolstrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Toolstrip.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnArchivo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -382,6 +382,30 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>123, 16</value>
   </metadata>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 475</value>
+  </data>
+  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1270, 22</value>
+  </data>
+  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="statusStrip.Text" xml:space="preserve">
+    <value>StatusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
+    <value>statusStrip</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 17</value>
   </data>
@@ -417,30 +441,6 @@
   </data>
   <data name="tslbVersion.Text" xml:space="preserve">
     <value>Versión:</value>
-  </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 475</value>
-  </data>
-  <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1270, 22</value>
-  </data>
-  <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="statusStrip.Text" xml:space="preserve">
-    <value>StatusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
-    <value>statusStrip</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -2819,6 +2819,6 @@
     <value>Principal</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>iComercio.Forms.FRM, iComercio, Version=1.0.9419.36554, Culture=neutral, PublicKeyToken=null</value>
+    <value>iComercio.Forms.FRM, iComercio, Version=1.0.9445.35285, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

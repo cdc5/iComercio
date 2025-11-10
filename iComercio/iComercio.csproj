@@ -139,6 +139,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\X32\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
@@ -1203,6 +1204,11 @@
     <Compile Include="Presenters\GenericPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\AutorizacionDebito.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1638,16 +1644,10 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Reportes\AutorizacionDebito.resx">
       <DependentUpon>AutorizacionDebito.cs</DependentUpon>
@@ -2267,7 +2267,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\logoCreditoExtra_icon.ico" />
-    <Content Include="logoCreditoExtra_icon.ico" />
+    <Content Include="logoCreditoExtra_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\logoCreditoExtra_icon1.ico" />
+    <None Include="Resources\logoCreditoExtra_icon2.ico" />
+    <None Include="Resources\CreditoExtra.png" />
     <Content Include="Scripts\BD MIG\CargarCreditos.sql" />
     <Content Include="Scripts\BD MIG\dbo.TransformarLaboral.sql" />
     <Content Include="Scripts\BD MIG\dbo.ObtenerProvinciaDesdeClave.sql" />

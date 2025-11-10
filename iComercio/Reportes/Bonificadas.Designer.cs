@@ -32,12 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bonificadas));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
-            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.xrTitulo = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrNoti = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLugarYFecha = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine8 = new DevExpress.XtraReports.UI.XRLine();
             this.xrlblComCredito = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel27 = new DevExpress.XtraReports.UI.XRLabel();
@@ -54,8 +50,12 @@
             this.xrLabel23 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine9 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrNoti = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrTitulo = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLugarYFecha = new DevExpress.XtraReports.UI.XRLabel();
+            this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -98,80 +98,19 @@
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // BottomMargin
+            // xrLine1
             // 
-            this.BottomMargin.HeightF = 100F;
-            this.BottomMargin.Name = "BottomMargin";
-            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrLine1.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
+            this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 22.81553F);
+            this.xrLine1.Name = "xrLine1";
+            this.xrLine1.SizeF = new System.Drawing.SizeF(305F, 2F);
             // 
-            // xrTitulo
+            // xrLine5
             // 
-            this.xrTitulo.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTitulo.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrTitulo.Multiline = true;
-            this.xrTitulo.Name = "xrTitulo";
-            this.xrTitulo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTitulo.SizeF = new System.Drawing.SizeF(305F, 22.81553F);
-            this.xrTitulo.StylePriority.UseFont = false;
-            this.xrTitulo.StylePriority.UseTextAlignment = false;
-            this.xrTitulo.Text = "Credin S.A.";
-            this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 22.81553F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(305F, 55.29166F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "Avda. Triunvirato 5350 - (CF1431FCT) Capital Federal\r\nTel/Fax 45442224/1871/1994 " +
-    "- credin@credin.com.ar\r\nCUIT: 30-65920657-5  - IIBB: C.M. 901 191598-5\r\nResponsa" +
-    "ble Inscripto - I.A:03/1993\r\n\r\n";
-            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
-            this.xrLabel1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(2.749938F, 78.10719F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(305F, 19.87502F);
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "SOLICITUD DE CREDITO\r\n";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrNoti
-            // 
-            this.xrNoti.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrNoti.LocationFloat = new DevExpress.Utils.PointFloat(3.000005F, 137.6489F);
-            this.xrNoti.Multiline = true;
-            this.xrNoti.Name = "xrNoti";
-            this.xrNoti.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrNoti.SizeF = new System.Drawing.SizeF(305F, 103.2083F);
-            this.xrNoti.StylePriority.UseFont = false;
-            this.xrNoti.StylePriority.UseTextAlignment = false;
-            this.xrNoti.Text = resources.GetString("xrNoti.Text");
-            this.xrNoti.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
-            // 
-            // xrLugarYFecha
-            // 
-            this.xrLugarYFecha.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLugarYFecha.LocationFloat = new DevExpress.Utils.PointFloat(2.749952F, 97.98222F);
-            this.xrLugarYFecha.Multiline = true;
-            this.xrLugarYFecha.Name = "xrLugarYFecha";
-            this.xrLugarYFecha.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLugarYFecha.SizeF = new System.Drawing.SizeF(305F, 39.66669F);
-            this.xrLugarYFecha.StylePriority.UseFont = false;
-            this.xrLugarYFecha.StylePriority.UseTextAlignment = false;
-            this.xrLugarYFecha.Text = "En la ciudad de Rivadavia a los 17 dias del mes de Agosto de 2017";
-            this.xrLugarYFecha.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLine5.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
+            this.xrLine5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 78.1072F);
+            this.xrLine5.Name = "xrLine5";
+            this.xrLine5.SizeF = new System.Drawing.SizeF(305F, 2F);
             // 
             // xrLine8
             // 
@@ -311,19 +250,79 @@
             this.xrLabel22.Text = "Firma Librador/Titular";
             this.xrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
-            // xrLine5
+            // xrNoti
             // 
-            this.xrLine5.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
-            this.xrLine5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 78.1072F);
-            this.xrLine5.Name = "xrLine5";
-            this.xrLine5.SizeF = new System.Drawing.SizeF(305F, 2F);
+            this.xrNoti.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrNoti.LocationFloat = new DevExpress.Utils.PointFloat(3.000005F, 137.6489F);
+            this.xrNoti.Multiline = true;
+            this.xrNoti.Name = "xrNoti";
+            this.xrNoti.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrNoti.SizeF = new System.Drawing.SizeF(305F, 103.2083F);
+            this.xrNoti.StylePriority.UseFont = false;
+            this.xrNoti.StylePriority.UseTextAlignment = false;
+            this.xrNoti.Text = resources.GetString("xrNoti.Text");
+            this.xrNoti.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
             // 
-            // xrLine1
+            // xrTitulo
             // 
-            this.xrLine1.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
-            this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 22.81553F);
-            this.xrLine1.Name = "xrLine1";
-            this.xrLine1.SizeF = new System.Drawing.SizeF(305F, 2F);
+            this.xrTitulo.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTitulo.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrTitulo.Multiline = true;
+            this.xrTitulo.Name = "xrTitulo";
+            this.xrTitulo.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTitulo.SizeF = new System.Drawing.SizeF(305F, 22.81553F);
+            this.xrTitulo.StylePriority.UseFont = false;
+            this.xrTitulo.StylePriority.UseTextAlignment = false;
+            this.xrTitulo.Text = "EMPRESA.";
+            this.xrTitulo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 22.81553F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(305F, 55.29166F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.StylePriority.UseTextAlignment = false;
+            this.xrLabel3.Text = "DOM- (CP) PROV \r\nTel/Fax: TEL - MAIL \r\nCUIT: CUIT - IIBB: IIBB \r\nResponsable Insc" +
+    "ripto - I.A: ";
+            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.AnchorVertical = DevExpress.XtraReports.UI.VerticalAnchorStyles.Top;
+            this.xrLabel1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(2.749938F, 78.10719F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(305F, 19.87502F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "SOLICITUD DE CREDITO\r\n";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLugarYFecha
+            // 
+            this.xrLugarYFecha.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLugarYFecha.LocationFloat = new DevExpress.Utils.PointFloat(2.749952F, 97.98222F);
+            this.xrLugarYFecha.Multiline = true;
+            this.xrLugarYFecha.Name = "xrLugarYFecha";
+            this.xrLugarYFecha.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLugarYFecha.SizeF = new System.Drawing.SizeF(305F, 39.66669F);
+            this.xrLugarYFecha.StylePriority.UseFont = false;
+            this.xrLugarYFecha.StylePriority.UseTextAlignment = false;
+            this.xrLugarYFecha.Text = "En la ciudad de Rivadavia a los 17 dias del mes de Agosto de 2017";
+            this.xrLugarYFecha.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // BottomMargin
+            // 
+            this.BottomMargin.HeightF = 100F;
+            this.BottomMargin.Name = "BottomMargin";
+            this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // bindingSource1
             // 
