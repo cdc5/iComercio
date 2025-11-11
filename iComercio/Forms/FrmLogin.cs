@@ -21,6 +21,7 @@ namespace iComercio.Forms
         public FrmLogin()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.logoCreditoExtra_icon;
         }
 
         public FrmLogin(Principal p):base(p)

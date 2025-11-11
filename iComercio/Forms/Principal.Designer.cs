@@ -130,6 +130,7 @@
             this.mnuVentanaCambiaUsu = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.bgwCorregirCuotas = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,6 +194,13 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel,
+            this.tstlComer,
+            this.tstlComercio,
+            this.tstlUsuario,
+            this.tspb,
+            this.tslbVersion});
             resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Name = "statusStrip";
             // 
@@ -852,6 +860,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Principal_KeyDown);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);

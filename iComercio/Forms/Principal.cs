@@ -61,7 +61,8 @@ namespace iComercio.Forms
         public string qExporto = "";
         public Principal()
         {
-            InitializeComponent();               
+            InitializeComponent();
+            this.Icon = Properties.Resources.logoCreditoExtra_icon;
         }
 
         public void  RecargarEmpYComercio(bool EsM)
@@ -69,7 +70,7 @@ namespace iComercio.Forms
             BaseID = bl.GetEmpresa(EsM).EmpresaID.Value;
             ComID = bl.GetComercio(EsM).ComercioID;
             Com = bl.GetComercio(EsM);
-            Emp = Com.Empresa;
+            Emp = Com.Empresa;            
         }
 
         string desbloq = "";
@@ -80,6 +81,7 @@ namespace iComercio.Forms
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.logoCreditoExtra_icon;
             bl = new BusinessLayer();
             bl.InicializarBases();
             pGlob = bl.GetParametrosGlobales();
@@ -119,7 +121,7 @@ namespace iComercio.Forms
             
             //this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             //D:\Christian\Credin\sistemas\Proyectos\iComercio\iComercio\iComercio
-            this.Icon = Properties.Resources.logoCreditoExtra_icon;
+            
                        
 
             RecargarEmpYComercio(false);

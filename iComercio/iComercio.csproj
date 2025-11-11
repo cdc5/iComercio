@@ -53,6 +53,7 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <DocumentationFile>
     </DocumentationFile>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -2260,7 +2261,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Credin.ico" />
     <Content Include="Documentacion\Referencias DLL.txt" />
     <Content Include="Documentacion\To Do.txt" />
     <Content Include="Documentos\BD\Scritp paises, provincias, localidades Argentina solo datos.sql">

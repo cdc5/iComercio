@@ -142,11 +142,11 @@ namespace iComercio.Forms
 
         private void FRM_Load(object sender, EventArgs e)
         {
-            this.Icon = Properties.Resources.CredinIco;
+            this.Icon = Properties.Resources.logoCreditoExtra_icon;
             //FitFormScreen.fitFormToScreen(this, 768, 1036);
             //fitFormToScreen();
-            
-           
+
+
         }
 
         public void fitFormToScreen()
