@@ -12,6 +12,7 @@ using System.Reflection;
 using iComercio.Auxiliar;
 using iComercio.Models;
 using System.Configuration;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace iComercio.DAL
 {

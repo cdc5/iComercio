@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iComercio", "iComercio\iComercio.csproj", "{0F04D2C6-EF50-403D-BDAB-E63E007CDD35}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewGenerator", "ViewGenerator\ViewGenerator.csproj", "{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
 		CD_ROM|x64 = CD_ROM|x64
@@ -68,8 +66,51 @@ Global
 		{0F04D2C6-EF50-403D-BDAB-E63E007CDD35}.X86|x64.Build.0 = X32|x64
 		{0F04D2C6-EF50-403D-BDAB-E63E007CDD35}.X86|x86.ActiveCfg = X32|x86
 		{0F04D2C6-EF50-403D-BDAB-E63E007CDD35}.X86|x86.Build.0 = X32|x86
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|Any CPU.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|x64.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|x64.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.CD_ROM|x86.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|x64.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Debug|x86.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|x64.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|x64.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.DVD-5|x86.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|x64.ActiveCfg = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|x64.Build.0 = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|x86.ActiveCfg = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.Release|x86.Build.0 = Release|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|Any CPU.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|x64.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|x64.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|x86.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.SingleImage|x86.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|Any CPU.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|x64.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|x64.Build.0 = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|x86.ActiveCfg = Debug|Any CPU
+		{76CDFAD1-611A-46E4-A586-CC3FB50BBB04}.X86|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BF2EC8C-A3EE-4D64-B3A2-A0540311B301}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

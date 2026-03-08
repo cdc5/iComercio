@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Data;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace iComercio.DAL
 {

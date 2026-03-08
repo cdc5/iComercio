@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.ComponentModel;
 using System.Diagnostics;
 using iComercio.Models;
+using EntityState = System.Data.Entity.EntityState;
 
 
 namespace iComercio.DAL

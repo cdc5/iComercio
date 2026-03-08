@@ -14,7 +14,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <NuGetPackageImportStamp>da204242</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -280,11 +281,9 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
@@ -328,6 +327,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
@@ -376,6 +376,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Auxiliar\Alertas.cs" />
     <Compile Include="Auxiliar\AuxiliaresWinForms.cs" />
     <Compile Include="Auxiliar\ConnectionStrings.cs" />
@@ -489,6 +490,7 @@
     </Compile>
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DAL\UsuarioRepository.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Exceptions\ErrorException.cs" />
     <Compile Include="Exceptions\TransmisionException.cs" />
     <Compile Include="Forms\Delegados\Delegates.cs" />
@@ -1017,6 +1019,11 @@
     <Compile Include="Migrations\202110151917079_29.Designer.cs">
       <DependentUpon>202110151917079_29.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202603071544424_30.cs" />
+    <Compile Include="Migrations\202603071544424_30.designer.cs">
+      <DependentUpon>202603071544424_30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AvisoDePago.cs" />
     <Compile Include="Models\Cap.cs" />
@@ -1641,6 +1648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110151917079_29.resx">
       <DependentUpon>202110151917079_29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202603071544424_30.resx">
+      <DependentUpon>202603071544424_30.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

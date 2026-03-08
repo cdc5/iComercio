@@ -903,7 +903,7 @@ namespace iComercio.Forms
                                 item.SubItems.Add(nBoniCant.ToString());             //26
                                 item.SubItems.Add(planT.Corte.ToString());             //27
                                 item.SubItems.Add(nValorBoniXcuota.ToString());             //28
-
+                                
                                 ListPlanes.Items.Add(item);
                             }
                             else
@@ -1683,7 +1683,26 @@ namespace iComercio.Forms
             {
                 ListViewItem item = new ListViewItem(i.ToString());
                 item.SubItems.Add(String.Format("{0:dd/MM/yyyy}", FechVenci), fontColor, backColorList, fontList);
-                item.SubItems.Add(nValCuota.ToString(), fontColor, backColorList, fontList);
+                if (lItem.SubItems[23].Text == "P" && i == 1)
+                {
+                    var ValorNominal = Convert.ToDecimal(lItem.SubItems[3].Text);
+                    var GstFijo = System.Convert.ToDecimal(lItem.SubItems[20].Text);
+                    var Gst = System.Convert.ToDecimal(lItem.SubItems[18].Text);
+                    var GstIncr = System.Convert.ToDecimal(lItem.SubItems[19].Text);
+                    decimal Valor_Gst = nValCuota;
+                    if (GstFijo == 0)
+                    {
+                        Valor_Gst = (ValorNominal * Gst / 100) + (GstIncr * i * (i - 1));
+                    }
+                    else
+                    {
+                        Valor_Gst = GstFijo;
+                    }
+                    var ValCuotaGast = nValCuota + Valor_Gst;
+                    item.SubItems.Add(ValCuotaGast.ToString(), fontColor, backColorList, fontList);
+                }
+                else
+                    item.SubItems.Add(nValCuota.ToString(), fontColor, backColorList, fontList);
                 item.SubItems.Add(nValInt.ToString("N2"), fontColor, backColorList, fontList);
                 if (nBoniCant == 1)
                 {
@@ -1693,7 +1712,6 @@ namespace iComercio.Forms
                 {
                     if (i > nCuotas - nBoniCant) item.SubItems.Add(nBoni.ToString("N2"), fontColor, backColorList, fontList); else item.SubItems.Add("0", fontColor, backColorList, fontList);
                 }
-
 
                 listCuotas.Items.Add(item);
                 FechVenci = FechVenci.AddMonths(1);
@@ -1827,6 +1845,7 @@ namespace iComercio.Forms
             regCredito.FechaSolicitud = DateTime.Now;
 
             regCredito.Interes = Convert.ToDecimal(lblPlanInteresImp.Text);
+
             regCredito.Gasto = Convert.ToDecimal(lblPlanGastoImp.Text);
             regCredito.Comision = Convert.ToDecimal(lblPlanComisionImp.Text);
 
@@ -1861,12 +1880,16 @@ namespace iComercio.Forms
 
             regCredito.TasaPlan = Convert.ToDecimal(lblPlanTasa.Text);
             regCredito.IncrementoPlan = Convert.ToDecimal(lblPlanTasaIncr.Text);
-            regCredito.GastoPlan = Convert.ToDecimal(lblPlanGastoInt.Text);
-            regCredito.GastoIncrementoPlan = Convert.ToDecimal(lblPlanGastoIncr.Text);
-            if (lblPlanGastoFijo.Text != "") regCredito.GastoFijo = true;// (lblPlanGastoFijo.Text);
+            regCredito.TipoRetencionPlanID = lblPlanRetencion.Text; //  "N";  EDU202109
+            if (lblPlanRetencion.Text != "P") //TODO:CDC-07/03/2026-MODIFICACION RETENCION PLAN
+            {
+                regCredito.GastoPlan = Convert.ToDecimal(lblPlanGastoInt.Text);
+                regCredito.GastoIncrementoPlan = Convert.ToDecimal(lblPlanGastoIncr.Text);
+                if (lblPlanGastoFijo.Text != "") regCredito.GastoFijo = true;// (lblPlanGastoFijo.Text);
+            }            
             regCredito.ComisionPlan = Convert.ToDecimal(lblPlanComisionInt.Text);
             regCredito.ComisionIncrementoPlan = Convert.ToDecimal(lblPlanComisionIncr.Text);
-            regCredito.TipoRetencionPlanID = lblPlanRetencion.Text; //  "N";  EDU202109
+            
             regCredito.NombrePlan = lblPlanID.Text;
             regCredito.Puntaje = (decimal) nPuntaje;
 
@@ -1938,6 +1961,24 @@ namespace iComercio.Forms
                     regCuota.ValorBonificacion = 0;
                 }
 
+                if (lblPlanRetencion.Text == "P" && n == 1 )
+                {
+                    var ValorNominal = regCredito.ValorNominal;
+                    var GstFijo = System.Convert.ToDecimal(lblPlanGastoFijo.Text);
+                    var Gst = System.Convert.ToDecimal(lblPlanGastoInt.Text);
+                    var GstIncr = System.Convert.ToDecimal(lblPlanGastoIncr.Text);
+                    var i = 1;
+                    decimal Valor_Gst = regCuota.Importe;
+                    if (GstFijo == 0)
+                    {
+                        Valor_Gst = (ValorNominal * Gst / 100) + (GstIncr * i * (i - 1));
+                    }
+                    else
+                    {
+                        Valor_Gst = GstFijo;
+                    }
+                    regCuota.Importe += Valor_Gst;
+                }
                 bl.AgregarTransaccional<Cuota>(BaseID, regCuota);
                 FechVenci = FechVenci.AddMonths(1);
             }

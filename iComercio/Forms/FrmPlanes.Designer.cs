@@ -672,7 +672,7 @@
             this.grpPlan.Controls.Add(this.label23);
             this.grpPlan.Controls.Add(this.label15);
             this.grpPlan.Controls.Add(this.LblPLanNvoModi);
-            this.grpPlan.Location = new System.Drawing.Point(975, 4);
+            this.grpPlan.Location = new System.Drawing.Point(972, 3);
             this.grpPlan.Name = "grpPlan";
             this.grpPlan.Size = new System.Drawing.Size(268, 425);
             this.grpPlan.TabIndex = 51;
@@ -699,6 +699,7 @@
             this.cmbRetencion.Name = "cmbRetencion";
             this.cmbRetencion.Size = new System.Drawing.Size(136, 21);
             this.cmbRetencion.TabIndex = 13;
+            this.cmbRetencion.SelectedIndexChanged += new System.EventHandler(this.cmbRetencion_SelectedIndexChanged);
             // 
             // txtPlanCorte
             // 
@@ -1482,7 +1483,7 @@
             this.panel1.Controls.Add(this.BtnBoniModi);
             this.panel1.Location = new System.Drawing.Point(6, 210);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(849, 475);
+            this.panel1.Size = new System.Drawing.Size(849, 532);
             this.panel1.TabIndex = 46;
             this.panel1.Visible = false;
             // 
@@ -1729,13 +1730,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 697);
+            this.ClientSize = new System.Drawing.Size(1272, 754);
+            this.Controls.Add(this.grpPlan);
             this.Controls.Add(this.grpPruebas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblMor);
             this.Controls.Add(this.grpBonifica);
             this.Controls.Add(this.grpVencimiento);
-            this.Controls.Add(this.grpPlan);
             this.Controls.Add(this.grpDetalle);
             this.Controls.Add(this.lblFlechaD);
             this.Controls.Add(this.lblFlechaI);

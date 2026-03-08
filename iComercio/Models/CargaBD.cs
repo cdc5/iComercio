@@ -823,7 +823,8 @@ namespace iComercio.Models
                         new TipoRetencionPlan{TipoRetencionPlanID="C", Nombre="Cuota",Descripcion="Cuota"},
                         new TipoRetencionPlan{TipoRetencionPlanID="G", Nombre="Gastos",Descripcion="Gastos"},
                         new TipoRetencionPlan{TipoRetencionPlanID="A", Nombre="Cuota y gastos",Descripcion="Cuota y gastos"},
-                        new TipoRetencionPlan{TipoRetencionPlanID="N", Nombre="Nada",Descripcion="Nada "}
+                        new TipoRetencionPlan{TipoRetencionPlanID="N", Nombre="Nada",Descripcion="Nada "},
+                        new TipoRetencionPlan{TipoRetencionPlanID="P", Nombre="Gasto-Primer Cuota",Descripcion="Gasto-Primer Cuota "}
                     };
                 TipoRetencionPlan.ForEach(t => context.TipoRetencionPlan.Add(t));
                 context.SaveChanges();

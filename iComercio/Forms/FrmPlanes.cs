@@ -1370,5 +1370,10 @@ namespace iComercio.Forms
             BtnPLanNvo.Enabled = true;
 
         }
+
+        private void cmbRetencion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

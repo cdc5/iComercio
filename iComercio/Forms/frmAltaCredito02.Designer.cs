@@ -164,10 +164,8 @@
             this.label80 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panelGarante = new System.Windows.Forms.Panel();
-            this.panelGar01 = new System.Windows.Forms.Panel();
             this.cmbGarDoc = new System.Windows.Forms.ComboBox();
-            this.txtGarDocu = new System.Windows.Forms.TextBox();
-            this.label90 = new System.Windows.Forms.Label();
+            this.panelGar01 = new System.Windows.Forms.Panel();
             this.lblGarLegajo = new System.Windows.Forms.Label();
             this.lblGarEmpresa = new System.Windows.Forms.Label();
             this.lblGarSueldo = new System.Windows.Forms.Label();
@@ -194,7 +192,9 @@
             this.label86 = new System.Windows.Forms.Label();
             this.lblGarDomicilioLab = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
+            this.txtGarDocu = new System.Windows.Forms.TextBox();
             this.lblMsgGar = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
             this.btnGar = new System.Windows.Forms.Button();
             this.panelGar03 = new System.Windows.Forms.Panel();
             this.lblGarMail = new System.Windows.Forms.Label();
@@ -342,7 +342,7 @@
             this.tabla.Location = new System.Drawing.Point(0, 77);
             this.tabla.Name = "tabla";
             this.tabla.SelectedIndex = 0;
-            this.tabla.Size = new System.Drawing.Size(935, 396);
+            this.tabla.Size = new System.Drawing.Size(1315, 616);
             this.tabla.TabIndex = 0;
             // 
             // tabPage1
@@ -351,7 +351,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(927, 370);
+            this.tabPage1.Size = new System.Drawing.Size(1307, 590);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Planes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             this.panelPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPlanes.Location = new System.Drawing.Point(3, 3);
             this.panelPlanes.Name = "panelPlanes";
-            this.panelPlanes.Size = new System.Drawing.Size(921, 364);
+            this.panelPlanes.Size = new System.Drawing.Size(1301, 584);
             this.panelPlanes.TabIndex = 0;
             // 
             // label123
@@ -510,7 +510,7 @@
             this.grpCuotas.Controls.Add(this.lblValiOtro);
             this.grpCuotas.Location = new System.Drawing.Point(586, 68);
             this.grpCuotas.Name = "grpCuotas";
-            this.grpCuotas.Size = new System.Drawing.Size(314, 271);
+            this.grpCuotas.Size = new System.Drawing.Size(314, 491);
             this.grpCuotas.TabIndex = 82;
             this.grpCuotas.TabStop = false;
             // 
@@ -525,7 +525,7 @@
             this.listCuotas.Location = new System.Drawing.Point(6, 12);
             this.listCuotas.MultiSelect = false;
             this.listCuotas.Name = "listCuotas";
-            this.listCuotas.Size = new System.Drawing.Size(300, 267);
+            this.listCuotas.Size = new System.Drawing.Size(300, 487);
             this.listCuotas.TabIndex = 10;
             this.listCuotas.Tag = "CS";
             this.listCuotas.UseCompatibleStateImageBehavior = false;
@@ -553,7 +553,7 @@
             this.ListFiltrados.Location = new System.Drawing.Point(31, 83);
             this.ListFiltrados.MultiSelect = false;
             this.ListFiltrados.Name = "ListFiltrados";
-            this.ListFiltrados.Size = new System.Drawing.Size(475, 247);
+            this.ListFiltrados.Size = new System.Drawing.Size(475, 467);
             this.ListFiltrados.TabIndex = 9;
             this.ListFiltrados.Tag = "NS";
             this.ListFiltrados.UseCompatibleStateImageBehavior = false;
@@ -565,9 +565,9 @@
             this.lblValida.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblValida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValida.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblValida.Location = new System.Drawing.Point(0, 343);
+            this.lblValida.Location = new System.Drawing.Point(0, 563);
             this.lblValida.Name = "lblValida";
-            this.lblValida.Size = new System.Drawing.Size(919, 19);
+            this.lblValida.Size = new System.Drawing.Size(1299, 19);
             this.lblValida.TabIndex = 81;
             this.lblValida.Tag = "XXXXB";
             this.lblValida.Text = "Modificar teléfono";
@@ -583,7 +583,7 @@
             this.ListPlanes.Location = new System.Drawing.Point(8, 68);
             this.ListPlanes.MultiSelect = false;
             this.ListPlanes.Name = "ListPlanes";
-            this.ListPlanes.Size = new System.Drawing.Size(572, 271);
+            this.ListPlanes.Size = new System.Drawing.Size(572, 491);
             this.ListPlanes.TabIndex = 8;
             this.ListPlanes.Tag = "CS";
             this.ListPlanes.UseCompatibleStateImageBehavior = false;
@@ -2105,6 +2105,18 @@
             this.panelGarante.Size = new System.Drawing.Size(921, 364);
             this.panelGarante.TabIndex = 1;
             // 
+            // cmbGarDoc
+            // 
+            this.cmbGarDoc.BackColor = System.Drawing.Color.White;
+            this.cmbGarDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGarDoc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbGarDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
+            this.cmbGarDoc.Location = new System.Drawing.Point(181, 13);
+            this.cmbGarDoc.Name = "cmbGarDoc";
+            this.cmbGarDoc.Size = new System.Drawing.Size(77, 20);
+            this.cmbGarDoc.TabIndex = 80;
+            this.cmbGarDoc.Leave += new System.EventHandler(this.txtGarDocu_Leave);
+            // 
             // panelGar01
             // 
             this.panelGar01.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2130,45 +2142,6 @@
             this.panelGar01.Size = new System.Drawing.Size(454, 252);
             this.panelGar01.TabIndex = 1017;
             this.panelGar01.Tag = "AAS";
-            // 
-            // cmbGarDoc
-            // 
-            this.cmbGarDoc.BackColor = System.Drawing.Color.White;
-            this.cmbGarDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGarDoc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbGarDoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F);
-            this.cmbGarDoc.Location = new System.Drawing.Point(181, 13);
-            this.cmbGarDoc.Name = "cmbGarDoc";
-            this.cmbGarDoc.Size = new System.Drawing.Size(77, 20);
-            this.cmbGarDoc.TabIndex = 80;
-            this.cmbGarDoc.Leave += new System.EventHandler(this.txtGarDocu_Leave);
-            // 
-            // txtGarDocu
-            // 
-            this.txtGarDocu.AcceptsReturn = true;
-            this.txtGarDocu.AcceptsTab = true;
-            this.txtGarDocu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.txtGarDocu.Location = new System.Drawing.Point(87, 13);
-            this.txtGarDocu.Name = "txtGarDocu";
-            this.txtGarDocu.Size = new System.Drawing.Size(88, 20);
-            this.txtGarDocu.TabIndex = 78;
-            this.txtGarDocu.Tag = "N";
-            this.txtGarDocu.Text = "00.000,00";
-            this.txtGarDocu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtGarDocu.Leave += new System.EventHandler(this.txtGarDocu_Leave);
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.BackColor = System.Drawing.Color.Transparent;
-            this.label90.Font = new System.Drawing.Font("Times New Roman", 9F);
-            this.label90.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label90.Location = new System.Drawing.Point(15, 18);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(66, 15);
-            this.label90.TabIndex = 79;
-            this.label90.Tag = "XXXXXF";
-            this.label90.Text = "Documento:";
             // 
             // lblGarLegajo
             // 
@@ -2494,6 +2467,20 @@
             this.label88.Tag = "L";
             this.label88.Text = "Domicilio lab:";
             // 
+            // txtGarDocu
+            // 
+            this.txtGarDocu.AcceptsReturn = true;
+            this.txtGarDocu.AcceptsTab = true;
+            this.txtGarDocu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.txtGarDocu.Location = new System.Drawing.Point(87, 13);
+            this.txtGarDocu.Name = "txtGarDocu";
+            this.txtGarDocu.Size = new System.Drawing.Size(88, 20);
+            this.txtGarDocu.TabIndex = 78;
+            this.txtGarDocu.Tag = "N";
+            this.txtGarDocu.Text = "00.000,00";
+            this.txtGarDocu.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtGarDocu.Leave += new System.EventHandler(this.txtGarDocu_Leave);
+            // 
             // lblMsgGar
             // 
             this.lblMsgGar.BackColor = System.Drawing.Color.Red;
@@ -2508,6 +2495,19 @@
             this.lblMsgGar.Text = "Garante";
             this.lblMsgGar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMsgGar.Visible = false;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.BackColor = System.Drawing.Color.Transparent;
+            this.label90.Font = new System.Drawing.Font("Times New Roman", 9F);
+            this.label90.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label90.Location = new System.Drawing.Point(15, 18);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(66, 15);
+            this.label90.TabIndex = 79;
+            this.label90.Tag = "XXXXXF";
+            this.label90.Text = "Documento:";
             // 
             // btnGar
             // 
@@ -3069,7 +3069,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(935, 75);
+            this.panel1.Size = new System.Drawing.Size(1315, 75);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -3080,7 +3080,7 @@
             this.panelPru.Controls.Add(this.label49);
             this.panelPru.Controls.Add(this.lblPru01);
             this.panelPru.Controls.Add(this.label45);
-            this.panelPru.Location = new System.Drawing.Point(557, 10);
+            this.panelPru.Location = new System.Drawing.Point(565, 47);
             this.panelPru.Name = "panelPru";
             this.panelPru.Size = new System.Drawing.Size(343, 105);
             this.panelPru.TabIndex = 1017;
@@ -3166,7 +3166,7 @@
             this.lblError.ForeColor = System.Drawing.Color.Black;
             this.lblError.Location = new System.Drawing.Point(0, 57);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(935, 18);
+            this.lblError.Size = new System.Drawing.Size(1315, 18);
             this.lblError.TabIndex = 1014;
             this.lblError.Tag = "";
             this.lblError.Text = "Cliente";
@@ -3810,7 +3810,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 476);
+            this.ClientSize = new System.Drawing.Size(1315, 696);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabla);
             this.Controls.Add(this.grpPlan);

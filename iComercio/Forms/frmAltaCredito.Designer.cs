@@ -469,7 +469,7 @@
             this.gridControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.gridControl1.MainView = this.gridView5;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(808, 252);
+            this.gridControl1.Size = new System.Drawing.Size(957, 371);
             this.gridControl1.TabIndex = 59;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView8,
@@ -1000,7 +1000,7 @@
             this.grSolCredito.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.grSolCredito.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grSolCredito.Name = "grSolCredito";
-            this.grSolCredito.Size = new System.Drawing.Size(841, 366);
+            this.grSolCredito.Size = new System.Drawing.Size(990, 485);
             this.grSolCredito.TabIndex = 0;
             this.grSolCredito.Paint += new System.Windows.Forms.PaintEventHandler(this.grSolCredito_Paint_1);
             // 
@@ -1012,7 +1012,7 @@
             this.lblValida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblValida.Location = new System.Drawing.Point(0, 0);
             this.lblValida.Name = "lblValida";
-            this.lblValida.Size = new System.Drawing.Size(841, 19);
+            this.lblValida.Size = new System.Drawing.Size(990, 19);
             this.lblValida.TabIndex = 82;
             this.lblValida.Tag = "XXXXB";
             this.lblValida.Text = "Modificar teléfono";
@@ -1030,7 +1030,7 @@
             this.groupControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.groupControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(828, 201);
+            this.groupControl1.Size = new System.Drawing.Size(977, 320);
             this.groupControl1.TabIndex = 12;
             this.groupControl1.Text = "Datos de Casa Central";
             // 
@@ -1047,7 +1047,7 @@
             this.xtabDatos.Name = "xtabDatos";
             this.xtabDatos.PaintStyleName = "PropertyView";
             this.xtabDatos.SelectedTabPage = this.xTabPage1;
-            this.xtabDatos.Size = new System.Drawing.Size(814, 168);
+            this.xtabDatos.Size = new System.Drawing.Size(963, 287);
             this.xtabDatos.TabIndex = 65;
             this.xtabDatos.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xTabPage1,
@@ -1063,7 +1063,7 @@
             this.xTabPage1.Controls.Add(this.button1);
             this.xTabPage1.Controls.Add(this.gridControl1);
             this.xTabPage1.Name = "xTabPage1";
-            this.xTabPage1.Size = new System.Drawing.Size(814, 145);
+            this.xTabPage1.Size = new System.Drawing.Size(963, 264);
             this.xTabPage1.Text = "Cliente";
             // 
             // button1
@@ -1121,7 +1121,7 @@
             this.grbCamara.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.grbCamara.LookAndFeel.UseDefaultLookAndFeel = false;
             this.grbCamara.Name = "grbCamara";
-            this.grbCamara.Size = new System.Drawing.Size(183, 130);
+            this.grbCamara.Size = new System.Drawing.Size(332, 130);
             this.grbCamara.TabIndex = 3;
             this.grbCamara.Text = "Camara";
             // 
@@ -1144,7 +1144,7 @@
             this.lblCamaraLocal.ForeColor = System.Drawing.Color.Red;
             this.lblCamaraLocal.Location = new System.Drawing.Point(6, 22);
             this.lblCamaraLocal.Name = "lblCamaraLocal";
-            this.lblCamaraLocal.Size = new System.Drawing.Size(171, 102);
+            this.lblCamaraLocal.Size = new System.Drawing.Size(320, 102);
             this.lblCamaraLocal.TabIndex = 0;
             // 
             // grDatosSolicitante
@@ -1428,7 +1428,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(841, 366);
+            this.ClientSize = new System.Drawing.Size(990, 485);
             this.Controls.Add(this.grSolCredito);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

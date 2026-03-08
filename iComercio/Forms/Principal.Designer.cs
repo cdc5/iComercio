@@ -130,6 +130,7 @@
             this.mnuVentanaCambiaUsu = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.bgwCorregirCuotas = new System.ComponentModel.BackgroundWorker();
+            this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -142,6 +143,12 @@
             // 
             // Toolstrip
             // 
+            this.Toolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsCreditosAlta,
+            this.tsSep,
+            this.tsCobranzas,
+            this.tsClientePorDocumento,
+            this.tsClientePorNombre});
             resources.ApplyResources(this.Toolstrip, "Toolstrip");
             this.Toolstrip.Name = "Toolstrip";
             // 
@@ -860,6 +867,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Principal_KeyDown);
+            this.Toolstrip.ResumeLayout(false);
+            this.Toolstrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
