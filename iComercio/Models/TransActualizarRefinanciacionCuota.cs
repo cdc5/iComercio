@@ -22,7 +22,10 @@ namespace iComercio.Models
 
          public async override Task<bool> Enviar(BusinessLayer bl, Transmision tran)
          {
-             return false;
-         }     
+             // El dato real viaja embebido en la transmisión TransAltaRefinanciacionCobranza
+             // hermana (misma cuota, misma transacción de origen); acá no hay nada más que
+             // enviar, solo confirmar la transmisión para que no quede reintentando siempre.
+             return true;
+         }
     }
 }
