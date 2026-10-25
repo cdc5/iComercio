@@ -196,6 +196,8 @@ namespace iComercio.Forms
             this.BackColor = ColorBackColorFrm;
         }
 
+        private bool avisoEmpresaMLogueado = false;
+
         private void timerTransmisionesTick(Object stateInfo)
         {
             try
@@ -218,15 +220,27 @@ namespace iComercio.Forms
                     }
                     if (bl.pGlob.Configuracion.TransmisionHabilitadaM)
                     {
-                        var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
-                        ra.esEnvioTest = true;
-                        using (BusinessLayer bla = new BusinessLayer(ra, bl.raM))
+                        if (pGlob.EmpresaM == null)
                         {
-                            //bla.RealizarTransmisionesSolicitudes(transmitiendo);
-                            //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
-                            bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
-                            // bla.RetransmitirErroneas(transmitiendo);
-                            //bla.RealizarTransmisionesArchivo(transmitiendo);
+                            if (!avisoEmpresaMLogueado)
+                            {
+                                avisoEmpresaMLogueado = true;
+                                log.Warn("Transmision M habilitada pero no se pudo leer la empresa de la base de pruebas (ComercioPruebaContext); se omite la transmision M hasta que la base responda. Ver el WARN de ParametrosGlobales para el detalle.");
+                            }
+                        }
+                        else
+                        {
+                            avisoEmpresaMLogueado = false;
+                            var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
+                            ra.esEnvioTest = true;
+                            using (BusinessLayer bla = new BusinessLayer(ra, bl.raM))
+                            {
+                                //bla.RealizarTransmisionesSolicitudes(transmitiendo);
+                                //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
+                                bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
+                                // bla.RetransmitirErroneas(transmitiendo);
+                                //bla.RealizarTransmisionesArchivo(transmitiendo);
+                            }
                         }
                     }
 

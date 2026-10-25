@@ -6728,8 +6728,12 @@ namespace iComercio.Models
                                         tran.TransmisionID, tran.OperacionID, tran.EntidadID, tran.EntidadID2, tran.EntidadID3), ex);
                 try
                 {
-                    tran.EstadoTransmisionID = pGlob.Erronea.EstadoTransmisionID;
-                    ActualizarTransmision(tran);
+                    if (tran.OperacionID != pGlob.TransControlDiario.OperacionID)
+                    {
+                        tran.EstadoTransmision = pGlob.Erronea;
+                        tran.EstadoTransmisionID = pGlob.Erronea.EstadoTransmisionID;
+                        ActualizarTransmision(tran);
+                    }
                 }
                 catch (Exception exEstado)
                 {
