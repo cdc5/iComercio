@@ -491,6 +491,7 @@ namespace iComercio.Forms
             bl.pGlob.Configuracion.DaysToBlock = Convert.ToInt32(txtDiasCalcFinan.Text);
             bl.pGlob.Configuracion.Write();
             bl.pGlob.ConfLocal.Write();
+            ConfiguracionCompartida.Notificar();
 
 
         }

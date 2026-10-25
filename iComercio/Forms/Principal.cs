@@ -107,6 +107,8 @@ namespace iComercio.Forms
             transmitiendo = new object(); // lockeo para transmision   
 
 
+            ConfiguracionCompartida.Cambiada += ConfiguracionCambiada;
+
             this.actualizarBarraDeEstadoEvent += ActualizarBarraDeEstado;
             this.actualizarBarraDeEstadoListoEvent += ActualizarBarraDeEstadoListo;
             this.actualizarBarraDeProgresoEvent += ActualizarBarraDeProgreso;
@@ -139,6 +141,27 @@ namespace iComercio.Forms
                 this.Close();
             Muestra_MenuVta();
             log.Debug("Inicio: Principal_Load completo en " + swInicio.ElapsedMilliseconds + " ms (incluye login)");
+        }
+
+        private void ConfiguracionCambiada(object sender, EventArgs e)
+        {
+            if (this.IsDisposed)
+                return;
+            Configuracion conf = ConfiguracionCompartida.Actual;
+            if (timerTransmisiones != null)
+                timerTransmisiones.Change(conf.TiempoEnvioTransmisiones, Timeout.Infinite);
+            if (timerNovedades != null)
+                timerNovedades.Change(conf.TiempoEnvioNovedades, Timeout.Infinite);
+            if (timerRevisiones != null)
+                timerRevisiones.Change(conf.TiempoEnvioRevisiones, Timeout.Infinite);
+            if (timerActualizaciones != null)
+                timerActualizaciones.Change(conf.TiempoActs, Timeout.Infinite);
+            if (usu != null)
+            {
+                bl.ra = new RestApi(usu.usuario, usu.pass, conf.RestUrlConexion);
+                bl.raM = new RestApi(usu.usuario, usu.pass, conf.RestUrlConexion, conf.TestRestUrlConexion);
+            }
+            log.Info("Configuracion actualizada: timers y conexion reiniciados con los valores nuevos");
         }
 
         private string ObtenerVersion()
@@ -710,7 +733,7 @@ namespace iComercio.Forms
             frmOpc.ShowDialog();
             frmOpc.MdiParent = this;
             bl.pGlob = frmOpc.bl.pGlob;
-            bl.pGlob.Configuracion = frmOpc.bl.pGlob.Configuracion;
+            pGlob = bl.pGlob;
         }
 
         private void mnuPerfiles_Click(object sender, EventArgs e)
@@ -750,7 +773,7 @@ namespace iComercio.Forms
 
         private async void Principal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            ConfiguracionCompartida.Cambiada -= ConfiguracionCambiada;
         }
 
         private async void Principal_FormClosing(object sender, FormClosingEventArgs e)

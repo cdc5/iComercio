@@ -427,10 +427,8 @@ namespace iComercio.Models
             //Recordar que no se pueden usar llamados de bl que tengan usn dentro de si mismo a parametrosGlobales, sino produciría ciclos
             //try
             //{
-                this.Configuracion = new Configuracion();
-                Configuracion.Initialize();
-                this.ConfLocal = new ConfiguracionLocal();
-                ConfLocal.Initialize("iComercio");
+                this.Configuracion = ConfiguracionCompartida.Actual;
+                this.ConfLocal = ConfiguracionCompartida.Local;
                 this.Comercio = bl.GetComercios(c => c.Principal == true, null, "Empresa").FirstOrDefault();
                 this.Empresa = Comercio.Empresa;
                 this.EmpresaID = Empresa.EmpresaID.Value;

@@ -1017,6 +1017,7 @@
     <Compile Include="Models\Cap.cs" />
     <Compile Include="Models\CapDetalle.cs" />
     <Compile Include="Models\CargaBD.cs" />
+    <Compile Include="Models\ConfiguracionCompartida.cs" />
     <Compile Include="Models\ConfiguracionLocal.cs" />
     <Compile Include="Models\CtaCteComercio.cs" />
     <Compile Include="Models\CuentaBancariaCliente.cs" />
