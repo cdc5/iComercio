@@ -146,7 +146,7 @@ namespace iComercio.Forms
                 Carga_Creditos(regCreditoList, "Garante", cli.NombreCompleto, cli.Documento, cli.TipoDocumentoID);
                 regCreditoList = cli.CreditosGar2.ToList();
                 Carga_Creditos(regCreditoList, "Garante", cli.NombreCompleto, cli.Documento, cli.TipoDocumentoID);
-                regCreditoList = cli.CreditosGar2.ToList();
+                regCreditoList = cli.CreditosGar3.ToList();
                 Carga_Creditos(regCreditoList, "Garante", cli.NombreCompleto, cli.Documento, cli.TipoDocumentoID);
                 if (nCuantasLineasCargo==0)
                 {
