@@ -68,9 +68,32 @@ namespace iComercio
             //Pequeño truquillo para acelerar La carga inicial de EF
             var tarea = new Task(() =>
                     {
-                        using (var dbContext = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
+                        var sw = Stopwatch.StartNew();
+                        try
                         {
-                            var empresa = dbContext.Empresas.First();  //force the model creation
+                            using (var dbContext = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
+                            {
+                                var empresa = dbContext.Empresas.First();  //force the model creation
+                                log.Debug("Precarga EF: modelo listo en " + sw.ElapsedMilliseconds + " ms");
+
+                                string cBusca = "";
+                                var cli = dbContext.Clientes.Where(c => c.NombreCompleto.Contains(cBusca)).OrderBy(o => o.Apellido).Take(1).ToList().FirstOrDefault();
+                                if (cli != null)
+                                {
+                                    cli.Creditos.ToList();
+                                    cli.CreditosAdi.ToList();
+                                    cli.CreditosGar1.ToList();
+                                    cli.CreditosGar2.ToList();
+                                    var cred = cli.Creditos.FirstOrDefault();
+                                    if (cred != null)
+                                        cred.Cuotas.ToList();
+                                }
+                                log.Debug("Precarga EF: consultas de busqueda de clientes listas en " + sw.ElapsedMilliseconds + " ms");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            log.Warn("Precarga EF fallida: " + ex.Message);
                         }
                     });
             tarea.Start();            

@@ -150,7 +150,9 @@ namespace iComercio.Forms
             bl = new BusinessLayer();
             nCliDocu = nDocu;
             cCliDocu = cDocu;
+            System.Diagnostics.Stopwatch swBusca = System.Diagnostics.Stopwatch.StartNew();
             regCliente = bl.Get<Cliente>(BaseID, c => c.Documento == nDocu && c.TipoDocumentoID == cDocu).FirstOrDefault();
+            log4net.LogManager.GetLogger(typeof(FrmBuscaCliDocumento)).Debug("Busca cliente por documento " + nDocu + ": " + swBusca.ElapsedMilliseconds + " ms");
 
             
             if(regCliente == null)

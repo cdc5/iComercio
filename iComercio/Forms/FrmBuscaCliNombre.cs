@@ -30,6 +30,7 @@ namespace iComercio.Forms
         Color fontColor = Color.Empty;
         Font fontList = new Font("Verdana", 10F, FontStyle.Regular);
         List<Cliente> regClienteList;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(FrmBuscaCliNombre));
         int nCantLineas = 0;
         int nCuantasLineasCargo = 0;
         public FrmBuscaCliNombre()
@@ -61,6 +62,7 @@ namespace iComercio.Forms
             listCliente.Visible = false;
             
             string cBusca = txtBuscaCli.Text;
+            System.Diagnostics.Stopwatch swBusca = System.Diagnostics.Stopwatch.StartNew();
 
             switch(cmbBuscaCli.SelectedIndex)
             {
@@ -115,7 +117,10 @@ namespace iComercio.Forms
                     //break;
 
             }
+            long msConsulta = swBusca.ElapsedMilliseconds;
             Llena_lista();
+            log.Debug(string.Format("Busca cliente por nombre '{0}': consulta {1} ms, armado de lista (creditos y cuotas) {2} ms, {3} clientes",
+                                    cBusca, msConsulta, swBusca.ElapsedMilliseconds - msConsulta, regClienteList == null ? 0 : regClienteList.Count));
 
             listCliente.Visible = true;
         }
