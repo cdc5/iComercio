@@ -365,6 +365,7 @@ namespace iComercio.Models
                 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public const int EmpresaPruebaID = 99;
         public const int EstadoVigenteID = 85;
         public const int ClaseDatoClienteID = 1;
         public const int ClaseDatoEmpresaID = 2;
@@ -438,7 +439,7 @@ namespace iComercio.Models
                 this.ComercioID = Comercio.ComercioID;
                 this.Configuracion.NombreBD = "Comercio" + ComercioID.ToString();
 
-                if (DateTime.Now - ultimoFalloBasePrueba > EsperaReintentoBasePrueba)
+                if (this.EmpresaID != EmpresaPruebaID && DateTime.Now - ultimoFalloBasePrueba > EsperaReintentoBasePrueba)
                 {
                     try
                     {

@@ -222,7 +222,7 @@ namespace iComercio.Forms
                     {
                         if (pGlob.EmpresaM == null)
                         {
-                            if (!avisoEmpresaMLogueado)
+                            if (pGlob.EmpresaID != ParametrosGlobales.EmpresaPruebaID && !avisoEmpresaMLogueado)
                             {
                                 avisoEmpresaMLogueado = true;
                                 log.Warn("Transmision M habilitada pero no se pudo leer la empresa de la base de pruebas (ComercioPruebaContext); se omite la transmision M hasta que la base responda. Ver el WARN de ParametrosGlobales para el detalle.");

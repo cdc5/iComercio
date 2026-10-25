@@ -68,8 +68,17 @@ namespace iComercio.Models
             return Dals;
         }
 
+        public bool PrincipalEsEmpresaDePrueba()
+        {
+            return pGlob != null && pGlob.EmpresaID == ParametrosGlobales.EmpresaPruebaID;
+        }
+
         public Dal GetDal(int BaseIDb)
         {
+            if (pGlob != null && BaseIDb == pGlob.EmpresaID)
+            {
+                return dal;
+            }
             if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3 || BaseIDb == 100)
             {
                 return dal;
@@ -9441,16 +9450,22 @@ namespace iComercio.Models
 
         public bool LlevaM()
         {
+            if (PrincipalEsEmpresaDePrueba())
+                return false;
             return (pGlob.Configuracion.cLlevaMor == pGlob.mfManual.MetodoFuncionamientoID
                     || pGlob.Configuracion.cLlevaMor == pGlob.mfAutomatico.MetodoFuncionamientoID);
         }
 
         public bool LlevaMA()
         {
+            if (PrincipalEsEmpresaDePrueba())
+                return false;
             return (pGlob.Configuracion.cLlevaMor == pGlob.mfAutomatico.MetodoFuncionamientoID);
         }
         public bool LlevaMM()
         {
+            if (PrincipalEsEmpresaDePrueba())
+                return false;
             return (pGlob.Configuracion.cLlevaMor == pGlob.mfManual.MetodoFuncionamientoID);
         }
         
