@@ -83,7 +83,22 @@ namespace iComercio.Forms
             System.Diagnostics.Stopwatch swInicio = System.Diagnostics.Stopwatch.StartNew();
             bl = new BusinessLayer();
             log.Debug("Inicio: BusinessLayer creado en " + swInicio.ElapsedMilliseconds + " ms");
-            bl.InicializarBases();
+            try
+            {
+                bl.InicializarBases();
+            }
+            catch (Exception exBases)
+            {
+                string detalle = Program.RegistrarExcepcion(exBases, "No se pudo inicializar la base de pruebas (ComercioPruebaContext) al iniciar");
+                string causa = exBases.Message;
+                if (exBases.InnerException != null)
+                    causa += Environment.NewLine + exBases.InnerException.Message;
+                MessageBox.Show("No se pudo acceder a la base de pruebas (ComercioPruebaContext)." + Environment.NewLine + Environment.NewLine +
+                                "El programa continua funcionando con la base principal. Las funciones que usan la base de pruebas (modo M) no estaran disponibles." + Environment.NewLine + Environment.NewLine +
+                                "Detalle:" + Environment.NewLine + causa + Environment.NewLine + Environment.NewLine +
+                                "Mas informacion en iComercioLog.txt.",
+                                "Base de pruebas no disponible", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             log.Debug("Inicio: InicializarBases en " + swInicio.ElapsedMilliseconds + " ms (acumulado)");
             pGlob = bl.GetParametrosGlobales();
 

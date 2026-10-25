@@ -392,6 +392,9 @@ namespace iComercio.Models
         /*M*/
         
         
+        private static DateTime ultimoFalloBasePrueba = DateTime.MinValue;
+        private static readonly TimeSpan EsperaReintentoBasePrueba = TimeSpan.FromMinutes(5);
+
         private static void PrecargarTablasDeReferencia(BusinessLayer bl)
         {
             Stopwatch sw = Stopwatch.StartNew();
@@ -435,19 +438,24 @@ namespace iComercio.Models
                 this.ComercioID = Comercio.ComercioID;
                 this.Configuracion.NombreBD = "Comercio" + ComercioID.ToString();
 
-                try
+                if (DateTime.Now - ultimoFalloBasePrueba > EsperaReintentoBasePrueba)
                 {
-                    this.ComercioM = bl.Get<Comercio>(99, c => c.EmpresaID == 99 && c.Principal == true, null, "Empresa").FirstOrDefault();
-                    if (ComercioM != null)
+                    try
                     {
-                        this.EmpresaM = ComercioM.Empresa;
-                        this.EmpresaMID = EmpresaM.EmpresaID.Value;
-                        this.ComercioMID = ComercioM.ComercioID;
+                        this.ComercioM = bl.Get<Comercio>(99, c => c.EmpresaID == 99 && c.Principal == true, null, "Empresa").FirstOrDefault();
+                        if (ComercioM != null)
+                        {
+                            this.EmpresaM = ComercioM.Empresa;
+                            this.EmpresaMID = EmpresaM.EmpresaID.Value;
+                            this.ComercioMID = ComercioM.ComercioID;
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    log.Debug("PRIMER INICIO CREANDO BASE COMERCIOPRU");
+                    catch (Exception ex)
+                    {
+                        ultimoFalloBasePrueba = DateTime.Now;
+                        log.Warn("No se pudo leer la base de pruebas (ComercioPruebaContext). Se reintenta en " + EsperaReintentoBasePrueba.TotalMinutes + " minutos para no demorar el programa. Detalle: " + ex.GetType().Name + ": " + ex.Message
+                                 + (ex.InnerException != null ? " | " + ex.InnerException.Message : ""), ex);
+                    }
                 }
 
                 PrecargarTablasDeReferencia(bl);
