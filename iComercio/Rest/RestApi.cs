@@ -244,9 +244,13 @@ namespace iComercio.Rest
                         {
                          if (res != null)
                             {
-                                tcs.SetResult(res.Data);
+                                tcs.TrySetResult(res.Data);
                                 log.Debug($"Data: {res.Data}");
                                 log.Debug($"Content: {res.Content}");
+                                if (res.ErrorException != null || res.ResponseStatus != ResponseStatus.Completed || (int)res.StatusCode >= 400 || res.Data == null)
+                                {
+                                    log.Error($"Respuesta con problemas: {request.Method} {res.ResponseUri} Status:{(int)res.StatusCode} {res.StatusDescription} ResponseStatus:{res.ResponseStatus} Error:{res.ErrorMessage} Content:{res.Content}", res.ErrorException);
+                                }
                             }
                             else
                             {

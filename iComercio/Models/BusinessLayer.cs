@@ -3993,7 +3993,14 @@ namespace iComercio.Models
                 Res = await ProcesarInfoActAuto(Com, comers, Desde, Hasta);
                 
                 Res.Insert(0, Seteo);
-                Log(Com.EmpresaID,usu, Res,"Actualizaciones");               
+                try
+                {
+                    Log(Com.EmpresaID,usu, Res,"Actualizaciones");
+                }
+                catch (Exception ex)
+                {
+                    log.Error("No se pudo grabar el Log de Actualizaciones en la base local (revisar espacio libre de la base): " + ex.Message, ex);
+                }
             }
             else
             {
@@ -6007,6 +6014,7 @@ namespace iComercio.Models
             List<String> ErrCob;
             List<String> ErrAlt;
             List<String> ErrRec;
+            List<String> ErrRefi;
 
             Fecha = FechaDesde;
             using (ComercioContext cf = new ComercioContext(ConnectionStrings.GetDecryptedConnectionString("ComercioContext")))
@@ -6039,6 +6047,10 @@ namespace iComercio.Models
                 ErrRec = RevisarRecibos(Com, Fecha);
                 if (ErrRec != null)
                     Error.AddRange(ErrRec);
+
+                ErrRefi = RevisarRefinanciaciones(Com, Fecha);
+                if (ErrRefi != null)
+                    Error.AddRange(ErrRefi);
 
                 Fecha = Fecha.AddDays(1);
             }
@@ -6255,6 +6267,44 @@ namespace iComercio.Models
             return Errores;
         }
         
+
+        public List<String> RevisarRefinanciaciones(Comercio Com, DateTime Fecha)
+        {
+            DateTime Hasta = Fecha;
+            DateTimeExtensions.ExtremarFechas(ref Fecha, ref Hasta);
+            Transmision tran;
+            List<Refinanciacion> refis = Get<Refinanciacion>(c => c.FechaSolicitud >= Fecha && c.FechaSolicitud <= Hasta).ToList();
+            List<string> Errores = new List<string>();
+
+            foreach (Refinanciacion refi in refis)
+            {
+                tran = Get<Transmision>(Com.EmpresaID, t => t.EmpresaID == refi.EmpresaID && t.ComercioID == refi.ComercioID
+                                                && t.EntidadID3 == refi.CreditoID.ToString()
+                                                && t.EntidadID4 == refi.RefinanciacionID.ToString()).FirstOrDefault();
+                if (tran != null)
+                {
+                    if (tran.OperacionID == pGlob.TransAltaRefinanciacion.OperacionID)
+                    {
+                        if (tran.EstadoTransmisionID == pGlob.Erronea.EstadoTransmisionID)
+                        {
+                            tran.EstadoTransmisionID = pGlob.PendienteDeEnvio.EstadoTransmisionID;
+                            Actualizar<Transmision>(tran);
+                            Errores.Add(String.Format("(REFINANCIACION): Reenvio: transmision:{0}- Refinanciacion {1} - Crédito {2} - FECHA:{3}"
+                                                  , tran.TransmisionID, refi.RefinanciacionID, refi.CreditoID, refi.FechaSolicitud.ToShortDateString()));
+                        }
+                    }
+                }
+                else
+                {
+                    // La transmisión de alta nunca se generó (o se perdió) del lado del cliente: no se puede reintentar
+                    // automáticamente porque no hay grupo de transmisión que reenviar. Se informa para revisión manual
+                    // desde frmTransmisiones, ya que el servidor no tiene registrada esta Refinanciación.
+                    Errores.Add(String.Format("Error (REFINANCIACION): No se encuentra la transmisión correspondiente a la Refinanciación {0} - Crédito {1} - FECHA:{2} - No se registró en el servidor, requiere revisión manual"
+                                                      , refi.RefinanciacionID, refi.CreditoID, refi.FechaSolicitud.ToShortDateString()));
+                }
+            }
+            return Errores;
+        }
 
         public List<String> ActualizarCuotasDesdeCobranzas(Comercio Com, DateTime FechaDesde, DateTime FechaHasta)
         {
@@ -6674,8 +6724,17 @@ namespace iComercio.Models
             }
             catch(Exception ex)
             {
-                tran.EstadoTransmisionID = pGlob.Erronea.EstadoTransmisionID;
-                ActualizarTransmision(tran);
+                log.Error(String.Format("Excepcion transmitiendo N°:{0}-Operacion:{1}-Entidad ID:{2}-Entidad ID2:{3}-Entidad ID3:{4}",
+                                        tran.TransmisionID, tran.OperacionID, tran.EntidadID, tran.EntidadID2, tran.EntidadID3), ex);
+                try
+                {
+                    tran.EstadoTransmisionID = pGlob.Erronea.EstadoTransmisionID;
+                    ActualizarTransmision(tran);
+                }
+                catch (Exception exEstado)
+                {
+                    log.Error("No se pudo marcar la transmision como erronea: " + exEstado.Message, exEstado);
+                }
                 return false;
             }
         }

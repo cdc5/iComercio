@@ -39,6 +39,7 @@ namespace iComercio
             /* unhandled excepctions handling */
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
           //  AppDomain.CurrentDomain.FirstChanceException += new EventHandler<System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs>(Application_FirstChanceException);
 
             //AppDomain.CurrentDomain.FirstChanceException += (sender, eventArgs) =>
@@ -132,99 +133,66 @@ namespace iComercio
             //}
         }   
 
-        /* unhandled excepctions handling */
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            
-            //ExceptionHandlerByType(e.Exception);
-            String mens;
-            mens = e.Exception.Message + " " + e.Exception.TargetSite + " " 
-                    + e.Exception.StackTrace + " " + GetExecutingMethodName(e.Exception) 
-                    + " " + e.Exception.GetType().ToString() + " Excepcion de Hilo"
-                    + e.Exception.ToString();
-
-            if (e.Exception != null)
+            string mens = RegistrarExcepcion(e.Exception, "Excepcion de Hilo de Interfaz");
+            try
             {
-                var ex = e.Exception.InnerException;
-                while (ex != null)
-                { 
-                    log.Info(e.Exception.InnerException.Message);
-                    mens = mens + ex.Message + Environment.NewLine;
-                    mens += ex.TargetSite.ToString() + Environment.NewLine;
-                    mens += ex.StackTrace + Environment.NewLine;
-                    mens += GetExecutingMethodName(ex) + Environment.NewLine;
-                    mens += " " + ex.GetType().ToString();
-                    mens += ex.ToString();
-                    ex = ex.InnerException;
-                }
-
-                if (ex is System.Data.Entity.Validation.DbEntityValidationException)
-                {
-                    var dbex = (System.Data.Entity.Validation.DbEntityValidationException)ex;
-                    EntityValidationExceptionHandler(dbex);
-                }
+                FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
             }
-                       
-            log.Info(mens);
-            FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
-            // here you can log the exception ...
-
-
-            //catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            //{
-            //    Exception raise = dbEx;
-            //    foreach (var validationErrors in dbEx.EntityValidationErrors)
-            //    {
-            //        foreach (var validationError in validationErrors.ValidationErrors)
-            //        {
-            //            string message = string.Format("{0}:{1}",
-            //                validationErrors.Entry.Entity.ToString(),
-            //                validationError.ErrorMessage);
-            //            // raise a new exception nesting
-            //            // the current instance as InnerException
-            //            raise = new InvalidOperationException(message, raise);
-            //        }
-            //    }
-            //    throw raise;
-            //}
-
+            catch { }
         }
 
-        /* unhandled excepctions handling */
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            
-            Exception exe = (e.ExceptionObject as Exception);
-            String mens;
-            
-            ExceptionHandlerByType(exe);
-            mens = exe.Message + " " + exe.TargetSite + " " + exe.StackTrace + " "
-                   + GetExecutingMethodName(exe) + " " + exe.GetType().ToString() + " Excepcion de Interfaz de Usuario"
-                   + exe.ToString();
-            
-            var ex = exe.InnerException;
-            while (ex != null)
-            {
-                log.Info(ex.InnerException.Message);
-                mens = mens + ex.Message + Environment.NewLine;
-                mens += ex.TargetSite.ToString() + Environment.NewLine;
-                mens += ex.StackTrace + Environment.NewLine;
-                mens += GetExecutingMethodName(ex) + Environment.NewLine;
-                mens += " " + ex.GetType().ToString();
-                mens += ex.ToString();
-                ex = ex.InnerException;
+            RegistrarExcepcion(e.ExceptionObject as Exception, "Excepcion no controlada (terminando: " + e.IsTerminating + ")");
+        }
 
-                if (ex is System.Data.Entity.Validation.DbEntityValidationException)
+        static void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            RegistrarExcepcion(e.Exception, "Excepcion de Task no observada");
+            e.SetObserved();
+        }
+
+        public static string RegistrarExcepcion(Exception exe, string origen)
+        {
+            string mens = origen;
+            try
+            {
+                if (exe == null)
                 {
-                    var dbex = (System.Data.Entity.Validation.DbEntityValidationException)ex;
-                    EntityValidationExceptionHandler(dbex);
+                    log.Error(mens + ": excepcion nula");
+                    return mens;
                 }
+                try { ExceptionHandlerByType(exe); } catch { }
+
+                var sb = new System.Text.StringBuilder();
+                sb.AppendLine(origen);
+                int nivel = 0;
+                for (Exception ex = exe; ex != null; ex = ex.InnerException, nivel++)
+                {
+                    sb.AppendLine(string.Format("[{0}] {1}: {2}", nivel, ex.GetType().FullName, ex.Message));
+                    if (ex is DbEntityValidationException)
+                    {
+                        foreach (var ve in ((DbEntityValidationException)ex).EntityValidationErrors)
+                            foreach (var err in ve.ValidationErrors)
+                                sb.AppendLine(string.Format("    {0}.{1}: {2}", ve.Entry.Entity.GetType().Name, err.PropertyName, err.ErrorMessage));
+                    }
+                    if (ex is System.Data.SqlClient.SqlException)
+                    {
+                        var sqlEx = (System.Data.SqlClient.SqlException)ex;
+                        sb.AppendLine(string.Format("    SqlError Numero:{0} Servidor:{1}", sqlEx.Number, sqlEx.Server));
+                    }
+                }
+                sb.AppendLine(exe.ToString());
+                mens = sb.ToString();
+                log.Error(mens);
             }
-            log.Info(mens);
-            FlexibleMessageBox.Show(mens, " Excepcion de Hilo ");
-            //log.Info(ex.Message);
-            //MessageBox.Show((e.ExceptionObject as Exception).Message, "Excepción de Interfaz de Usuario");
-            //// here you can log the exception ...
+            catch (Exception exLog)
+            {
+                try { log.Error(origen + " (fallo al registrar: " + exLog.Message + ")"); } catch { }
+            }
+            return mens;
         }
 
         // private string GetExecutingMethodName()
@@ -251,10 +219,11 @@ namespace iComercio
         private static string GetExecutingMethodName(Exception exception)
         {
             var trace = new StackTrace(exception);
-            var frame = trace.GetFrame(0);
-            var method = frame.GetMethod();
-
-            return string.Concat(method.DeclaringType.FullName, ".", method.Name);
+            var frame = trace.FrameCount > 0 ? trace.GetFrame(0) : null;
+            var method = frame == null ? null : frame.GetMethod();
+            if (method == null)
+                return "Desconocido";
+            return string.Concat(method.DeclaringType == null ? "" : method.DeclaringType.FullName, ".", method.Name);
         }
 
         private static void ExceptionHandlerByType(Exception ex)

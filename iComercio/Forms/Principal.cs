@@ -156,117 +156,197 @@ namespace iComercio.Forms
 
         private void timerTransmisionesTick(Object stateInfo)
         {
-            //return;
-            if (usu != null)
+            try
             {
-                MensajeEventArgs me = new MensajeEventArgs("Enviando...");
-              //  actualizarBarraDeEstadoEvent(this, me);
-                if (bl.pGlob.Configuracion.TransmisionHabilitada)
+                //return;
+                if (usu != null)
                 {
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra,bl.raM))
+                    MensajeEventArgs me = new MensajeEventArgs("Enviando...");
+                  //  actualizarBarraDeEstadoEvent(this, me);
+                    if (bl.pGlob.Configuracion.TransmisionHabilitada)
                     {
-                        bla.RealizarTransmisionesSolicitudes(transmitiendo);
-                        //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
-                        bla.RealizarTransmisiones(transmitiendo, pGlob.Empresa.EmpresaID.Value); 
-                       // bla.RetransmitirErroneas(transmitiendo);
-                        bla.RealizarTransmisionesArchivo(transmitiendo);                        
+                        using (BusinessLayer bla = new BusinessLayer(bl.ra,bl.raM))
+                        {
+                            bla.RealizarTransmisionesSolicitudes(transmitiendo);
+                            //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
+                            bla.RealizarTransmisiones(transmitiendo, pGlob.Empresa.EmpresaID.Value); 
+                           // bla.RetransmitirErroneas(transmitiendo);
+                            bla.RealizarTransmisionesArchivo(transmitiendo);                        
+                        }
                     }
-                }
-                if (bl.pGlob.Configuracion.TransmisionHabilitadaM)
-                {
-                    var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
-                    ra.esEnvioTest = true;
-                    using (BusinessLayer bla = new BusinessLayer(ra, bl.raM))
+                    if (bl.pGlob.Configuracion.TransmisionHabilitadaM)
                     {
-                        //bla.RealizarTransmisionesSolicitudes(transmitiendo);
-                        //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
-                        bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
-                        // bla.RetransmitirErroneas(transmitiendo);
-                        //bla.RealizarTransmisionesArchivo(transmitiendo);
+                        var ra = new RestApi(usu.usuario, usu.pass, bl.pGlob.Configuracion.RestUrlConexion, bl.pGlob.Configuracion.TestRestUrlConexion);
+                        ra.esEnvioTest = true;
+                        using (BusinessLayer bla = new BusinessLayer(ra, bl.raM))
+                        {
+                            //bla.RealizarTransmisionesSolicitudes(transmitiendo);
+                            //bla.RealizarTransmisionesNovedades(transmitiendo); //ControlDiario
+                            bla.RealizarTransmisiones(transmitiendo, pGlob.EmpresaM.EmpresaID.Value);
+                            // bla.RetransmitirErroneas(transmitiendo);
+                            //bla.RealizarTransmisionesArchivo(transmitiendo);
+                        }
                     }
-                }
 
 
-                //  actualizarBarraDeEstadoListoEvent(this, me);
+                    //  actualizarBarraDeEstadoListoEvent(this, me);
+                }
             }
-            timerTransmisiones.Change(pGlob.Configuracion.TiempoEnvioTransmisiones, Timeout.Infinite); // Esta sentencia reinicia el timer, que fue instanciado como one-shot
+            catch (Exception ex)
+            {
+                Program.RegistrarExcepcion(ex, "Error en timer de transmisiones");
+            }
+            finally
+            {
+                try
+                {
+                    timerTransmisiones.Change(pGlob.Configuracion.TiempoEnvioTransmisiones, Timeout.Infinite);
+                }
+                catch (Exception) { }
+            }
         }
 
         private void timerRevisionesTick(Object stateInfo)
         {
-            //return;
-            if (usu != null)
+            try
             {
-                MensajeEventArgs me = new MensajeEventArgs("Enviando Revisiones...");
-                this.Invoke(actualizarBarraDeEstadoEvent,this, me);
-                if (bl.pGlob.Configuracion.TransmisionHabilitada)
+                //return;
+                if (usu != null)
                 {
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+                    MensajeEventArgs me = new MensajeEventArgs("Enviando Revisiones...");
+                    this.Invoke(actualizarBarraDeEstadoEvent,this, me);
+                    bool refisSinRegistrarPendiente = false;
+                    if (bl.pGlob.Configuracion.TransmisionHabilitada)
                     {
-                        bla.RevisarTransmisiones(Com, DateTime.Now.AddDays(-pGlob.Configuracion.diasRevisionesParaAtras), DateTime.Now);
-                        bla.RetransmitirErroneas(transmitiendo);
+                        using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+                        {
+                            List<String> logRevisiones = bla.RevisarTransmisiones(Com, DateTime.Now.AddDays(-pGlob.Configuracion.diasRevisionesParaAtras), DateTime.Now);
+                            bla.RetransmitirErroneas(transmitiendo);
+
+                            int refisSinRegistrar = logRevisiones.Count(l => l.StartsWith("Error (REFINANCIACION)"));
+                            refisSinRegistrarPendiente = refisSinRegistrar > 0;
+                            if (refisSinRegistrarPendiente)
+                            {
+                                MensajeEventArgs meRefi = new MensajeEventArgs(
+                                    $"ATENCIÓN: {refisSinRegistrar} refinanciación(es) no registradas en el servidor. Ver Transmisiones.");
+                                this.Invoke(actualizarBarraDeEstadoEvent, this, meRefi);
+                            }
+                        }
                     }
+                    if (!refisSinRegistrarPendiente)
+                        this.Invoke(actualizarBarraDeEstadoListoEvent,this, me);
                 }
-                this.Invoke(actualizarBarraDeEstadoListoEvent,this, me);
             }
-            timerRevisiones.Change(pGlob.Configuracion.TiempoEnvioRevisiones, Timeout.Infinite); // Esta sentencia reinicia el timer, que fue instanciado como one-shot
+            catch (Exception ex)
+            {
+                Program.RegistrarExcepcion(ex, "Error en timer de revisiones");
+            }
+            finally
+            {
+                try
+                {
+                    timerRevisiones.Change(pGlob.Configuracion.TiempoEnvioRevisiones, Timeout.Infinite);
+                }
+                catch (Exception) { }
+            }
         }
         private async void timerBlockTick(Object stateInfo)
         {
-            int ts;
-            if (pGlob.Configuracion.LastUnBlockedDate != null && pGlob.Configuracion.BlockingEnabled)
+            try
             {
-                ts = (DateTime.Now - pGlob.Configuracion.LastUnBlockedDate.Value).Days;
-                if (Math.Abs(ts) > pGlob.Configuracion.DaysToBlock)
+                int ts;
+                if (pGlob.Configuracion.LastUnBlockedDate != null && pGlob.Configuracion.BlockingEnabled)
                 {
-                    pGlob.Configuracion.Blocked = true;                    
-                    pGlob.Configuracion.Write();
-                    this.Close();
+                    ts = (DateTime.Now - pGlob.Configuracion.LastUnBlockedDate.Value).Days;
+                    if (Math.Abs(ts) > pGlob.Configuracion.DaysToBlock)
+                    {
+                        pGlob.Configuracion.Blocked = true;
+                        pGlob.Configuracion.Write();
+                        this.Close();
+                    }
                 }
             }
-            timerBlock.Change(10000, Timeout.Infinite); 
+            catch (Exception ex)
+            {
+                Program.RegistrarExcepcion(ex, "Error en timer de bloqueo");
+            }
+            finally
+            {
+                try
+                {
+                    timerBlock.Change(10000, Timeout.Infinite);
+                }
+                catch (Exception) { }
+            }
         }
 
         private async void timerActualizacionesTick(Object stateInfo)
         {
-            //return;
-            MensajeEventArgs me = new MensajeEventArgs("Acts" + DateTime.Now);
-            this.Invoke(actualizarBarraDeEstadoEvent,this, me);
-            if (usu != null)
-            {                
-                if (bl.pGlob.Configuracion.bActHabilitada)
-                {
-                    me = new MensajeEventArgs("Realizando Actualizaciones..." + DateTime.Now);
-                    this.Invoke(actualizarBarraDeEstadoEvent,this, me);
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+            try
+            {
+                //return;
+                MensajeEventArgs me = new MensajeEventArgs("Acts" + DateTime.Now);
+                this.Invoke(actualizarBarraDeEstadoEvent,this, me);
+                if (usu != null)
+                {                
+                    if (bl.pGlob.Configuracion.bActHabilitada)
                     {
-                       await bla.ActualizarDesdeCentral(Com,usu);
-                    }
-                    me = new MensajeEventArgs("Actualizaciones Finalizadas" + DateTime.Now);
-                    this.Invoke(actualizarBarraDeEstadoListoEvent,this, me);
-                }                
+                        me = new MensajeEventArgs("Realizando Actualizaciones..." + DateTime.Now);
+                        this.Invoke(actualizarBarraDeEstadoEvent,this, me);
+                        using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+                        {
+                           await bla.ActualizarDesdeCentral(Com,usu);
+                        }
+                        me = new MensajeEventArgs("Actualizaciones Finalizadas" + DateTime.Now);
+                        this.Invoke(actualizarBarraDeEstadoListoEvent,this, me);
+                    }                
+                }
             }
-            timerActualizaciones.Change(pGlob.Configuracion.TiempoActs, Timeout.Infinite); // Esta sentencia reinicia el timer, que fue instanciado como one-shot
-            me = new MensajeEventArgs("" + DateTime.Now);
+            catch (Exception ex)
+            {
+                Program.RegistrarExcepcion(ex, "Error en timer de actualizaciones");
+            }
+            finally
+            {
+                try
+                {
+                    timerActualizaciones.Change(pGlob.Configuracion.TiempoActs, Timeout.Infinite);
+                }
+                catch (Exception) { }
+            }
         }
 
         private void timerNovedadesTick(Object stateInfo)
         {
-            //return;
-            if (usu != null)
+            try
             {
-                if (bl.pGlob.Configuracion.TransmisionHabilitada)
+                //return;
+                if (usu != null)
                 {
-                    MensajeEventArgs me = new MensajeEventArgs("Enviando Novedades...");
-                    this.Invoke(actualizarBarraDeEstadoEvent, this, me);
-                    using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+                    if (bl.pGlob.Configuracion.TransmisionHabilitada)
                     {
-                        bla.RealizarTransmisionesNovedades(transmitiendo);
+                        MensajeEventArgs me = new MensajeEventArgs("Enviando Novedades...");
+                        this.Invoke(actualizarBarraDeEstadoEvent, this, me);
+                        using (BusinessLayer bla = new BusinessLayer(bl.ra, bl.raM))
+                        {
+                            bla.RealizarTransmisionesNovedades(transmitiendo);
+                        }
+                        this.Invoke(actualizarBarraDeEstadoListoEvent, this, me);
                     }
-                    this.Invoke(actualizarBarraDeEstadoListoEvent, this, me);
                 }
             }
-            timerNovedades.Change(pGlob.Configuracion.TiempoEnvioNovedades, Timeout.Infinite); // Esta sentencia reinicia el timer, que fue instanciado como one-shot
+            catch (Exception ex)
+            {
+                Program.RegistrarExcepcion(ex, "Error en timer de novedades");
+            }
+            finally
+            {
+                try
+                {
+                    timerNovedades.Change(pGlob.Configuracion.TiempoEnvioNovedades, Timeout.Infinite);
+                }
+                catch (Exception) { }
+            }
         }
         
        private bool Login()
