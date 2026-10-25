@@ -80,8 +80,11 @@ namespace iComercio.Forms
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            System.Diagnostics.Stopwatch swInicio = System.Diagnostics.Stopwatch.StartNew();
             bl = new BusinessLayer();
+            log.Debug("Inicio: BusinessLayer creado en " + swInicio.ElapsedMilliseconds + " ms");
             bl.InicializarBases();
+            log.Debug("Inicio: InicializarBases en " + swInicio.ElapsedMilliseconds + " ms (acumulado)");
             pGlob = bl.GetParametrosGlobales();
 
             if (pGlob.Configuracion.Blocked??false)
@@ -135,6 +138,7 @@ namespace iComercio.Forms
             else
                 this.Close();
             Muestra_MenuVta();
+            log.Debug("Inicio: Principal_Load completo en " + swInicio.ElapsedMilliseconds + " ms (incluye login)");
         }
 
         private string ObtenerVersion()

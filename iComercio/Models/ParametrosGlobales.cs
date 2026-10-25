@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
+using System.Diagnostics;
 
 namespace iComercio.Models
 {
@@ -390,8 +392,38 @@ namespace iComercio.Models
         /*M*/
         
         
+        private static void PrecargarTablasDeReferencia(BusinessLayer bl)
+        {
+            Stopwatch sw = Stopwatch.StartNew();
+            try
+            {
+                iComercio.DAL.ComercioContext ctx = bl.GetDal(1).context;
+                ctx.Set<TipoEstado>().Load();
+                ctx.Set<EstadoTransmision>().Load();
+                ctx.Set<Estado>().Load();
+                ctx.Set<ConceptoFondos>().Load();
+                ctx.Set<Operacion>().Load();
+                ctx.Set<TipoSolicitud>().Load();
+                ctx.Set<Moneda>().Load();
+                ctx.Set<ClaseDato>().Load();
+                ctx.Set<TipoAval>().Load();
+                ctx.Set<MedioDePago>().Load();
+                ctx.Set<TipoPago>().Load();
+                ctx.Set<TipoComercio>().Load();
+                ctx.Set<TipoTransferenciaDeposito>().Load();
+                ctx.Set<TipoImpresion>().Load();
+                ctx.Set<Pais>().Load();
+                log.Debug("ParametrosGlobales: tablas de referencia precargadas en " + sw.ElapsedMilliseconds + " ms");
+            }
+            catch (Exception ex)
+            {
+                log.Warn("ParametrosGlobales: no se pudieron precargar las tablas de referencia, se consulta de a una (" + ex.Message + ")");
+            }
+        }
+
         public ParametrosGlobales(BusinessLayer bl)
         {
+            Stopwatch swTotal = Stopwatch.StartNew();
             //Recordar que no se pueden usar llamados de bl que tengan usn dentro de si mismo a parametrosGlobales, sino produciría ciclos
             //try
             //{
@@ -419,6 +451,8 @@ namespace iComercio.Models
                 {
                     log.Debug("PRIMER INICIO CREANDO BASE COMERCIOPRU");
                 }
+
+                PrecargarTablasDeReferencia(bl);
 
                 this.TeEstadoCuentasBancariasEmpleados  = bl.GetByID<TipoEstado>(1,1);
                 this.TeEstadoCuentasBancariasEmpresas = bl.GetByID<TipoEstado>(1, 2);
@@ -769,6 +803,7 @@ namespace iComercio.Models
                 /*cdcnvo_10022021*/
                 this.TipoNotaCredito = "CREDITO";
                 this.TipoNotaDebito  = "DEBITO";
+                log.Debug("ParametrosGlobales: construido en " + swTotal.ElapsedMilliseconds + " ms");
             /**/
             //}
             //catch (Exception ex)
