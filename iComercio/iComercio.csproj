@@ -1262,6 +1262,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Rest\JsonDeserializer.cs" />
+    <Compile Include="Rest\CredencialesEnvio.cs" />
     <Compile Include="Rest\RestApi.cs" />
     <Compile Include="Rest\RestModels\AltaArregloCancelacionRestModel.cs" />
     <Compile Include="Rest\RestModels\AltaCobranzaRestModel.cs" />

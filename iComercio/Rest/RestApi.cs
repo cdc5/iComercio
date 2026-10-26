@@ -48,6 +48,21 @@ namespace iComercio.Rest
 
         }
 
+        private HttpBasicAuthenticator CrearAutenticador(IRestRequest request)
+        {
+            if (!CredencialesEnvio.Configuradas)
+                return new HttpBasicAuthenticator(_accountSid, _secretKey);
+
+            // Estos PUT identifican al empleado que opera (el servidor busca su empleado por nombre de usuario), por eso usan el usuario logueado.
+            bool requiereUsuarioLogueado = request.Method == Method.PUT
+                && request.Resource != null
+                && request.Resource.StartsWith("api/solicitarFondos", StringComparison.OrdinalIgnoreCase);
+            if (requiereUsuarioLogueado)
+                return new HttpBasicAuthenticator(_accountSid, _secretKey);
+
+            return new HttpBasicAuthenticator(CredencialesEnvio.Usuario, CredencialesEnvio.Clave);
+        }
+
         private void AsignarBaseUrl(RestClient client, bool esEnvioTest)
         {
             if (esEnvioTest)
@@ -66,7 +81,7 @@ namespace iComercio.Rest
             var client = new RestClient();
             //client.BaseUrl = _baseUrl;
             AsignarBaseUrl(client, esEnvioTest);
-            client.Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey);
+            client.Authenticator = CrearAutenticador(request);
             request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(request);
 
@@ -186,7 +201,7 @@ namespace iComercio.Rest
                 //client.BaseUrl = _baseUrl;
                 AsignarBaseUrl(client, esEnvioTest);
                 
-                client.Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey);
+                client.Authenticator = CrearAutenticador(request);
                 //client.Authenticator = new SimpleAuthenticator("username", "cdc5", "password", "popot3");
                 request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
                 try
@@ -234,7 +249,7 @@ namespace iComercio.Rest
                 //MessageBox.Show("URL ENVIO:" + client.BaseUrl);
                 //log.Debug("URL ENVIO:" + client.BaseUrl);
                 
-                client.Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey);
+                client.Authenticator = CrearAutenticador(request);
                 //client.Authenticator = new SimpleAuthenticator("username", "cdc5", "password", "popot3");
                 request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
                 log.Debug($"Enviando solicitud: {request.Resource} PARAMS: {request.Parameters.ToString()}");
@@ -283,7 +298,7 @@ namespace iComercio.Rest
             {
                 var tcs = new TaskCompletionSource<IRestResponse<T>>();
                 var client = new RestClient();
-                client.Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey);
+                client.Authenticator = CrearAutenticador(request);
                 //client.Authenticator = new SimpleAuthenticator("username", "cdc5", "password", "popot3");
                 request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
 
