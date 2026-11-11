@@ -691,11 +691,31 @@ namespace iComercio.Forms
             }
 
 
-            if(Graba_Modificacion())
+            if(GrabaModificacionProtegido())
             {
                 panelDomi.Enabled = true;
                 panelTel.Enabled = true;
                 panelMail.Enabled = true;
+            }
+        }
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(frmClienteNVO));
+
+        // Envuelve Graba_Modificacion para que cualquier excepcion se informe con su detalle real (y se loguee) en lugar de fallar sin explicacion.
+        private bool GrabaModificacionProtegido()
+        {
+            try
+            {
+                return Graba_Modificacion();
+            }
+            catch (Exception ex)
+            {
+                string detalle = ex.GetType().Name + ": " + ex.Message;
+                for (Exception inner = ex.InnerException; inner != null; inner = inner.InnerException)
+                    detalle += Environment.NewLine + " -> " + inner.GetType().Name + ": " + inner.Message;
+                log.Error("Error al grabar cliente " + txtBuscaDoc.Text + " " + cmbTipoDni.Text + " (" + cQueHago + "): " + detalle, ex);
+                MessageBox.Show("No se pudo grabar el cliente." + Environment.NewLine + Environment.NewLine + detalle, "Modificación de cliente");
+                return false;
             }
         }
 
@@ -729,29 +749,30 @@ namespace iComercio.Forms
             regClienteNVO.Nombre = txtCliNombre.Text;
             regClienteNVO.SexoID = cmbCliSexo.SelectedValue.ToString();
             regClienteNVO.FechaNacimiento = TxtCliNaci.Value;
-            regClienteNVO.FechaAlta = DateTime.Now;
+            if (cQueHagoM == "N") regClienteNVO.FechaAlta = DateTime.Now;
             regClienteNVO.ProfesionID = cmbComplemento.SelectedValue.ToString();
             regClienteNVO.TipoComoConocioID = cmbCliConocio.SelectedValue.ToString();
 
             regClienteNVO.EmpresaLaboral = txtEmpresa.Text;
             regClienteNVO.Sueldo = Convert.ToDecimal(txtSueldo.Text);
             regClienteNVO.Legajo = txtLegajo.Text;
+            regClienteNVO.Cuit = txtCuit.Text;
             if (cQueHagoM == "N")
             {
-                bl.Agregar(99, regClienteNVO); //   Cliente(regClienteNVO);
+                bl.dalPrueba.Agregar<Cliente>(regClienteNVO);
             }
             else
             {
-                bl.Actualizar(99, regClienteNVO); // Cliente(regClienteNVO);
+                bl.dalPrueba.Actualizar<Cliente>(regClienteNVO);
                 //bl.Transmision<Cliente>(regClienteNVO, bl.pGlob.Comercio, bl.pGlob.TransActualizarCliente, bl.pGlob.UriClientes);
             }
             if (bGraboPru == false)
             {
                 Comercio ComerP = bl.dalPrueba.Get<Comercio>(c => c.Principal == true).FirstOrDefault();
                 bl.Transmision<Cliente>(regClienteNVO, ComerP, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
-                bl.Grabar(99);
                 bGraboPru = true;
             }
+            bl.GrabarPrueba();
 
             
             //MessageBox.Show("Datos grabados");
@@ -788,7 +809,7 @@ namespace iComercio.Forms
              regClienteNVO.Nombre = txtCliNombre.Text;
              regClienteNVO.SexoID = cmbCliSexo.SelectedValue.ToString();
              regClienteNVO.FechaNacimiento = TxtCliNaci.Value;
-             regClienteNVO.FechaAlta = DateTime.Now;
+             if (cQueHago == "N") regClienteNVO.FechaAlta = DateTime.Now;
              regClienteNVO.ProfesionID = cmbComplemento.SelectedValue.ToString();
              regClienteNVO.TipoComoConocioID = cmbCliConocio.SelectedValue.ToString();
 
@@ -808,7 +829,15 @@ namespace iComercio.Forms
             if(bGrabo == false) bl.Transmision<Cliente>(regClienteNVO, bl.pGlob.Comercio, bl.pGlob.TransAgregarCliente, bl.pGlob.UriClientes);
             bGrabo = true;
             bl.Grabar();
-            Graba_Modificacion_Pru(doc, cdoc);
+            try
+            {
+                Graba_Modificacion_Pru(doc, cdoc);
+            }
+            catch (Exception ex)
+            {
+                log.Error("El cliente se grabo en la base principal pero fallo la replica en la base de pruebas: " + ex.Message, ex);
+                MessageBox.Show("El cliente se grabó, pero no se pudo replicar en la base de pruebas (M)." + Environment.NewLine + ex.Message, "Modificación de cliente");
+            }
             MessageBox.Show("Datos grabados");
             return true;
         }
