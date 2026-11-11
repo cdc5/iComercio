@@ -4919,6 +4919,12 @@ namespace iComercio.Models
 
         public Comercio GetComercio(int BaseIDb)
         {
+            // Igual que GetDal: si la base pedida es la empresa principal, el comercio es el principal
+            // (incluye el caso de que la principal sea la 99 y no se este en modo M)
+            if (pGlob != null && BaseIDb == pGlob.EmpresaID)
+            {
+                return pGlob.Comercio;
+            }
             if (BaseIDb == 1 || BaseIDb == 2 || BaseIDb == 3)
             {
                 return pGlob.Comercio;
